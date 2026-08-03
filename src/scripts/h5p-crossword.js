@@ -1,5 +1,6 @@
 // Import required classes
 import CrosswordContent from '@scripts/components/h5p-crossword-content.js';
+import { getSemanticsDefaults } from '@services/h5p-util.js';
 import Util from '@services/util.js';
 import QuestionTypeContract from '@mixins/question-type-contract.js';
 import XAPI from '@mixins/xapi.js';
@@ -29,70 +30,22 @@ export default class Crossword extends H5P.Question {
 
     Util.addMixins(Crossword, [QuestionTypeContract, XAPI]);
 
-    this.params = params;
-    this.contentId = contentId;
-    this.extras = extras;
-
+    const defaults = Util.extend({
+      solutionWord: '',
+      theme: {
+        backgroundColor: 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)',
+      },
+    }, getSemanticsDefaults());
     /*
      * this.params.behaviour.enableSolutionsButton and this.params.behaviour.enableRetry
      * are used by H5P's question type contract.
      * @see {@link https://h5p.org/documentation/developers/contracts#guides-header-8}
      * @see {@link https://h5p.org/documentation/developers/contracts#guides-header-9}
      */
+    this.params = Util.extend(defaults, params);
 
-    // Make sure all variables are set
-    this.params = Util.extend({
-      solutionWord: '',
-      theme: {
-        backgroundColor: 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)',
-      },
-      behaviour: {
-        enableSolutionsButton: true,
-        enableRetry: true,
-        enableInstantFeedback: false,
-        scoreWords: true,
-        applyPenalties: false,
-        keepCorrectAnswers: false,
-        addExtraMarkerForEmptyCells: false,
-      },
-      l10n: {
-        across: 'across',
-        down: 'down',
-        checkAnswer: 'Check answer',
-        // eslint-disable-next-line @stylistic/js/max-len
-        couldNotGenerateCrossword: 'Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common.',
-        couldNotGenerateCrosswordTooFewWords: 'Could not generate a crossword. You need at least two words.',
-        couldNotGenerateCrosswordTooManyWords: 'Could not generate a crossword. You have too many words.',
-        // eslint-disable-next-line @stylistic/js/max-len
-        problematicWords: 'Some words could not be placed. If you are using fixed words, please make sure that their position doesn\'t prevent other words from being placed. Words with the same alignment may not be placed touching each other. Problematic word(s): @words',
-        showSolution: 'Show solution',
-        tryAgain: 'Retry',
-        extraClue: 'Extra clue',
-        closeWindow: 'Close window',
-        submitAnswer: 'Submit',
-      },
-      a11y: {
-        // eslint-disable-next-line @stylistic/js/max-len
-        crosswordGrid: 'Crossword grid. Use arrow keys to navigate and the keyboard to enter characters. Alternatively, use Tab to navigate to type the answers in Fill in the Blanks style fields instead of the grid.',
-        column: 'column',
-        row: 'row',
-        across: 'across',
-        down: 'down',
-        empty: 'Empty',
-        resultFor: 'Result for: @clue',
-        correct: 'Correct',
-        wrong: 'Wrong',
-        point: 'Point',
-        solutionFor: 'The solution for @clue is: @solution',
-        extraClueFor: 'Open extra clue for @clue',
-        letterSevenOfNine: 'Letter @position of @length',
-        lettersWord: '@length letter word',
-        check: 'Check the characters. The responses will be marked as correct, incorrect, or unanswered.',
-        showSolution: 'Show the solution. The crossword will be filled with its correct solution.',
-        retry: 'Retry the task. Reset all responses and start the task over again.',
-        yourResult: 'You got @score out of @total points',
-      },
-    }, this.params);
+    this.contentId = contentId;
+    this.extras = extras;
 
     if (this.params.theme.backgroundColor === '#173354') {
       this.params.theme.backgroundColor = 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)';
