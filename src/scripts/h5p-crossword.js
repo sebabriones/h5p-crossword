@@ -53,6 +53,7 @@ export default class Crossword extends H5P.Question {
         scoreWords: true,
         applyPenalties: false,
         keepCorrectAnswers: false,
+        addExtraMarkerForEmptyCells: false,
       },
       l10n: {
         across: 'across',
@@ -133,6 +134,7 @@ export default class Crossword extends H5P.Question {
         theme: this.params.theme,
         contentId: this.contentId,
         instantFeedback: this.params.behaviour.enableInstantFeedback,
+        addExtraMarkerForEmptyCells: this.params.behaviour.addExtraMarkerForEmptyCells,
         l10n: {
           couldNotGenerateCrossword: this.params.l10n.couldNotGenerateCrossword,
           couldNotGenerateCrosswordTooFewWords: this.params.l10n.couldNotGenerateCrosswordTooFewWords,

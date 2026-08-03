@@ -241,7 +241,7 @@ export default class CrosswordTable {
         solution: param.solution,
         solutionIndex: param.solutionIndex,
         solutionLength: param.solutionLength,
-        width: 100 / dimensions.columns,  
+        width: 100 / dimensions.columns,
         clueIdMarker: param.clueIdMarker,
         clue: param.clue,
         clueIdAcross: param.clueIdAcross,
@@ -250,6 +250,7 @@ export default class CrosswordTable {
         applyPenalties: this.params.applyPenalties,
         hasBackgroundImage: !!this.params.theme.backgroundImage,
         theme: this.params.theme,
+        addExtraMarkerForEmptyCells: this.params.addExtraMarkerForEmptyCells,
         a11y: {
           correct: this.params.a11y.correct,
           wrong: this.params.a11y.wrong,

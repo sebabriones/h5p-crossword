@@ -125,6 +125,10 @@
         {
           "label": "Behalte korrekte Antworten beim Wiederholen",
           "description": "Wenn diese Option aktiviert ist, werden korrekte Antworten beibehalten, wenn der Benutzer/die Benutzerin die Aufgabe wiederholt - es sei denn, die volle Punktzahl wurde erreicht."
+        },
+        {
+          "label": "Zusätzliche Markierung für leere Zellen",
+          "description": "Wenn diese Option aktiviert ist, enthalten Zellen ohne Eingabemöglichkeit ein Symbol, um Barrierearmut gemäß WCAG SC 1.4.1 zu verbessern."
         }
       ]
     },

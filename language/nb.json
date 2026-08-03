@@ -125,6 +125,10 @@
         {
           "label": "Behold riktige svar ved nytt forsøk",
           "description": "Hvis dette er valgt, blir riktige svar stående når brukeren prøver på nytt, med mindre hen oppnådde maksimal poengsum."
+        },
+        {
+          "label": "Extra marker for empty cells",
+          "description": "If this option is enabled, cells without input fields will contain a symbol in order to improve accessibility for WCAG SC 1.4.1."
         }
       ]
     },

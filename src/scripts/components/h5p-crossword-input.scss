@@ -90,7 +90,7 @@
 
               &::after {
                 content: var(--icon-h5ptheme-info);
-                font-family: "h5p-theme";
+                font-family: "h5p-theme", sans-serif;
                 font-size: var(--h5p-theme-font-size-m);
                 font-weight: 600;
                 left: 50%;

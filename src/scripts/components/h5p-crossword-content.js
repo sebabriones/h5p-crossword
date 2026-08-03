@@ -140,6 +140,7 @@ export default class CrosswordContent {
         instantFeedback: this.params.instantFeedback,
         solutionWord: this.params.solutionWord,
         words: this.crosswordLayout.result,
+        addExtraMarkerForEmptyCells: this.params.addExtraMarkerForEmptyCells,
         a11y: this.params.a11y,
         l10n: {
           across: this.params.l10n.across,

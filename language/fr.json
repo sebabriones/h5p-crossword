@@ -125,6 +125,10 @@
         {
           "label": "Garder les réponses correctes lors de la nouvelle tentative",
           "description": "Si cette option est activée, les réponses correctes seront conservées lorsque l'utilisateur réessaiera la tâche, à moins que le score complet n'ait été atteint."
+        },
+        {
+          "label": "Extra marker for empty cells",
+          "description": "If this option is enabled, cells without input fields will contain a symbol in order to improve accessibility for WCAG SC 1.4.1."
         }
       ]
     },

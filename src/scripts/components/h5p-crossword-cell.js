@@ -65,6 +65,10 @@ export default class CrosswordCell {
       this.cell.classList.add('h5p-crossword-cell-empty');
       this.cell.setAttribute('aria-label', this.params.a11y.empty);
 
+      if (this.params.addExtraMarkerForEmptyCells) {
+        this.cell.classList.add('extra-sc-141');
+      }
+
       if (!this.params.hasBackgroundImage) {
         this.cell.style.backgroundColor = this.params.theme.backgroundColor;
       }

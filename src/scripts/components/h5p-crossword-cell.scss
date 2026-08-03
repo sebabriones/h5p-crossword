@@ -13,6 +13,36 @@
     margin-top: 100%;
   }
 
+  &.h5p-crossword-cell-empty {
+    background-color: var(--h5p-theme-text-primary);
+    position: relative;
+
+    /*
+     * Optional extra marker to comply with WCAG SC 1.4.1
+     * https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html
+     */
+    &.extra-sc-141::before {
+      --outline-width: 1px;
+      color: var(--h5p-theme-ui-base);
+      content: var(--icon-h5ptheme-close-cross);
+      font-family: "h5p-theme", sans-serif;
+      font-size: var(--h5p-theme-font-size-m);
+      left: 50%;
+      position: absolute;
+      text-shadow:
+        calc(var(--outline-width) * -1) calc(var(--outline-width) * -1) 0 var(--h5p-theme-text-third),
+        0 calc(var(--outline-width) * -1) 0 var(--h5p-theme-text-third),
+        var(--outline-width) calc(var(--outline-width) * -1) 0 var(--h5p-theme-text-third),
+        calc(var(--outline-width) * -1) 0 0 var(--h5p-theme-text-third),
+        var(--outline-width) 0 0 var(--h5p-theme-text-third),
+        calc(var(--outline-width) * -1) var(--outline-width) 0 var(--h5p-theme-text-third),
+        0 var(--outline-width) 0 var(--h5p-theme-text-third),
+        var(--outline-width) var(--outline-width) 0 var(--h5p-theme-text-third);
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
   .h5p-crossword-cell-solution-word-circle {
     --circle-inset: calc(0.15 * var(--h5p-theme-spacing-s));
 
