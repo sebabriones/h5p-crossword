@@ -1214,6 +1214,92 @@
     "importance": "low",
     "fields": [
       {
+        "name": "activityArea",
+        "type": "group",
+        "label": "Activity area",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Background behind the grid and the clue list. It does not change the grid background.",
+        "fields": [
+          {
+            "name": "useGradientBackground",
+            "type": "boolean",
+            "label": "Use gradient background",
+            "default": false
+          },
+          {
+            "name": "backgroundColor",
+            "type": "text",
+            "label": "Activity background color",
+            "optional": true,
+            "widget": "showWhen",
+            "showWhen": {
+              "widget": "colorSelector",
+              "rules": [
+                {
+                  "field": "useGradientBackground",
+                  "equals": false
+                }
+              ]
+            },
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "gradientBackground",
+            "type": "group",
+            "label": "Gradient background",
+            "importance": "low",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "useGradientBackground",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "angle",
+                "type": "number",
+                "label": "Gradient angle",
+                "description": "Direction in degrees (0 = upward, 180 = downward).",
+                "default": 180,
+                "min": 0,
+                "max": 360,
+                "step": 1,
+                "unit": "°"
+              },
+              {
+                "name": "colorStart",
+                "type": "text",
+                "widget": "colorSelector",
+                "label": "Gradient start color",
+                "default": "#ffffff",
+                "optional": true,
+                "spectrum": {
+                  "showInput": true
+                }
+              },
+              {
+                "name": "colorEnd",
+                "type": "text",
+                "widget": "colorSelector",
+                "label": "Gradient end color",
+                "default": "#ffffff",
+                "optional": true,
+                "spectrum": {
+                  "showInput": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "name": "gridBackground",
         "type": "group",
         "label": "Grid background",
@@ -1417,88 +1503,101 @@
         ]
       },
       {
-        "name": "activityArea",
+        "name": "correctColors",
         "type": "group",
-        "label": "Activity area",
+        "label": "Correct answer colors",
         "importance": "low",
         "optional": true,
         "expanded": false,
-        "description": "Background behind the grid and the clue list. It does not change the grid background.",
+        "description": "Used in the grid cells and in the clue list once the answer is checked.",
         "fields": [
           {
-            "name": "useGradientBackground",
-            "type": "boolean",
-            "label": "Use gradient background",
-            "default": false
-          },
-          {
-            "name": "backgroundColor",
+            "name": "background",
             "type": "text",
-            "label": "Activity background color",
+            "widget": "colorSelector",
+            "label": "Background color",
+            "default": "#9dd8bb",
             "optional": true,
-            "widget": "showWhen",
-            "showWhen": {
-              "widget": "colorSelector",
-              "rules": [
-                {
-                  "field": "useGradientBackground",
-                  "equals": false
-                }
-              ]
-            },
             "spectrum": {
               "showInput": true
             }
           },
           {
-            "name": "gradientBackground",
-            "type": "group",
-            "label": "Gradient background",
-            "importance": "low",
-            "widget": "showWhen",
-            "showWhen": {
-              "rules": [
-                {
-                  "field": "useGradientBackground",
-                  "equals": true
-                }
-              ]
-            },
-            "fields": [
-              {
-                "name": "angle",
-                "type": "number",
-                "label": "Gradient angle",
-                "description": "Direction in degrees (0 = upward, 180 = downward).",
-                "default": 180,
-                "min": 0,
-                "max": 360,
-                "step": 1,
-                "unit": "°"
-              },
-              {
-                "name": "colorStart",
-                "type": "text",
-                "widget": "colorSelector",
-                "label": "Gradient start color",
-                "default": "#ffffff",
-                "optional": true,
-                "spectrum": {
-                  "showInput": true
-                }
-              },
-              {
-                "name": "colorEnd",
-                "type": "text",
-                "widget": "colorSelector",
-                "label": "Gradient end color",
-                "default": "#ffffff",
-                "optional": true,
-                "spectrum": {
-                  "showInput": true
-                }
-              }
-            ]
+            "name": "text",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Text color",
+            "default": "#255c41",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "wrongColors",
+        "type": "group",
+        "label": "Wrong answer colors",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Used in the grid cells and in the clue list once the answer is checked.",
+        "fields": [
+          {
+            "name": "background",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Background color",
+            "default": "#f7d0d0",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "text",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Text color",
+            "default": "#b71c1c",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "neutralColors",
+        "type": "group",
+        "label": "Missing answer colors",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Used for cells and characters that were left empty.",
+        "fields": [
+          {
+            "name": "background",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Background color",
+            "default": "#f7e3cf",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "text",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Text color",
+            "default": "#b5691c",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
           }
         ]
       },
@@ -1544,6 +1643,296 @@
             "max": 2,
             "decimals": 2,
             "optional": true
+          }
+        ]
+      },
+      {
+        "name": "clueInputs",
+        "type": "group",
+        "label": "Clue answer fields",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Text fields where the answers are typed next to each clue.",
+        "fields": [
+          {
+            "name": "backgroundColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Field background color",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "textColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Field text color",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "borderColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Field border color",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "useCustomBorder",
+            "type": "boolean",
+            "label": "Set the border of the fields",
+            "description": "It also removes the focus ring the browser draws while typing. While it is off, the fields keep the border of the browser.",
+            "default": false
+          },
+          {
+            "name": "borderSettings",
+            "type": "group",
+            "label": "Border",
+            "importance": "low",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "useCustomBorder",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "borderStyle",
+                "type": "select",
+                "label": "Border style",
+                "default": "solid",
+                "options": [
+                  {
+                    "value": "none",
+                    "label": "No border"
+                  },
+                  {
+                    "value": "solid",
+                    "label": "Solid"
+                  },
+                  {
+                    "value": "dashed",
+                    "label": "Dashed"
+                  },
+                  {
+                    "value": "dotted",
+                    "label": "Dotted"
+                  }
+                ]
+              },
+              {
+                "name": "borderWidth",
+                "type": "number",
+                "label": "Border thickness",
+                "default": 2,
+                "min": 0,
+                "max": 12,
+                "step": 1,
+                "unit": "px"
+              },
+              {
+                "name": "borderRadius",
+                "type": "number",
+                "label": "Corner radius",
+                "default": 0,
+                "min": 0,
+                "max": 24,
+                "step": 1,
+                "unit": "px"
+              },
+              {
+                "name": "showFocusBorder",
+                "type": "boolean",
+                "label": "Use a different border while typing",
+                "description": "While it is off, the field keeps the same border it has at rest.",
+                "default": false
+              },
+              {
+                "name": "focusBorderColor",
+                "type": "text",
+                "label": "Border color while typing",
+                "optional": true,
+                "widget": "showWhen",
+                "showWhen": {
+                  "widget": "colorSelector",
+                  "rules": [
+                    {
+                      "field": "showFocusBorder",
+                      "equals": true
+                    }
+                  ]
+                },
+                "spectrum": {
+                  "showInput": true
+                }
+              }
+            ]
+          },
+          {
+            "name": "hideFields",
+            "type": "boolean",
+            "label": "Hide the answer fields",
+            "description": "The crossword is then solved on the grid. The fields stay reachable with the keyboard and the screen reader.",
+            "default": false
+          }
+        ]
+      },
+      {
+        "name": "scrollbar",
+        "type": "group",
+        "label": "Scrollbar",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Colors for the scrollbar of the clue list.",
+        "fields": [
+          {
+            "name": "width",
+            "type": "number",
+            "label": "Scrollbar width",
+            "description": "Width in pixels.",
+            "default": 8,
+            "min": 4,
+            "max": 16,
+            "decimals": 0,
+            "unit": "px"
+          },
+          {
+            "name": "showTrack",
+            "type": "boolean",
+            "label": "Show scrollbar track",
+            "description": "When enabled, the track behind the scrollbar thumb is visible and its color can be configured.",
+            "default": true
+          },
+          {
+            "name": "track",
+            "type": "text",
+            "label": "Scrollbar track color",
+            "default": "#e8e8e8",
+            "optional": true,
+            "widget": "showWhen",
+            "showWhen": {
+              "widget": "colorSelector",
+              "rules": [
+                {
+                  "field": "showTrack",
+                  "equals": true
+                }
+              ]
+            },
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "thumb",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Scrollbar thumb color",
+            "default": "#b0b0b0",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "thumbHover",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Scrollbar thumb hover color",
+            "default": "#888888",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "solutionWord",
+        "type": "group",
+        "label": "Solution word",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Strip of cells that spells the solution word below the grid.",
+        "fields": [
+          {
+            "name": "borderColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Strip border color",
+            "default": "#000000",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "markerColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Marker circle color",
+            "description": "Circle that marks the cells of the grid taking part in the solution word.",
+            "default": "#bbbbbb",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "extraClueOverlay",
+        "type": "group",
+        "label": "Extra clue window",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Window that opens with the extra clue of a word.",
+        "fields": [
+          {
+            "name": "backgroundColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Window background color",
+            "default": "#ffffff",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "textColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Window text color",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "closeButtonColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Close button color",
+            "default": "#bd3e3e",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
           }
         ]
       },
@@ -1720,395 +2109,6 @@
             "max": 4,
             "decimals": 2,
             "unit": "em"
-          }
-        ]
-      },
-      {
-        "name": "clueInputs",
-        "type": "group",
-        "label": "Clue answer fields",
-        "importance": "low",
-        "optional": true,
-        "expanded": false,
-        "description": "Text fields where the answers are typed next to each clue.",
-        "fields": [
-          {
-            "name": "backgroundColor",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Field background color",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "textColor",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Field text color",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "borderColor",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Field border color",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "useCustomBorder",
-            "type": "boolean",
-            "label": "Set the border of the fields",
-            "description": "It also removes the focus ring the browser draws while typing. While it is off, the fields keep the border of the browser.",
-            "default": false
-          },
-          {
-            "name": "borderSettings",
-            "type": "group",
-            "label": "Border",
-            "importance": "low",
-            "widget": "showWhen",
-            "showWhen": {
-              "rules": [
-                {
-                  "field": "useCustomBorder",
-                  "equals": true
-                }
-              ]
-            },
-            "fields": [
-              {
-                "name": "borderStyle",
-                "type": "select",
-                "label": "Border style",
-                "default": "solid",
-                "options": [
-                  {
-                    "value": "none",
-                    "label": "No border"
-                  },
-                  {
-                    "value": "solid",
-                    "label": "Solid"
-                  },
-                  {
-                    "value": "dashed",
-                    "label": "Dashed"
-                  },
-                  {
-                    "value": "dotted",
-                    "label": "Dotted"
-                  }
-                ]
-              },
-              {
-                "name": "borderWidth",
-                "type": "number",
-                "label": "Border thickness",
-                "default": 2,
-                "min": 0,
-                "max": 12,
-                "step": 1,
-                "unit": "px"
-              },
-              {
-                "name": "borderRadius",
-                "type": "number",
-                "label": "Corner radius",
-                "default": 0,
-                "min": 0,
-                "max": 24,
-                "step": 1,
-                "unit": "px"
-              },
-              {
-                "name": "showFocusBorder",
-                "type": "boolean",
-                "label": "Use a different border while typing",
-                "description": "While it is off, the field keeps the same border it has at rest.",
-                "default": false
-              },
-              {
-                "name": "focusBorderColor",
-                "type": "text",
-                "label": "Border color while typing",
-                "optional": true,
-                "widget": "showWhen",
-                "showWhen": {
-                  "widget": "colorSelector",
-                  "rules": [
-                    {
-                      "field": "showFocusBorder",
-                      "equals": true
-                    }
-                  ]
-                },
-                "spectrum": {
-                  "showInput": true
-                }
-              }
-            ]
-          },
-          {
-            "name": "hideFields",
-            "type": "boolean",
-            "label": "Hide the answer fields",
-            "description": "The crossword is then solved on the grid. The fields stay reachable with the keyboard and the screen reader.",
-            "default": false
-          }
-        ]
-      },
-      {
-        "name": "correctColors",
-        "type": "group",
-        "label": "Correct answer colors",
-        "importance": "low",
-        "optional": true,
-        "expanded": false,
-        "description": "Used in the grid cells and in the clue list once the answer is checked.",
-        "fields": [
-          {
-            "name": "background",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Background color",
-            "default": "#9dd8bb",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "text",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Text color",
-            "default": "#255c41",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          }
-        ]
-      },
-      {
-        "name": "wrongColors",
-        "type": "group",
-        "label": "Wrong answer colors",
-        "importance": "low",
-        "optional": true,
-        "expanded": false,
-        "description": "Used in the grid cells and in the clue list once the answer is checked.",
-        "fields": [
-          {
-            "name": "background",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Background color",
-            "default": "#f7d0d0",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "text",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Text color",
-            "default": "#b71c1c",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          }
-        ]
-      },
-      {
-        "name": "neutralColors",
-        "type": "group",
-        "label": "Missing answer colors",
-        "importance": "low",
-        "optional": true,
-        "expanded": false,
-        "description": "Used for cells and characters that were left empty.",
-        "fields": [
-          {
-            "name": "background",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Background color",
-            "default": "#f7e3cf",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "text",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Text color",
-            "default": "#b5691c",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          }
-        ]
-      },
-      {
-        "name": "solutionWord",
-        "type": "group",
-        "label": "Solution word",
-        "importance": "low",
-        "optional": true,
-        "expanded": false,
-        "description": "Strip of cells that spells the solution word below the grid.",
-        "fields": [
-          {
-            "name": "borderColor",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Strip border color",
-            "default": "#000000",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "markerColor",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Marker circle color",
-            "description": "Circle that marks the cells of the grid taking part in the solution word.",
-            "default": "#bbbbbb",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          }
-        ]
-      },
-      {
-        "name": "extraClueOverlay",
-        "type": "group",
-        "label": "Extra clue window",
-        "importance": "low",
-        "optional": true,
-        "expanded": false,
-        "description": "Window that opens with the extra clue of a word.",
-        "fields": [
-          {
-            "name": "backgroundColor",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Window background color",
-            "default": "#ffffff",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "textColor",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Window text color",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "closeButtonColor",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Close button color",
-            "default": "#bd3e3e",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          }
-        ]
-      },
-      {
-        "name": "scrollbar",
-        "type": "group",
-        "label": "Scrollbar",
-        "importance": "low",
-        "optional": true,
-        "expanded": false,
-        "description": "Colors for the scrollbar of the clue list.",
-        "fields": [
-          {
-            "name": "width",
-            "type": "number",
-            "label": "Scrollbar width",
-            "description": "Width in pixels.",
-            "default": 8,
-            "min": 4,
-            "max": 16,
-            "decimals": 0,
-            "unit": "px"
-          },
-          {
-            "name": "showTrack",
-            "type": "boolean",
-            "label": "Show scrollbar track",
-            "description": "When enabled, the track behind the scrollbar thumb is visible and its color can be configured.",
-            "default": true
-          },
-          {
-            "name": "track",
-            "type": "text",
-            "label": "Scrollbar track color",
-            "default": "#e8e8e8",
-            "optional": true,
-            "widget": "showWhen",
-            "showWhen": {
-              "widget": "colorSelector",
-              "rules": [
-                {
-                  "field": "showTrack",
-                  "equals": true
-                }
-              ]
-            },
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "thumb",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Scrollbar thumb color",
-            "default": "#b0b0b0",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
-          },
-          {
-            "name": "thumbHover",
-            "type": "text",
-            "widget": "colorSelector",
-            "label": "Scrollbar thumb hover color",
-            "default": "#888888",
-            "optional": true,
-            "spectrum": {
-              "showInput": true
-            }
           }
         ]
       }

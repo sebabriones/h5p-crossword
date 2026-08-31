@@ -459,6 +459,33 @@
       "label": "Tema",
       "fields": [
         {
+          "label": "Área de la actividad",
+          "description": "Fondo detrás de la rejilla y de la lista de pistas. No cambia el fondo de la rejilla.",
+          "fields": [
+            {
+              "label": "Usar fondo en degradado"
+            },
+            {
+              "label": "Color de fondo de la actividad"
+            },
+            {
+              "label": "Fondo en degradado",
+              "fields": [
+                {
+                  "label": "Ángulo del degradado",
+                  "description": "Dirección en grados (0 = hacia arriba, 180 = hacia abajo)."
+                },
+                {
+                  "label": "Color inicial del degradado"
+                },
+                {
+                  "label": "Color final del degradado"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "label": "Fondo de la rejilla",
           "description": "Fondo de la propia rejilla del crucigrama.",
           "fields": [
@@ -533,29 +560,38 @@
           ]
         },
         {
-          "label": "Área de la actividad",
-          "description": "Fondo detrás de la rejilla y de la lista de pistas. No cambia el fondo de la rejilla.",
+          "label": "Colores de respuesta correcta",
+          "description": "Se usan en las celdas de la rejilla y en la lista de pistas al comprobar.",
           "fields": [
             {
-              "label": "Usar fondo en degradado"
+              "label": "Color de fondo"
             },
             {
-              "label": "Color de fondo de la actividad"
+              "label": "Color del texto"
+            }
+          ]
+        },
+        {
+          "label": "Colores de respuesta incorrecta",
+          "description": "Se usan en las celdas de la rejilla y en la lista de pistas al comprobar.",
+          "fields": [
+            {
+              "label": "Color de fondo"
             },
             {
-              "label": "Fondo en degradado",
-              "fields": [
-                {
-                  "label": "Ángulo del degradado",
-                  "description": "Dirección en grados (0 = hacia arriba, 180 = hacia abajo)."
-                },
-                {
-                  "label": "Color inicial del degradado"
-                },
-                {
-                  "label": "Color final del degradado"
-                }
-              ]
+              "label": "Color del texto"
+            }
+          ]
+        },
+        {
+          "label": "Colores de respuesta faltante",
+          "description": "Se usan en las celdas y los caracteres que quedaron sin completar.",
+          "fields": [
+            {
+              "label": "Color de fondo"
+            },
+            {
+              "label": "Color del texto"
             }
           ]
         },
@@ -573,60 +609,6 @@
             {
               "label": "Escala del texto de las pistas",
               "description": "Multiplica el tamaño de letra automático. El valor 1 mantiene el tamaño actual."
-            }
-          ]
-        },
-        {
-          "label": "Botones de acción (Comprobar, Intentar de nuevo y Mostrar solución)",
-          "description": "Estilo compartido para Comprobar, Intentar de nuevo y Mostrar solución. Los colores del borde solo aplican cuando el borde está activado.",
-          "fields": [
-            {
-              "label": "Usar fondo en degradado"
-            },
-            {
-              "label": "Color de fondo del botón"
-            },
-            {
-              "label": "Fondo en degradado",
-              "fields": [
-                {
-                  "label": "Ángulo del degradado",
-                  "description": "Dirección en grados (0 = hacia arriba, 180 = hacia abajo)."
-                },
-                {
-                  "label": "Color inicial del degradado"
-                },
-                {
-                  "label": "Color final del degradado"
-                }
-              ]
-            },
-            {
-              "label": "Color del texto del botón"
-            },
-            {
-              "label": "Color de fondo del botón al pasar el cursor"
-            },
-            {
-              "label": "Color del texto del botón al pasar el cursor"
-            },
-            {
-              "label": "Usar borde en el botón"
-            },
-            {
-              "label": "Ajustes del borde",
-              "fields": [
-                {
-                  "label": "Color del borde del botón"
-                },
-                {
-                  "label": "Color del borde del botón al pasar el cursor"
-                }
-              ]
-            },
-            {
-              "label": "Radio del borde del botón",
-              "description": "El valor por defecto es 2em (Joubel UI). Valores menores son más rectos; mayores, más redondeados."
             }
           ]
         },
@@ -689,38 +671,25 @@
           ]
         },
         {
-          "label": "Colores de respuesta correcta",
-          "description": "Se usan en las celdas de la rejilla y en la lista de pistas al comprobar.",
+          "label": "Barra de desplazamiento",
+          "description": "Colores de las barras de desplazamiento de la lista de párrafos y del panel de contexto.",
           "fields": [
             {
-              "label": "Color de fondo"
+              "label": "Ancho de la barra de desplazamiento",
+              "description": "Ancho en píxeles."
             },
             {
-              "label": "Color del texto"
-            }
-          ]
-        },
-        {
-          "label": "Colores de respuesta incorrecta",
-          "description": "Se usan en las celdas de la rejilla y en la lista de pistas al comprobar.",
-          "fields": [
-            {
-              "label": "Color de fondo"
+              "label": "Mostrar pista de la barra de desplazamiento",
+              "description": "Si está activado, se muestra la pista detrás del control y se puede configurar su color."
             },
             {
-              "label": "Color del texto"
-            }
-          ]
-        },
-        {
-          "label": "Colores de respuesta faltante",
-          "description": "Se usan en las celdas y los caracteres que quedaron sin completar.",
-          "fields": [
-            {
-              "label": "Color de fondo"
+              "label": "Color de la pista de la barra de desplazamiento"
             },
             {
-              "label": "Color del texto"
+              "label": "Color del control de la barra de desplazamiento"
+            },
+            {
+              "label": "Color del control al pasar el cursor"
             }
           ]
         },
@@ -753,25 +722,56 @@
           ]
         },
         {
-          "label": "Barra de desplazamiento",
-          "description": "Colores de las barras de desplazamiento de la lista de párrafos y del panel de contexto.",
+          "label": "Botones de acción (Comprobar, Intentar de nuevo y Mostrar solución)",
+          "description": "Estilo compartido para Comprobar, Intentar de nuevo y Mostrar solución. Los colores del borde solo aplican cuando el borde está activado.",
           "fields": [
             {
-              "label": "Ancho de la barra de desplazamiento",
-              "description": "Ancho en píxeles."
+              "label": "Usar fondo en degradado"
             },
             {
-              "label": "Mostrar pista de la barra de desplazamiento",
-              "description": "Si está activado, se muestra la pista detrás del control y se puede configurar su color."
+              "label": "Color de fondo del botón"
             },
             {
-              "label": "Color de la pista de la barra de desplazamiento"
+              "label": "Fondo en degradado",
+              "fields": [
+                {
+                  "label": "Ángulo del degradado",
+                  "description": "Dirección en grados (0 = hacia arriba, 180 = hacia abajo)."
+                },
+                {
+                  "label": "Color inicial del degradado"
+                },
+                {
+                  "label": "Color final del degradado"
+                }
+              ]
             },
             {
-              "label": "Color del control de la barra de desplazamiento"
+              "label": "Color del texto del botón"
             },
             {
-              "label": "Color del control al pasar el cursor"
+              "label": "Color de fondo del botón al pasar el cursor"
+            },
+            {
+              "label": "Color del texto del botón al pasar el cursor"
+            },
+            {
+              "label": "Usar borde en el botón"
+            },
+            {
+              "label": "Ajustes del borde",
+              "fields": [
+                {
+                  "label": "Color del borde del botón"
+                },
+                {
+                  "label": "Color del borde del botón al pasar el cursor"
+                }
+              ]
+            },
+            {
+              "label": "Radio del borde del botón",
+              "description": "El valor por defecto es 2em (Joubel UI). Valores menores son más rectos; mayores, más redondeados."
             }
           ]
         }

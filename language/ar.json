@@ -145,6 +145,33 @@
       "label": "السمة",
       "fields": [
         {
+          "label": "Activity area",
+          "description": "Background behind the grid and the clue list. It does not change the grid background.",
+          "fields": [
+            {
+              "label": "Use gradient background"
+            },
+            {
+              "label": "Activity background color"
+            },
+            {
+              "label": "Gradient background",
+              "fields": [
+                {
+                  "label": "Gradient angle",
+                  "description": "Direction in degrees (0 = upward, 180 = downward)."
+                },
+                {
+                  "label": "Gradient start color"
+                },
+                {
+                  "label": "Gradient end color"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "label": "Grid background",
           "description": "Background of the crossword grid itself.",
           "fields": [
@@ -219,29 +246,38 @@
           ]
         },
         {
-          "label": "Activity area",
-          "description": "Background behind the grid and the clue list. It does not change the grid background.",
+          "label": "Correct answer colors",
+          "description": "Used in the grid cells and in the clue list once the answer is checked.",
           "fields": [
             {
-              "label": "Use gradient background"
+              "label": "Background color"
             },
             {
-              "label": "Activity background color"
+              "label": "Text color"
+            }
+          ]
+        },
+        {
+          "label": "Wrong answer colors",
+          "description": "Used in the grid cells and in the clue list once the answer is checked.",
+          "fields": [
+            {
+              "label": "Background color"
             },
             {
-              "label": "Gradient background",
-              "fields": [
-                {
-                  "label": "Gradient angle",
-                  "description": "Direction in degrees (0 = upward, 180 = downward)."
-                },
-                {
-                  "label": "Gradient start color"
-                },
-                {
-                  "label": "Gradient end color"
-                }
-              ]
+              "label": "Text color"
+            }
+          ]
+        },
+        {
+          "label": "Missing answer colors",
+          "description": "Used for cells and characters that were left empty.",
+          "fields": [
+            {
+              "label": "Background color"
+            },
+            {
+              "label": "Text color"
             }
           ]
         },
@@ -259,60 +295,6 @@
             {
               "label": "Clue text scale",
               "description": "Multiplies the automatic font size. 1 keeps the current size."
-            }
-          ]
-        },
-        {
-          "label": "Action buttons (Check, Retry and Show solution)",
-          "description": "Shared style for Check, Try again and Show solution buttons. Border colors apply only when border is enabled.",
-          "fields": [
-            {
-              "label": "Use gradient background"
-            },
-            {
-              "label": "Button background color"
-            },
-            {
-              "label": "Gradient background",
-              "fields": [
-                {
-                  "label": "Gradient angle",
-                  "description": "Direction in degrees (0 = upward, 180 = downward)."
-                },
-                {
-                  "label": "Gradient start color"
-                },
-                {
-                  "label": "Gradient end color"
-                }
-              ]
-            },
-            {
-              "label": "Button text color"
-            },
-            {
-              "label": "Button hover background color"
-            },
-            {
-              "label": "Button hover text color"
-            },
-            {
-              "label": "Use button border"
-            },
-            {
-              "label": "Border settings",
-              "fields": [
-                {
-                  "label": "Button border color"
-                },
-                {
-                  "label": "Button hover border color"
-                }
-              ]
-            },
-            {
-              "label": "Button border radius",
-              "description": "Default is 2em (Joubel UI). Lower values are sharper; higher values are more rounded."
             }
           ]
         },
@@ -375,38 +357,25 @@
           ]
         },
         {
-          "label": "Correct answer colors",
-          "description": "Used in the grid cells and in the clue list once the answer is checked.",
+          "label": "Scrollbar",
+          "description": "Colors for the scrollbar of the clue list.",
           "fields": [
             {
-              "label": "Background color"
+              "label": "Scrollbar width",
+              "description": "Width in pixels."
             },
             {
-              "label": "Text color"
-            }
-          ]
-        },
-        {
-          "label": "Wrong answer colors",
-          "description": "Used in the grid cells and in the clue list once the answer is checked.",
-          "fields": [
-            {
-              "label": "Background color"
+              "label": "Show scrollbar track",
+              "description": "When enabled, the track behind the scrollbar thumb is visible and its color can be configured."
             },
             {
-              "label": "Text color"
-            }
-          ]
-        },
-        {
-          "label": "Missing answer colors",
-          "description": "Used for cells and characters that were left empty.",
-          "fields": [
-            {
-              "label": "Background color"
+              "label": "Scrollbar track color"
             },
             {
-              "label": "Text color"
+              "label": "Scrollbar thumb color"
+            },
+            {
+              "label": "Scrollbar thumb hover color"
             }
           ]
         },
@@ -439,25 +408,56 @@
           ]
         },
         {
-          "label": "Scrollbar",
-          "description": "Colors for the scrollbar of the clue list.",
+          "label": "Action buttons (Check, Retry and Show solution)",
+          "description": "Shared style for Check, Try again and Show solution buttons. Border colors apply only when border is enabled.",
           "fields": [
             {
-              "label": "Scrollbar width",
-              "description": "Width in pixels."
+              "label": "Use gradient background"
             },
             {
-              "label": "Show scrollbar track",
-              "description": "When enabled, the track behind the scrollbar thumb is visible and its color can be configured."
+              "label": "Button background color"
             },
             {
-              "label": "Scrollbar track color"
+              "label": "Gradient background",
+              "fields": [
+                {
+                  "label": "Gradient angle",
+                  "description": "Direction in degrees (0 = upward, 180 = downward)."
+                },
+                {
+                  "label": "Gradient start color"
+                },
+                {
+                  "label": "Gradient end color"
+                }
+              ]
             },
             {
-              "label": "Scrollbar thumb color"
+              "label": "Button text color"
             },
             {
-              "label": "Scrollbar thumb hover color"
+              "label": "Button hover background color"
+            },
+            {
+              "label": "Button hover text color"
+            },
+            {
+              "label": "Use button border"
+            },
+            {
+              "label": "Border settings",
+              "fields": [
+                {
+                  "label": "Button border color"
+                },
+                {
+                  "label": "Button hover border color"
+                }
+              ]
+            },
+            {
+              "label": "Button border radius",
+              "description": "Default is 2em (Joubel UI). Lower values are sharper; higher values are more rounded."
             }
           ]
         }
