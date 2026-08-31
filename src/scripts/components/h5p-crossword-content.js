@@ -12,6 +12,21 @@ const MIN_WORDS_FOR_CROSSWORD = 2;
 /** @constant {number} MAXIMUM_TRIES Maximum number of tries to generate crossword grid */
 const MAXIMUM_TRIES = 20;
 
+/** @constant {number} CLUES_COLUMN_MIN_WIDTH_PX Width below which clues stack under the grid. */
+const CLUES_COLUMN_MIN_WIDTH_PX = 400;
+
+/** @constant {number} CLUES_ROW_MIN_WIDTH_PX Width needed to put both clue groups side by side. */
+const CLUES_ROW_MIN_WIDTH_PX = 1280;
+
+/** @constant {number} CLUES_FONT_SIZE_RATIO Clue font size as a share of the content width. */
+const CLUES_FONT_SIZE_RATIO = 0.015;
+
+/** @constant {number} CLUES_FONT_SIZE_MIN_PX Lower bound for the clue font size. */
+const CLUES_FONT_SIZE_MIN_PX = 11;
+
+/** @constant {number} CLUES_FONT_SIZE_MAX_PX Upper bound for the clue font size. */
+const CLUES_FONT_SIZE_MAX_PX = 18;
+
 /** Class representing the content */
 export default class CrosswordContent {
   /**
@@ -35,6 +50,15 @@ export default class CrosswordContent {
     this.answerGiven = false;
 
     this.setCurrentState(this.params.previousState);
+
+    // El contenido puede estrecharse sin que H5P dispare resize (columna de un LMS,
+    // panel embebido), así que el layout se observa directamente sobre la caja.
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.updateLayoutState();
+      });
+      this.resizeObserver.observe(this.content);
+    }
   }
 
   /**
@@ -270,7 +294,37 @@ export default class CrosswordContent {
     return this.content;
   }
 
+  /**
+   * Pick the layout variant that fits the space the content actually got.
+   */
+  updateLayoutState() {
+    const width = this.content.getBoundingClientRect().width;
+    if (width === 0) {
+      return; // Not displayed yet; a later resize will settle this.
+    }
+
+    const isNarrow = width < CLUES_COLUMN_MIN_WIDTH_PX;
+
+    this.content.classList.toggle('h5p-crossword-layout-narrow', isNarrow);
+    this.content.classList.toggle('h5p-crossword-layout-wide', !isNarrow);
+    this.content.classList.toggle(
+      'h5p-crossword-layout-clues-row', width >= CLUES_ROW_MIN_WIDTH_PX
+    );
+
+    // Las dos columnas se conservan hasta anchos muy pequeños: en lugar de apilar,
+    // las pistas encogen su tipografía junto con el espacio disponible.
+    const cluesFontSizePx = Math.min(
+      CLUES_FONT_SIZE_MAX_PX,
+      Math.max(CLUES_FONT_SIZE_MIN_PX, width * CLUES_FONT_SIZE_RATIO)
+    );
+    this.content.style.setProperty(
+      '--h5p-crossword-clues-font-size', `${cluesFontSizePx}px`
+    );
+  }
+
   resize() {
+    this.updateLayoutState();
+
     if (!this.table) {
       return;
     }

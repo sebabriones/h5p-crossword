@@ -1,13 +1,12 @@
-@use '@styles/main';
 /*
- * TODO: Replace with container queries in respective components once Safari 18 is out and tthus he latest three
- * versions of all major browsers support container queries.
+ * El layout responde al ancho del propio contenido, no al del viewport: embebido
+ * en un visor LTI o en Course Presentation el iframe puede ser mucho más angosto
+ * que la ventana, y las media queries conmutaban a la variante móvil sin motivo.
+ * Las clases y la tipografía las asigna CrosswordContent.updateLayoutState().
  */
-@media screen and (max-width: main.$breakpoint-mobile-clues-column) {
-  .h5p-crossword {
-    .h5p-crossword-content {
-      flex-direction: column;
-    }
+.h5p-crossword {
+  .h5p-crossword-content.h5p-crossword-layout-narrow {
+    flex-direction: column;
 
     .h5p-crossword-input-fields-group {
       margin-top: 1em;
@@ -20,7 +19,6 @@
     }
 
     .h5p-crossword-overlay-outer-wrapper {
-      width: 100%;
       max-height: calc(100% - 5em);
       width: calc(100% - 4em);
     }
@@ -33,29 +31,32 @@
       }
     }
   }
-}
 
-@media screen and (min-width: main.$breakpoint-mobile-clues-column) {
-  .h5p-crossword {
+  /*
+   * Tablero y pistas se reparten el ancho en partes iguales. En espacios reducidos
+   * las pistas encogen su tipografía en vez de mandar el tablero a otra fila.
+   */
+  .h5p-crossword-content.h5p-crossword-layout-wide {
     .h5p-crossword-clue-announcer {
       display: none;
     }
 
     .h5p-crossword-table-wrapper {
       margin-right: 1em;
-      width: 100%;
+      width: 50%;
     }
 
-    .h5p-crossword-input-container .h5p-crossword-input-fields-group:first-child {
-      margin-top: 0;
+    .h5p-crossword-input-container {
+      font-size: var(--h5p-crossword-clues-font-size, 1em);
+
+      .h5p-crossword-input-fields-group:first-child {
+        margin-top: 0;
+      }
     }
   }
-}
 
-@media screen and (min-width: main.$breakpoint-clues-column-clues-row) {
-  .h5p-crossword .h5p-crossword-input-container {
+  .h5p-crossword-content.h5p-crossword-layout-clues-row .h5p-crossword-input-container {
     flex-direction: row;
-    width: 50%;
 
     .h5p-crossword-input-fields-group {
       margin-top: 0;

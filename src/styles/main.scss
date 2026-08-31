@@ -1,5 +1,5 @@
-$breakpoint-mobile-clues-column: 46.25em;
-$breakpoint-clues-column-clues-row: 80em;
+// Los umbrales de layout viven en h5p-crossword-content.js: se comparan contra el
+// ancho del contenido, no contra el viewport.
 
 $color-correct-dark: #255c41;
 $color-correct-light: #9dd8bb;
