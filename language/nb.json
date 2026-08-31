@@ -145,40 +145,78 @@
       "label": "Tema",
       "fields": [
         {
-          "label": "Bakgrunnsbilde",
-          "description": "Sett inn et valgfritt bakgrunnsbilde. Bildet vil bli skalert til å passe til bakgrunnen. Det vil ikke bli strukket."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Bakgrunnsbilde",
+              "description": "Sett inn et valgfritt bakgrunnsbilde. Bildet vil bli skalert til å passe til bakgrunnen. Det vil ikke bli strukket."
+            },
+            {
+              "label": "Bakgrunnsfarge",
+              "description": "Velg en bakgrunnsfarge. Fargen vil bli brukt i stedet for bakgrunnsbilde eller som bakgrunn for transparente områder."
+            }
+          ]
         },
         {
-          "label": "Bakgrunnsfarge",
-          "description": "Velg en bakgrunnsfarge. Fargen vil bli brukt i stedet for bakgrunnsbilde eller som bakgrunn for transparente områder."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Rutenett-farge",
+              "description": "Velg en farge for rutenettet."
+            },
+            {
+              "label": "Bakgrunnsfarge for bokstavruter",
+              "description": "Velg en bakgrunnsfarge for rutene som kan huse bokstaver."
+            },
+            {
+              "label": "Skriftfarge i bokstavrutene",
+              "description": "Velg en skriftfarge for rutene som kan huse bokstaver."
+            },
+            {
+              "label": "Farge på hint-id",
+              "description": "Velg fargen på hint-id-en i bokstavrutene."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Rutenett-farge",
-          "description": "Velg en farge for rutenettet."
-        },
-        {
-          "label": "Bakgrunnsfarge for bokstavruter",
-          "description": "Velg en bakgrunnsfarge for rutene som kan huse bokstaver."
-        },
-        {
-          "label": "Skriftfarge i bokstavrutene",
-          "description": "Velg en skriftfarge for rutene som kan huse bokstaver."
-        },
-        {
-          "label": "Farge på hint-id",
-          "description": "Velg fargen på hint-id-en i bokstavrutene."
-        },
-        {
-          "label": "Bakgrunnsfarge for valgt rute",
-          "description": "Velg bakgrunnsfargen for en bokstavrute som er valgt og framhevet."
-        },
-        {
-          "label": "Tekstfarge for valgt rute",
-          "description": "Velg skriftfargen i ei boktavrute som er valgt og framhevet."
-        },
-        {
-          "label": "Id-farge ved valgt rute",
-          "description": "Velg id-fargen ved ei bokstavrute som er valgt og framhevet."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Bakgrunnsfarge for valgt rute",
+              "description": "Velg bakgrunnsfargen for en bokstavrute som er valgt og framhevet."
+            },
+            {
+              "label": "Tekstfarge for valgt rute",
+              "description": "Velg skriftfargen i ei boktavrute som er valgt og framhevet."
+            },
+            {
+              "label": "Id-farge ved valgt rute",
+              "description": "Velg id-fargen ved ei bokstavrute som er valgt og framhevet."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

@@ -145,40 +145,78 @@
       "label": "Thema",
       "fields": [
         {
-          "label": "Achtergrondafbeelding",
-          "description": "Selecteer een optionele achtergrondafbeelding. Deze zal worden geschaald om bij de achtergrond te passen zonder deze uit te rekken."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Achtergrondafbeelding",
+              "description": "Selecteer een optionele achtergrondafbeelding. Deze zal worden geschaald om bij de achtergrond te passen zonder deze uit te rekken."
+            },
+            {
+              "label": "Achtergrondkleur",
+              "description": "Kies een achtergrondkleur. Het wordt ofwel gebruikt in plaats van een achtergrondafbeelding, ofwel als achtergrond voor transparante gebieden."
+            }
+          ]
         },
         {
-          "label": "Achtergrondkleur",
-          "description": "Kies een achtergrondkleur. Het wordt ofwel gebruikt in plaats van een achtergrondafbeelding, ofwel als achtergrond voor transparante gebieden."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Rasterkleur",
+              "description": "Kies een kleur voor het raster."
+            },
+            {
+              "label": "Achtergrondkleur cel",
+              "description": "Kies de achtergrondkleur voor een rastercel."
+            },
+            {
+              "label": "Tekstkleur cel",
+              "description": "Kies de tekstkleur voor een rastercel."
+            },
+            {
+              "label": "Kleur voor nummer aanwijzing",
+              "description": "Kies de kleur van het aanwijzingsnummer in een rastercel."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Rasterkleur",
-          "description": "Kies een kleur voor het raster."
-        },
-        {
-          "label": "Achtergrondkleur cel",
-          "description": "Kies de achtergrondkleur voor een rastercel."
-        },
-        {
-          "label": "Tekstkleur cel",
-          "description": "Kies de tekstkleur voor een rastercel."
-        },
-        {
-          "label": "Kleur voor nummer aanwijzing",
-          "description": "Kies de kleur van het aanwijzingsnummer in een rastercel."
-        },
-        {
-          "label": "Achtergrondkleur cel (gemarkeerd)",
-          "description": "Kies de achtergrondkleur voor een rastercel die is gemarkeerd."
-        },
-        {
-          "label": "Tekstkleur cel (gemarkeerd)",
-          "description": "Kies de tekstkleur voor een rastercel die is gemarkeerd."
-        },
-        {
-          "label": "Kleur voor aanwijzingsnummer (gemarkeerd)",
-          "description": "Kies de kleur van het aanwijzingsnummer in een rastercel die is gemarkeerd."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Achtergrondkleur cel (gemarkeerd)",
+              "description": "Kies de achtergrondkleur voor een rastercel die is gemarkeerd."
+            },
+            {
+              "label": "Tekstkleur cel (gemarkeerd)",
+              "description": "Kies de tekstkleur voor een rastercel die is gemarkeerd."
+            },
+            {
+              "label": "Kleur voor aanwijzingsnummer (gemarkeerd)",
+              "description": "Kies de kleur van het aanwijzingsnummer in een rastercel die is gemarkeerd."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

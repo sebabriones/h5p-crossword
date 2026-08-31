@@ -145,40 +145,78 @@
       "label": "Tema",
       "fields": [
         {
-          "label": "Imagem de fundo",
-          "description": "Selecione uma imagem de fundo opcional. Ela será escalonada para se ajustar ao fundo sem esticá-lo."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Imagem de fundo",
+              "description": "Selecione uma imagem de fundo opcional. Ela será escalonada para se ajustar ao fundo sem esticá-lo."
+            },
+            {
+              "label": "Cor de fundo",
+              "description": "Escolha uma cor de fundo. Será usada ao invés de uma imagem de fundo ou como fundo para áreas transparentes."
+            }
+          ]
         },
         {
-          "label": "Cor de fundo",
-          "description": "Escolha uma cor de fundo. Será usada ao invés de uma imagem de fundo ou como fundo para áreas transparentes."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Cor da grade",
+              "description": "Escolha uma cor para a grade."
+            },
+            {
+              "label": "Cor de fundo da célula",
+              "description": "Escolha a cor de fundo para uma célula da tabela."
+            },
+            {
+              "label": "Cor do texto da célula",
+              "description": "Escolha a cor do texto para uma célula da tabela."
+            },
+            {
+              "label": "Cor de identificação da pista",
+              "description": "Escolha a cor da identificação da pista dentro de uma célula da tabela."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Cor da grade",
-          "description": "Escolha uma cor para a grade."
-        },
-        {
-          "label": "Cor de fundo da célula",
-          "description": "Escolha a cor de fundo para uma célula da tabela."
-        },
-        {
-          "label": "Cor do texto da célula",
-          "description": "Escolha a cor do texto para uma célula da tabela."
-        },
-        {
-          "label": "Cor de identificação da pista",
-          "description": "Escolha a cor da identificação da pista dentro de uma célula da tabela."
-        },
-        {
-          "label": "Cor de fundo da célula (destacada)",
-          "description": "Escolha a cor de fundo para uma célula da tabela que é destacada."
-        },
-        {
-          "label": "Cor do texto da célula (destacada)",
-          "description": "Escolha a cor do texto para uma célula da tabela que é destacada."
-        },
-        {
-          "label": "Cor de identificação da célula (destacada)",
-          "description": "Escolha a cor da identificação da pista dentro de uma célula da tabela que é destacada."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Cor de fundo da célula (destacada)",
+              "description": "Escolha a cor de fundo para uma célula da tabela que é destacada."
+            },
+            {
+              "label": "Cor do texto da célula (destacada)",
+              "description": "Escolha a cor do texto para uma célula da tabela que é destacada."
+            },
+            {
+              "label": "Cor de identificação da célula (destacada)",
+              "description": "Escolha a cor da identificação da pista dentro de uma célula da tabela que é destacada."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

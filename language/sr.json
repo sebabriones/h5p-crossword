@@ -145,40 +145,78 @@
       "label": "Тема",
       "fields": [
         {
-          "label": "Позадинска слика",
-          "description": "Изаберите опциону позадинску слику. Она ће бити прилагођена позадини без растезања."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Позадинска слика",
+              "description": "Изаберите опциону позадинску слику. Она ће бити прилагођена позадини без растезања."
+            },
+            {
+              "label": "Позадинска боја",
+              "description": "Одаберите боју позадине. Користиће се уместо слике у позадини или као позадина за провидна подручја."
+            }
+          ]
         },
         {
-          "label": "Позадинска боја",
-          "description": "Одаберите боју позадине. Користиће се уместо слике у позадини или као позадина за провидна подручја."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Боја мреже",
+              "description": "Одаберите боју за мрежу."
+            },
+            {
+              "label": "Боја позадине ћелије",
+              "description": "Одаберите боју позадине за ћелију табеле."
+            },
+            {
+              "label": "Боја текста ћелије",
+              "description": "Одаберите боју текста за ћелију табеле."
+            },
+            {
+              "label": "Боја трага",
+              "description": "Одаберите боју ид -а трага унутар ћелије таблице."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Боја мреже",
-          "description": "Одаберите боју за мрежу."
-        },
-        {
-          "label": "Боја позадине ћелије",
-          "description": "Одаберите боју позадине за ћелију табеле."
-        },
-        {
-          "label": "Боја текста ћелије",
-          "description": "Одаберите боју текста за ћелију табеле."
-        },
-        {
-          "label": "Боја трага",
-          "description": "Одаберите боју ид -а трага унутар ћелије таблице."
-        },
-        {
-          "label": "Боја позадине ћелије (истакнута)",
-          "description": "Одаберите боју позадине за означену ћелију табеле."
-        },
-        {
-          "label": "Боја текста ћелије (истакнута)",
-          "description": "Одаберите боју текста за ћелију табеле која је истакнута."
-        },
-        {
-          "label": "Боја ИД ћелије (истакнута)",
-          "description": "Одаберите боју ид -а трага унутар ћелије таблице која је означена."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Боја позадине ћелије (истакнута)",
+              "description": "Одаберите боју позадине за означену ћелију табеле."
+            },
+            {
+              "label": "Боја текста ћелије (истакнута)",
+              "description": "Одаберите боју текста за ћелију табеле која је истакнута."
+            },
+            {
+              "label": "Боја ИД ћелије (истакнута)",
+              "description": "Одаберите боју ид -а трага унутар ћелије таблице која је означена."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

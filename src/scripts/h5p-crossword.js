@@ -7,7 +7,33 @@ import {
   scheduleInstructionsAttach,
   refreshInstructionsScale
 } from '@services/instructions.js';
+import { applyActivityBackground } from '@services/appearance.js';
 import '@styles/h5p-crossword.scss';
+
+/**
+ * @constant {object} THEME_GROUPS Groups holding the colors that used to live
+ * at the root of the theme. Se mantienen ambas rutas para no perder los
+ * colores del contenido creado antes de agrupar los campos.
+ */
+const THEME_GROUPS = {
+  gridBackground: ['backgroundImage', 'backgroundColor'],
+  cells: [
+    'gridColor',
+    'cellBackgroundColor',
+    'cellColor',
+    'clueIdColor',
+    'borderWidth',
+    'showOuterBorder',
+    'hideEmptyCellBorders'
+  ],
+  cellsHighlight: [
+    'cellBackgroundColorHighlight',
+    'cellColorHighlight',
+    'clueIdColorHighlight',
+    'focusBorderColor',
+    'showFocusShadow'
+  ]
+};
 
 /** @constant {number} DOM_REGISTER_DELAY_MS Delay before resizing after DOM registered. */
 const DOM_REGISTER_DELAY_MS = 100;
@@ -56,6 +82,8 @@ export default class Crossword extends H5P.QuestionCFRD {
      * @see {@link https://h5p.org/documentation/developers/contracts#guides-header-8}
      * @see {@link https://h5p.org/documentation/developers/contracts#guides-header-9}
      */
+
+    this.params.theme = Crossword.flattenThemeGroups(this.params.theme);
 
     // Make sure all variables are set
     this.params = Util.extend({
@@ -130,7 +158,8 @@ export default class Crossword extends H5P.QuestionCFRD {
         clueIdColor: '#606060',
         cellBackgroundColorHighlight: '#3e8de8',
         cellColorHighlight: '#ffffff',
-        clueIdColorHighlight: '#e0e0e0'
+        clueIdColorHighlight: '#e0e0e0',
+        focusBorderColor: '#e8993e'
       }
     );
 
@@ -198,8 +227,37 @@ export default class Crossword extends H5P.QuestionCFRD {
     this.attach = ($container) => {
       this.$container = $container;
       originalAttach.call(this, $container);
+      applyActivityBackground($container.get(0), this.params.theme);
       scheduleInstructionsAttach(this, $container);
     };
+  }
+
+  /**
+   * Move the grouped color fields back to the root of the theme.
+   *
+   * El código de la rejilla y de las celdas lee los colores en plano, y el
+   * contenido anterior a la agrupación los tiene guardados así.
+   * @param {object} [theme] Theme settings as stored by the editor.
+   * @returns {object} Theme with the colors at the root.
+   */
+  static flattenThemeGroups(theme = {}) {
+    const flattened = { ...theme };
+
+    Object.keys(THEME_GROUPS).forEach((group) => {
+      const values = flattened[group];
+
+      if (!values || typeof values !== 'object') {
+        return;
+      }
+
+      THEME_GROUPS[group].forEach((field) => {
+        if (values[field] !== undefined && values[field] !== null) {
+          flattened[field] = values[field];
+        }
+      });
+    });
+
+    return flattened;
   }
 
   /**

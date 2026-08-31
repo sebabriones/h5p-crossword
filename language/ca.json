@@ -145,40 +145,78 @@
       "label": "Tema",
       "fields": [
         {
-          "label": "Imatge de fons",
-          "description": "Pots triar una imatge de fons. S’adaptarà al fons sense deformar-se."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Imatge de fons",
+              "description": "Pots triar una imatge de fons. S’adaptarà al fons sense deformar-se."
+            },
+            {
+              "label": "Color de fons",
+              "description": "Tria un color de fons. Es farà servir en lloc de la imatge de fons o com a fons per a zones transparents."
+            }
+          ]
         },
         {
-          "label": "Color de fons",
-          "description": "Tria un color de fons. Es farà servir en lloc de la imatge de fons o com a fons per a zones transparents."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Color de la graella",
+              "description": "Tria un color de fons per a la graella."
+            },
+            {
+              "label": "Color de fons de cel·la",
+              "description": "Tria el color de fons per a una cel·la de la taula."
+            },
+            {
+              "label": "Color del text de la cel·la",
+              "description": "Tria el color del text per a una cel·la de taula."
+            },
+            {
+              "label": "Color d’identificador de pista",
+              "description": "Tria el color de l’identificador de pista en una cel·la."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Color de la graella",
-          "description": "Tria un color de fons per a la graella."
-        },
-        {
-          "label": "Color de fons de cel·la",
-          "description": "Tria el color de fons per a una cel·la de la taula."
-        },
-        {
-          "label": "Color del text de la cel·la",
-          "description": "Tria el color del text per a una cel·la de taula."
-        },
-        {
-          "label": "Color d’identificador de pista",
-          "description": "Tria el color de l’identificador de pista en una cel·la."
-        },
-        {
-          "label": "Color de fons de cel·la destacada",
-          "description": "Tria el color de fons d’una cel·la destacada."
-        },
-        {
-          "label": "Color de text de cel·la destacada",
-          "description": "Tria el color de text d’una cel·la de taula destacada."
-        },
-        {
-          "label": "Color d’identificador de cel·la destacada",
-          "description": "Tria el color d’identificador de pista en una cel·la de taula destacada."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Color de fons de cel·la destacada",
+              "description": "Tria el color de fons d’una cel·la destacada."
+            },
+            {
+              "label": "Color de text de cel·la destacada",
+              "description": "Tria el color de text d’una cel·la de taula destacada."
+            },
+            {
+              "label": "Color d’identificador de cel·la destacada",
+              "description": "Tria el color d’identificador de pista en una cel·la de taula destacada."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

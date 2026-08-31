@@ -503,40 +503,78 @@
       "label": "თემა",
       "fields": [
         {
-          "label": "ფონური გამოსახულება",
-          "description": "შეგიძლიათ დააყენოთ ფონური გამოსახულება. ის მოერგება ფონს სრულად, გაწელვის გარეშე."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "ფონური გამოსახულება",
+              "description": "შეგიძლიათ დააყენოთ ფონური გამოსახულება. ის მოერგება ფონს სრულად, გაწელვის გარეშე."
+            },
+            {
+              "label": "ფონის ფერი",
+              "description": "ფონის ფერის არჩევა. ის გამოიყენება ფონური გამოსახულების ნაცვლად, ან როგორც ფონი გამჭვირვალე ადგილებისთვის."
+            }
+          ]
         },
         {
-          "label": "ფონის ფერი",
-          "description": "ფონის ფერის არჩევა. ის გამოიყენება ფონური გამოსახულების ნაცვლად, ან როგორც ფონი გამჭვირვალე ადგილებისთვის."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "ბადის ფერი",
+              "description": "ბადისთვის ფერის დაყენება."
+            },
+            {
+              "label": "უჯრის ფონის ფერი",
+              "description": "ცხრილის უჯრებისთვის ფონის ფერის არჩევა."
+            },
+            {
+              "label": "უჯრის ტექსტის ფერი",
+              "description": "ცხრილის უჯრაში არსებული ტექსტისთვის ფერის არჩევა."
+            },
+            {
+              "label": "მინიშნების ფერი",
+              "description": "ცხრილის უჯრაში არსებული მინიშნებისთვის ფერის არჩევა."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "ბადის ფერი",
-          "description": "ბადისთვის ფერის დაყენება."
-        },
-        {
-          "label": "უჯრის ფონის ფერი",
-          "description": "ცხრილის უჯრებისთვის ფონის ფერის არჩევა."
-        },
-        {
-          "label": "უჯრის ტექსტის ფერი",
-          "description": "ცხრილის უჯრაში არსებული ტექსტისთვის ფერის არჩევა."
-        },
-        {
-          "label": "მინიშნების ფერი",
-          "description": "ცხრილის უჯრაში არსებული მინიშნებისთვის ფერის არჩევა."
-        },
-        {
-          "label": "უჯრის ტექსტის ფერი (მონიშნულის)",
-          "description": "მონიშნული უჯრისთვის ფონის ფერის არჩევა."
-        },
-        {
-          "label": "უჯრის ტექსტის ფერი (მონიშნულის)",
-          "description": "მონიშნული უჯრისთვის ტექსტის ფერის არჩევა."
-        },
-        {
-          "label": "უჯრის ფერი მინიშნებისთვის (მონიშნულის)",
-          "description": "მონიშნული უჯრისთვის მინიშნების ფერის არჩევა."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "უჯრის ტექსტის ფერი (მონიშნულის)",
+              "description": "მონიშნული უჯრისთვის ფონის ფერის არჩევა."
+            },
+            {
+              "label": "უჯრის ტექსტის ფერი (მონიშნულის)",
+              "description": "მონიშნული უჯრისთვის ტექსტის ფერის არჩევა."
+            },
+            {
+              "label": "უჯრის ფერი მინიშნებისთვის (მონიშნულის)",
+              "description": "მონიშნული უჯრისთვის მინიშნების ფერის არჩევა."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

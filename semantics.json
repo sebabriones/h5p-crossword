@@ -1214,124 +1214,207 @@
     "importance": "low",
     "fields": [
       {
-        "name": "backgroundImage",
-        "label": "Background image",
-        "type": "image",
-        "description": "Select an optional background image. It will be scaled to fit the background without stretching it.",
-        "importance": "low",
-        "optional": true
-      },
-      {
-        "name": "backgroundColor",
-        "type": "text",
-        "label": "Background color",
-        "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
+        "name": "gridBackground",
+        "type": "group",
+        "label": "Grid background",
         "importance": "low",
         "optional": true,
-        "default": "#173354",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
+        "expanded": false,
+        "description": "Background of the crossword grid itself.",
+        "fields": [
+          {
+            "name": "backgroundImage",
+            "label": "Background image",
+            "type": "image",
+            "description": "Select an optional background image. It will be scaled to fit the background without stretching it.",
+            "importance": "low",
+            "optional": true
+          },
+          {
+            "name": "backgroundColor",
+            "type": "text",
+            "label": "Background color",
+            "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
+            "importance": "low",
+            "optional": true,
+            "default": "#173354",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          }
+        ]
       },
       {
-        "name": "gridColor",
-        "type": "text",
-        "label": "Grid color",
-        "description": "Choose a color for the grid.",
+        "name": "cells",
+        "type": "group",
+        "label": "Cells",
         "importance": "low",
         "optional": true,
-        "default": "#000000",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
+        "expanded": false,
+        "description": "Colors of the grid lines and the cells.",
+        "fields": [
+          {
+            "name": "gridColor",
+            "type": "text",
+            "label": "Grid color",
+            "description": "Choose a color for the grid.",
+            "importance": "low",
+            "optional": true,
+            "default": "#000000",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          },
+          {
+            "name": "cellBackgroundColor",
+            "type": "text",
+            "label": "Cell background color",
+            "description": "Choose the background color for a table cell.",
+            "importance": "low",
+            "optional": true,
+            "default": "#ffffff",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          },
+          {
+            "name": "cellColor",
+            "type": "text",
+            "label": "Cell text color",
+            "description": "Choose the text color for a table cell.",
+            "importance": "low",
+            "optional": true,
+            "default": "#000000",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          },
+          {
+            "name": "clueIdColor",
+            "type": "text",
+            "label": "Clue id color",
+            "description": "Choose the color of the clue id inside a table cell.",
+            "importance": "low",
+            "optional": true,
+            "default": "#606060",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          },
+          {
+            "name": "borderWidth",
+            "type": "number",
+            "label": "Border thickness",
+            "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid.",
+            "importance": "low",
+            "optional": true,
+            "default": 5,
+            "min": 0,
+            "max": 30,
+            "step": 1
+          },
+          {
+            "name": "showOuterBorder",
+            "type": "boolean",
+            "label": "Show outer border",
+            "description": "Draw the border around the whole grid.",
+            "importance": "low",
+            "default": true
+          },
+          {
+            "name": "hideEmptyCellBorders",
+            "type": "boolean",
+            "label": "Hide borders of empty cells",
+            "description": "Leaves the cells without a letter without border, so the grid looks like it is floating.",
+            "importance": "low",
+            "default": false
+          }
+        ]
       },
       {
-        "name": "cellBackgroundColor",
-        "type": "text",
-        "label": "Cell background color",
-        "description": "Choose the background color for a table cell.",
+        "name": "cellsHighlight",
+        "type": "group",
+        "label": "Highlighted cells",
         "importance": "low",
         "optional": true,
-        "default": "#ffffff",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
-      },
-      {
-        "name": "cellColor",
-        "type": "text",
-        "label": "Cell text color",
-        "description": "Choose the text color for a table cell.",
-        "importance": "low",
-        "optional": true,
-        "default": "#000000",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
-      },
-      {
-        "name": "clueIdColor",
-        "type": "text",
-        "label": "Clue id color",
-        "description": "Choose the color of the clue id inside a table cell.",
-        "importance": "low",
-        "optional": true,
-        "default": "#606060",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
-      },
-      {
-        "name": "cellBackgroundColorHighlight",
-        "type": "text",
-        "label": "Cell background color (highlighted)",
-        "description": "Choose the background color for a table cell that is highlighted.",
-        "importance": "low",
-        "optional": true,
-        "default": "#3e8de8",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
-      },
-      {
-        "name": "cellColorHighlight",
-        "type": "text",
-        "label": "Cell text color (highlighted)",
-        "description": "Choose the text color for a table cell that is highlighted.",
-        "importance": "low",
-        "optional": true,
-        "default": "#ffffff",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
-      },
-      {
-        "name": "clueIdColorHighlight",
-        "type": "text",
-        "label": "Cell id color (highlighted)",
-        "description": "Choose the color of the clue id inside a table cell that is highlighted.",
-        "importance": "low",
-        "optional": true,
-        "default": "#e0e0e0",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
+        "expanded": false,
+        "description": "Colors used for the cells of the clue that is currently selected.",
+        "fields": [
+          {
+            "name": "cellBackgroundColorHighlight",
+            "type": "text",
+            "label": "Cell background color (highlighted)",
+            "description": "Choose the background color for a table cell that is highlighted.",
+            "importance": "low",
+            "optional": true,
+            "default": "#3e8de8",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          },
+          {
+            "name": "cellColorHighlight",
+            "type": "text",
+            "label": "Cell text color (highlighted)",
+            "description": "Choose the text color for a table cell that is highlighted.",
+            "importance": "low",
+            "optional": true,
+            "default": "#ffffff",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          },
+          {
+            "name": "clueIdColorHighlight",
+            "type": "text",
+            "label": "Cell id color (highlighted)",
+            "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+            "importance": "low",
+            "optional": true,
+            "default": "#e0e0e0",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          },
+          {
+            "name": "focusBorderColor",
+            "type": "text",
+            "label": "Focused cell border color",
+            "description": "Border color of the cell the cursor is on.",
+            "importance": "low",
+            "optional": true,
+            "default": "#e8993e",
+            "widget": "colorSelector",
+            "spectrum": {
+              "showInput": true,
+              "showInitial": true
+            }
+          },
+          {
+            "name": "showFocusShadow",
+            "type": "boolean",
+            "label": "Show glow around the focused cell",
+            "description": "Turn it off to keep only the border of the focused cell.",
+            "importance": "low",
+            "default": true
+          }
+        ]
       },
       {
         "name": "activityArea",

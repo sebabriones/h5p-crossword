@@ -503,40 +503,78 @@
       "label": "Theme",
       "fields": [
         {
-          "label": "Background image",
-          "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Background image",
+              "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
+            },
+            {
+              "label": "Background color",
+              "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas."
+            }
+          ]
         },
         {
-          "label": "Background color",
-          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Grid color",
+              "description": "Choose a color for the grid."
+            },
+            {
+              "label": "Cell background color",
+              "description": "Choose the background color for a table cell."
+            },
+            {
+              "label": "Cell text color",
+              "description": "Choose the text color for a table cell."
+            },
+            {
+              "label": "Clue id color",
+              "description": "Choose the color of the clue id inside a table cell."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Grid color",
-          "description": "Choose a color for the grid."
-        },
-        {
-          "label": "Cell background color",
-          "description": "Choose the background color for a table cell."
-        },
-        {
-          "label": "Cell text color",
-          "description": "Choose the text color for a table cell."
-        },
-        {
-          "label": "Clue id color",
-          "description": "Choose the color of the clue id inside a table cell."
-        },
-        {
-          "label": "Cell background color (highlighted)",
-          "description": "Choose the background color for a table cell that is highlighted."
-        },
-        {
-          "label": "Cell text color (highlighted)",
-          "description": "Choose the text color for a table cell that is highlighted."
-        },
-        {
-          "label": "Cell id color (highlighted)",
-          "description": "Choose the color of the clue id inside a table cell that is highlighted."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Cell background color (highlighted)",
+              "description": "Choose the background color for a table cell that is highlighted."
+            },
+            {
+              "label": "Cell text color (highlighted)",
+              "description": "Choose the text color for a table cell that is highlighted."
+            },
+            {
+              "label": "Cell id color (highlighted)",
+              "description": "Choose the color of the clue id inside a table cell that is highlighted."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

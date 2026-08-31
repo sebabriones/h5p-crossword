@@ -145,40 +145,78 @@
       "label": "Thème",
       "fields": [
         {
-          "label": "Image d'arrière-plan",
-          "description": "Sélectionnez une image d'arrière-plan pour votre activité (facultatif). Elle sera mise à l’échelle pour s'adapter à l'arrière-plan sans être étirée."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Image d'arrière-plan",
+              "description": "Sélectionnez une image d'arrière-plan pour votre activité (facultatif). Elle sera mise à l’échelle pour s'adapter à l'arrière-plan sans être étirée."
+            },
+            {
+              "label": "Couleur d'arrière-plan",
+              "description": "Choisir une couleur d'arrière-plan. Elle sera utilisée soit pour remplacer l'image de fond ou comme arrière-plan pour les zones transparentes."
+            }
+          ]
         },
         {
-          "label": "Couleur d'arrière-plan",
-          "description": "Choisir une couleur d'arrière-plan. Elle sera utilisée soit pour remplacer l'image de fond ou comme arrière-plan pour les zones transparentes."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Couleur de la grille",
+              "description": "Choisir une couleur pour la grille."
+            },
+            {
+              "label": "Couleur d'arrière-plan de la cellule",
+              "description": "Choisir la couleur d'arrière-plan d'une cellule du tableau."
+            },
+            {
+              "label": "Couleur du texte de la cellule",
+              "description": "Choisir la couleur du texte d'une cellule du tableau."
+            },
+            {
+              "label": "Couleur des indices numériques",
+              "description": "Choisir la couleur des indices numériques dans les cellules du tableau."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Couleur de la grille",
-          "description": "Choisir une couleur pour la grille."
-        },
-        {
-          "label": "Couleur d'arrière-plan de la cellule",
-          "description": "Choisir la couleur d'arrière-plan d'une cellule du tableau."
-        },
-        {
-          "label": "Couleur du texte de la cellule",
-          "description": "Choisir la couleur du texte d'une cellule du tableau."
-        },
-        {
-          "label": "Couleur des indices numériques",
-          "description": "Choisir la couleur des indices numériques dans les cellules du tableau."
-        },
-        {
-          "label": "Couleur de fond des cellules sélectionnées",
-          "description": "Choisir la couleur de fond pour une cellule qui est sélectionnée."
-        },
-        {
-          "label": "Couleur du texte d'une cellule (sélectionnée)",
-          "description": "Choisir la couleur du texte d'une cellule quand elle est sélectionnée."
-        },
-        {
-          "label": "Couleur des indices numériques des cellules sélectionnées",
-          "description": "Choisir la couleur des indices numériques dans les cellules des cellules sélectionnées."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Couleur de fond des cellules sélectionnées",
+              "description": "Choisir la couleur de fond pour une cellule qui est sélectionnée."
+            },
+            {
+              "label": "Couleur du texte d'une cellule (sélectionnée)",
+              "description": "Choisir la couleur du texte d'une cellule quand elle est sélectionnée."
+            },
+            {
+              "label": "Couleur des indices numériques des cellules sélectionnées",
+              "description": "Choisir la couleur des indices numériques dans les cellules des cellules sélectionnées."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

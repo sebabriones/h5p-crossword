@@ -145,40 +145,78 @@
       "label": "السمة",
       "fields": [
         {
-          "label": "صورة الخلفية",
-          "description": "حدد صورة الخلفية الاختيارية. سيعدل حجمها لتناسب الخلفية دون تمديدها."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "صورة الخلفية",
+              "description": "حدد صورة الخلفية الاختيارية. سيعدل حجمها لتناسب الخلفية دون تمديدها."
+            },
+            {
+              "label": "لون الخلفية",
+              "description": "اختر لون الخلفية. سيستخدم إما بديلًا لصورة الخلفية أو كخلفية للمناطق الشفافة."
+            }
+          ]
         },
         {
-          "label": "لون الخلفية",
-          "description": "اختر لون الخلفية. سيستخدم إما بديلًا لصورة الخلفية أو كخلفية للمناطق الشفافة."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "لون الشبكية",
+              "description": "اختر لوناً للشبكية."
+            },
+            {
+              "label": "لون خلفية للخلية",
+              "description": "اختر لون الخلفية لخلية الجدول."
+            },
+            {
+              "label": "لون نص الخلية",
+              "description": "اختر لون النص لخلية الجدول."
+            },
+            {
+              "label": "لون معرف الدليل",
+              "description": "اختر لون الدليل الموجود داخل خلية الجدول."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "لون الشبكية",
-          "description": "اختر لوناً للشبكية."
-        },
-        {
-          "label": "لون خلفية للخلية",
-          "description": "اختر لون الخلفية لخلية الجدول."
-        },
-        {
-          "label": "لون نص الخلية",
-          "description": "اختر لون النص لخلية الجدول."
-        },
-        {
-          "label": "لون معرف الدليل",
-          "description": "اختر لون الدليل الموجود داخل خلية الجدول."
-        },
-        {
-          "label": "لون الخلفية للخلية (مميز)",
-          "description": "اختر لون الخلفية لخلية الجدول المميزة."
-        },
-        {
-          "label": "لون نص الخلية (مميز)",
-          "description": "اختر لون النص لخلية الجدول المميزة."
-        },
-        {
-          "label": "لون معرف الخلية (مميز)",
-          "description": "اختر لون معرف الدليل داخل خلية الجدول المميزة."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "لون الخلفية للخلية (مميز)",
+              "description": "اختر لون الخلفية لخلية الجدول المميزة."
+            },
+            {
+              "label": "لون نص الخلية (مميز)",
+              "description": "اختر لون النص لخلية الجدول المميزة."
+            },
+            {
+              "label": "لون معرف الخلية (مميز)",
+              "description": "اختر لون معرف الدليل داخل خلية الجدول المميزة."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

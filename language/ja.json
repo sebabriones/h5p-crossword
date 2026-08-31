@@ -503,40 +503,78 @@
       "label": "テーマ",
       "fields": [
         {
-          "label": "背景画像",
-          "description": "オプションの背景画像を選択します。引き伸ばさずに背景に合わせて拡大縮小されます。"
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "背景画像",
+              "description": "オプションの背景画像を選択します。引き伸ばさずに背景に合わせて拡大縮小されます。"
+            },
+            {
+              "label": "背景色",
+              "description": "背景色を選択します。背景画像の代わりに、または透明な領域の背景として使用されます。"
+            }
+          ]
         },
         {
-          "label": "背景色",
-          "description": "背景色を選択します。背景画像の代わりに、または透明な領域の背景として使用されます。"
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "グリッドカラー",
+              "description": "グリッドの色を選択します。"
+            },
+            {
+              "label": "セルの背景色",
+              "description": "表セルの背景色を選択します。"
+            },
+            {
+              "label": "セルの文字色",
+              "description": "表セルの文字色を選択します。"
+            },
+            {
+              "label": "手がかりとなる色",
+              "description": "テーブルセル内の手がかりとなるIDの色を選択します。"
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "グリッドカラー",
-          "description": "グリッドの色を選択します。"
-        },
-        {
-          "label": "セルの背景色",
-          "description": "表セルの背景色を選択します。"
-        },
-        {
-          "label": "セルの文字色",
-          "description": "表セルの文字色を選択します。"
-        },
-        {
-          "label": "手がかりとなる色",
-          "description": "テーブルセル内の手がかりとなるIDの色を選択します。"
-        },
-        {
-          "label": "セルの背景色（ハイライト表示）",
-          "description": "ハイライトされているテーブルセルの背景色を選択します。"
-        },
-        {
-          "label": "セルの文字色（ハイライト表示）",
-          "description": "ハイライトされた表セルの文字色を選択します。"
-        },
-        {
-          "label": "セルIDの色（ハイライト表示）",
-          "description": "テーブルセル内の手がかりIDがハイライトされる色を選択します。"
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "セルの背景色（ハイライト表示）",
+              "description": "ハイライトされているテーブルセルの背景色を選択します。"
+            },
+            {
+              "label": "セルの文字色（ハイライト表示）",
+              "description": "ハイライトされた表セルの文字色を選択します。"
+            },
+            {
+              "label": "セルIDの色（ハイライト表示）",
+              "description": "テーブルセル内の手がかりIDがハイライトされる色を選択します。"
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

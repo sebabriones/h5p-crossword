@@ -157,8 +157,8 @@
   }
 
   &.h5p-crossword-highlight-focus {
-    border-color: rgba(232, 153, 62, 0.8);
-    box-shadow: 0 0 0.2em 0.2em #e8993e;
+    border-color: var(--cw-focus-border-color, rgba(232, 153, 62, 0.8));
+    box-shadow: var(--cw-focus-shadow, 0 0 0.2em 0.2em #e8993e);
     z-index: 1;
 
     .h5p-crossword-cell-clue-id-marker,

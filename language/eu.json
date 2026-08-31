@@ -145,40 +145,78 @@
       "label": "Gaia",
       "fields": [
         {
-          "label": "Atzeko planoko irudia",
-          "description": "Aukeratu ezazu atzeko planoko irudia (aukerazkoa). Atzeko planoan luzatu gabe egokitzeko eskalatuko da."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Atzeko planoko irudia",
+              "description": "Aukeratu ezazu atzeko planoko irudia (aukerazkoa). Atzeko planoan luzatu gabe egokitzeko eskalatuko da."
+            },
+            {
+              "label": "Atzeko planoko kolorea",
+              "description": "Aukeratu ezazu atzeko planorako kolore bat. Atzeko planoko irudiaren ordez edo eremu gardenetako atzeko planorako erabiliko da."
+            }
+          ]
         },
         {
-          "label": "Atzeko planoko kolorea",
-          "description": "Aukeratu ezazu atzeko planorako kolore bat. Atzeko planoko irudiaren ordez edo eremu gardenetako atzeko planorako erabiliko da."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Lauki-sarearen kolorea",
+              "description": "Aukeratu ezazu lauki-sarearen kolorea."
+            },
+            {
+              "label": "Gelaxkaren atzeko planoaren kolorea",
+              "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoaren kolorea."
+            },
+            {
+              "label": "Gelaxkaren testuaren kolorea",
+              "description": "Aukeratu ezazu taulako gelaxkaren testuaren kolorea."
+            },
+            {
+              "label": "Pistaren IDaren kolorea",
+              "description": "Aukeratu ezazu taula-gelaxkaren barruko pistaren IDaren kolorea."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Lauki-sarearen kolorea",
-          "description": "Aukeratu ezazu lauki-sarearen kolorea."
-        },
-        {
-          "label": "Gelaxkaren atzeko planoaren kolorea",
-          "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoaren kolorea."
-        },
-        {
-          "label": "Gelaxkaren testuaren kolorea",
-          "description": "Aukeratu ezazu taulako gelaxkaren testuaren kolorea."
-        },
-        {
-          "label": "Pistaren IDaren kolorea",
-          "description": "Aukeratu ezazu taula-gelaxkaren barruko pistaren IDaren kolorea."
-        },
-        {
-          "label": "Gelaxkaren atzeko planoko kolorea (nabarmenduta)",
-          "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoko kolorea gelaxka nabarmenduta dagoenean."
-        },
-        {
-          "label": "Gelaxkaren testuaren kolorea (nabarmenduta)",
-          "description": "Aukeratu ezazu taulako gelaxkaren testuaren kolorea gelaxka nabarmenduta dagoenean."
-        },
-        {
-          "label": "Gelaxkaren IDaren kolorea (nabarmenduta)",
-          "description": "Aukeratu ezazu nabarmenduta dagoen taula-gelaxkaren barruko pistaren IDaren kolorea."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Gelaxkaren atzeko planoko kolorea (nabarmenduta)",
+              "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoko kolorea gelaxka nabarmenduta dagoenean."
+            },
+            {
+              "label": "Gelaxkaren testuaren kolorea (nabarmenduta)",
+              "description": "Aukeratu ezazu taulako gelaxkaren testuaren kolorea gelaxka nabarmenduta dagoenean."
+            },
+            {
+              "label": "Gelaxkaren IDaren kolorea (nabarmenduta)",
+              "description": "Aukeratu ezazu nabarmenduta dagoen taula-gelaxkaren barruko pistaren IDaren kolorea."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

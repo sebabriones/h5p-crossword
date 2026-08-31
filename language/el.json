@@ -145,40 +145,78 @@
       "label": "Θέμα",
       "fields": [
         {
-          "label": "Εικόνα φόντου",
-          "description": "Επιλέξτε μια προαιρετική εικόνα φόντου. Θα κλιμακωθεί ώστε να ταιριάζει στο φόντο χωρίς να παραμορφωθεί"
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Εικόνα φόντου",
+              "description": "Επιλέξτε μια προαιρετική εικόνα φόντου. Θα κλιμακωθεί ώστε να ταιριάζει στο φόντο χωρίς να παραμορφωθεί"
+            },
+            {
+              "label": "Χρώμα φόντου",
+              "description": "Επιλέξτε χρώμα φόντου. Θα χρησιμοποιηθεί είτε αντί για εικόνα φόντου είτε ως φόντο για διαφανείς περιοχές."
+            }
+          ]
         },
         {
-          "label": "Χρώμα φόντου",
-          "description": "Επιλέξτε χρώμα φόντου. Θα χρησιμοποιηθεί είτε αντί για εικόνα φόντου είτε ως φόντο για διαφανείς περιοχές."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Χρώμα πλέγματος",
+              "description": "Επιλέξτε ένα χρώμα για το πλέγμα."
+            },
+            {
+              "label": "Χρώμα φόντου κελιού",
+              "description": "Επιλέξτε το χρώμα φόντου για ένα κελί πίνακα."
+            },
+            {
+              "label": "Χρώμα κειμένου κελιού",
+              "description": "Επιλέξτε το χρώμα κειμένου για ένα κελί πίνακα."
+            },
+            {
+              "label": "Χρώμα αναγνωριστικού βοήθειας",
+              "description": "Επιλέξτε το χρώμα του αναγνωριστικού βοήθειας μέσα σε ένα κελί πίνακα."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Χρώμα πλέγματος",
-          "description": "Επιλέξτε ένα χρώμα για το πλέγμα."
-        },
-        {
-          "label": "Χρώμα φόντου κελιού",
-          "description": "Επιλέξτε το χρώμα φόντου για ένα κελί πίνακα."
-        },
-        {
-          "label": "Χρώμα κειμένου κελιού",
-          "description": "Επιλέξτε το χρώμα κειμένου για ένα κελί πίνακα."
-        },
-        {
-          "label": "Χρώμα αναγνωριστικού βοήθειας",
-          "description": "Επιλέξτε το χρώμα του αναγνωριστικού βοήθειας μέσα σε ένα κελί πίνακα."
-        },
-        {
-          "label": "Χρώμα φόντου κελιού (επισημασμένο)",
-          "description": "Επιλέξτε το χρώμα φόντου για ένα κελί πίνακα που επισημαίνεται."
-        },
-        {
-          "label": "Χρώμα κειμένου κελιού (επισημασμένο)",
-          "description": "Επιλέξτε το χρώμα κειμένου για ένα κελί πίνακα που επισημαίνεται."
-        },
-        {
-          "label": "Χρώμα αναγνωριστικού κελιού (επισημασμένο)",
-          "description": "Επιλέξτε το χρώμα του αναγνωριστικού ενδείξεων μέσα σε ένα κελί πίνακα που επισημαίνεται."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Χρώμα φόντου κελιού (επισημασμένο)",
+              "description": "Επιλέξτε το χρώμα φόντου για ένα κελί πίνακα που επισημαίνεται."
+            },
+            {
+              "label": "Χρώμα κειμένου κελιού (επισημασμένο)",
+              "description": "Επιλέξτε το χρώμα κειμένου για ένα κελί πίνακα που επισημαίνεται."
+            },
+            {
+              "label": "Χρώμα αναγνωριστικού κελιού (επισημασμένο)",
+              "description": "Επιλέξτε το χρώμα του αναγνωριστικού ενδείξεων μέσα σε ένα κελί πίνακα που επισημαίνεται."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

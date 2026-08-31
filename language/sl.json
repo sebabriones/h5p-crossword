@@ -145,40 +145,78 @@
       "label": "Vizualizacija",
       "fields": [
         {
-          "label": "Slika za ozadje",
-          "description": "Neobvezna slika je prikazana kot ozadje mreže."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Slika za ozadje",
+              "description": "Neobvezna slika je prikazana kot ozadje mreže."
+            },
+            {
+              "label": "Barva ozadja",
+              "description": "Izbira barvne sheme ozadja. Barva lahko nadomesti sliko ozadja ali prosojna območja."
+            }
+          ]
         },
         {
-          "label": "Barva ozadja",
-          "description": "Izbira barvne sheme ozadja. Barva lahko nadomesti sliko ozadja ali prosojna območja."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Barva mreže",
+              "description": "Izbira barvne sheme obrob mreže."
+            },
+            {
+              "label": "Barva ozadja celice",
+              "description": "Izbira barvne sheme ozadja celic na mreži."
+            },
+            {
+              "label": "Barva besedila celice",
+              "description": "Izbira barvne sheme besedila v celicah."
+            },
+            {
+              "label": "Barva številke namiga",
+              "description": "Izbira barvne sheme za številko namiga v celicah."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Barva mreže",
-          "description": "Izbira barvne sheme obrob mreže."
-        },
-        {
-          "label": "Barva ozadja celice",
-          "description": "Izbira barvne sheme ozadja celic na mreži."
-        },
-        {
-          "label": "Barva besedila celice",
-          "description": "Izbira barvne sheme besedila v celicah."
-        },
-        {
-          "label": "Barva številke namiga",
-          "description": "Izbira barvne sheme za številko namiga v celicah."
-        },
-        {
-          "label": "Barva ozadja poudarjene celice",
-          "description": "Izbira barvne sheme ozadja za poudarjene celice na mreži."
-        },
-        {
-          "label": "Barva besedila poudarjene celice",
-          "description": "Izbira barvne sheme besedila v poudarjenih celicah."
-        },
-        {
-          "label": "Barva številke poudarjenega namiga",
-          "description": "Izbira barvne sheme za številko namiga v poudarjenih celicah."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Barva ozadja poudarjene celice",
+              "description": "Izbira barvne sheme ozadja za poudarjene celice na mreži."
+            },
+            {
+              "label": "Barva besedila poudarjene celice",
+              "description": "Izbira barvne sheme besedila v poudarjenih celicah."
+            },
+            {
+              "label": "Barva številke poudarjenega namiga",
+              "description": "Izbira barvne sheme za številko namiga v poudarjenih celicah."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

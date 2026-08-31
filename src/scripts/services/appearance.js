@@ -75,6 +75,36 @@ const resolveBackground = (group = {}) => {
 };
 
 /**
+ * Turn the author's border thickness into a value that scales with the grid.
+ * @param {number} [width] Thickness in hundredths of an em.
+ * @returns {string} CSS value, empty when not configured.
+ */
+const resolveBorderWidth = (width) => {
+  if (typeof width !== 'number' || width < 0) {
+    return '';
+  }
+
+  return `${width / 100}em`;
+};
+
+/**
+ * Build the glow around the focused cell.
+ * @param {object} theme Theme settings.
+ * @returns {string} CSS value, empty when the default should be kept.
+ */
+const resolveFocusShadow = (theme) => {
+  if (theme.showFocusShadow === false) {
+    return 'none';
+  }
+
+  if (!theme.focusBorderColor) {
+    return '';
+  }
+
+  return `0 0 0.2em 0.2em ${theme.focusBorderColor}`;
+};
+
+/**
  * Apply the theme colors of the activity.
  * @param {HTMLElement} element Target element.
  * @param {object} [theme] Theme settings.
@@ -89,7 +119,12 @@ export const applyThemeAppearance = (element, theme = {}) => {
   const solutionWord = theme.solutionWord || {};
   const overlay = theme.extraClueOverlay || {};
   const variables = {
-    'activity-bg': resolveBackground(theme.activityArea),
+    'cell-border-width': resolveBorderWidth(theme.borderWidth),
+    'grid-outline-color': (theme.showOuterBorder === false) ? 'transparent' : '',
+    'empty-cell-border-color':
+      (theme.hideEmptyCellBorders === true) ? 'transparent' : '',
+    'focus-border-color': theme.focusBorderColor,
+    'focus-shadow': resolveFocusShadow(theme),
     'clue-color': clues.clueColor,
     'clue-title-color': clues.titleColor,
     'clue-input-bg': inputs.backgroundColor,
@@ -117,6 +152,31 @@ export const applyThemeAppearance = (element, theme = {}) => {
   });
 
   applyVariables(element, variables);
+};
+
+/**
+ * Paint the activity background on the root element of the content type.
+ *
+ * Se aplica en la raíz para cubrir enunciado, rejilla, pistas, botones y
+ * retroalimentación, no solo el área interior del crucigrama.
+ * @param {HTMLElement} element Root element of the activity.
+ * @param {object} [theme] Theme settings.
+ */
+export const applyActivityBackground = (element, theme = {}) => {
+  if (!element) {
+    return;
+  }
+
+  const background = resolveBackground(theme.activityArea);
+
+  applyVariables(element, { 'activity-bg': background });
+
+  if (background) {
+    element.style.background = background;
+  }
+  else {
+    element.style.removeProperty('background');
+  }
 };
 
 /**

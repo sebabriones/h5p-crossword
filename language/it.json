@@ -145,40 +145,78 @@
       "label": "Tema",
       "fields": [
         {
-          "label": "Immagine di sfondo",
-          "description": "Seleziona un'immagine di sfondo opzionale. Verrà ridimensionato per adattarsi allo sfondo senza allungarlo."
+          "label": "Grid background",
+          "description": "Background of the crossword grid itself.",
+          "fields": [
+            {
+              "label": "Immagine di sfondo",
+              "description": "Seleziona un'immagine di sfondo opzionale. Verrà ridimensionato per adattarsi allo sfondo senza allungarlo."
+            },
+            {
+              "label": "Colore di sfondo",
+              "description": "Scegli un colore di sfondo. Verrà utilizzato al posto di un'immagine di sfondo o come sfondo per aree trasparenti."
+            }
+          ]
         },
         {
-          "label": "Colore di sfondo",
-          "description": "Scegli un colore di sfondo. Verrà utilizzato al posto di un'immagine di sfondo o come sfondo per aree trasparenti."
+          "label": "Cells",
+          "description": "Colors of the grid lines and the cells.",
+          "fields": [
+            {
+              "label": "Colore griglia",
+              "description": "Scegli un colore per la griglia."
+            },
+            {
+              "label": "Colore di sfondo della cella",
+              "description": "Scegli il colore di sfondo per una cella della tabella."
+            },
+            {
+              "label": "Colore del testo della cella",
+              "description": "Scegli il colore del testo per una cella della tabella."
+            },
+            {
+              "label": "Colore ID indizio",
+              "description": "Scegli il colore dell'ID indizio all'interno di una cella di tabella."
+            },
+            {
+              "label": "Border thickness",
+              "description": "Thickness of the cell borders in hundredths of an em, so it scales with the grid."
+            },
+            {
+              "label": "Show outer border",
+              "description": "Draw the border around the whole grid."
+            },
+            {
+              "label": "Hide borders of empty cells",
+              "description": "Leaves the cells without a letter without border, so the grid looks like it is floating."
+            }
+          ]
         },
         {
-          "label": "Colore griglia",
-          "description": "Scegli un colore per la griglia."
-        },
-        {
-          "label": "Colore di sfondo della cella",
-          "description": "Scegli il colore di sfondo per una cella della tabella."
-        },
-        {
-          "label": "Colore del testo della cella",
-          "description": "Scegli il colore del testo per una cella della tabella."
-        },
-        {
-          "label": "Colore ID indizio",
-          "description": "Scegli il colore dell'ID indizio all'interno di una cella di tabella."
-        },
-        {
-          "label": "Colore di sfondo della cella (evidenziato)",
-          "description": "Scegli il colore di sfondo per una cella della tabella che viene evidenziata."
-        },
-        {
-          "label": "Colore del testo della cella (evidenziato)",
-          "description": "Scegli il colore del testo per una cella della tabella che viene evidenziata."
-        },
-        {
-          "label": "Colore ID cella (evidenziato)",
-          "description": "Scegli il colore dell'ID indizio all'interno di una cella della tabella che è evidenziata."
+          "label": "Highlighted cells",
+          "description": "Colors used for the cells of the clue that is currently selected.",
+          "fields": [
+            {
+              "label": "Colore di sfondo della cella (evidenziato)",
+              "description": "Scegli il colore di sfondo per una cella della tabella che viene evidenziata."
+            },
+            {
+              "label": "Colore del testo della cella (evidenziato)",
+              "description": "Scegli il colore del testo per una cella della tabella che viene evidenziata."
+            },
+            {
+              "label": "Colore ID cella (evidenziato)",
+              "description": "Scegli il colore dell'ID indizio all'interno di una cella della tabella che è evidenziata."
+            },
+            {
+              "label": "Focused cell border color",
+              "description": "Border color of the cell the cursor is on."
+            },
+            {
+              "label": "Show glow around the focused cell",
+              "description": "Turn it off to keep only the border of the focused cell."
+            }
+          ]
         },
         {
           "label": "Activity area",

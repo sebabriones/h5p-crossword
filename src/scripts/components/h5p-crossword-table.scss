@@ -1,5 +1,6 @@
 .h5p-crossword-grid {
-  border: 0.05em solid var(--cw-grid-border-color, #000000);
+  border: var(--cw-cell-border-width, 0.05em) solid
+    var(--cw-grid-outline-color, var(--cw-grid-border-color, #000000));
   border-spacing: 0;
   width: 100%;
   margin-left: auto;
@@ -7,6 +8,10 @@
 
   .h5p-crossword-cell.h5p-crossword-cell-empty {
     background-color: #000000;
+    border-color: var(
+      --cw-empty-cell-border-color,
+      var(--cw-grid-border-color, #000000)
+    );
   }
 
   &.h5p-crossword-grid-background-image {
@@ -19,7 +24,8 @@
 
   th,
   td {
-    border: 0.05em solid var(--cw-grid-border-color, #000000);
+    border: var(--cw-cell-border-width, 0.05em) solid
+      var(--cw-grid-border-color, #000000);
   }
 
   thead,
