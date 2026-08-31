@@ -94,7 +94,7 @@ export default class CrosswordContent {
       }
 
       if (errorMessages.length) {
-        console.warn(`H5P.Crossword: ${errorMessages.join(' ')}`);
+        console.warn(`H5P.CrosswordCFRD: ${errorMessages.join(' ')}`);
       }
 
       if (!grid) {
@@ -172,7 +172,7 @@ export default class CrosswordContent {
       }
       else {
         console.warn(
-          'H5P.Crossword: There are not enough matching characters for the overall solution word in the crossword.'
+          'H5P.CrosswordCFRD: There are not enough matching characters for the overall solution word in the crossword.'
         );
       }
     }

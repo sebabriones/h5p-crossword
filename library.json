@@ -1,17 +1,17 @@
 {
-  "title": "Crossword",
+  "title": "Crossword (CFRD)",
   "description": "Crossword puzzle for H5P",
-  "majorVersion": 0,
-  "minorVersion": 6,
-  "patchVersion": 7,
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
   "runnable": 1,
-  "author": "Language Training Center GmbH, Oliver Tacke",
+  "author": "sbriones (CFRD-UDEC)",
   "license": "MIT",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 27
+    "minorVersion": 23
   },
-  "machineName": "H5P.Crossword",
+  "machineName": "H5P.CrosswordCFRD",
   "embedTypes": [
     "iframe"
   ],

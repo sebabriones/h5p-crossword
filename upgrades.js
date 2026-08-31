@@ -1,6 +1,6 @@
 var H5PUpgrades = H5PUpgrades || {};
 
-H5PUpgrades['H5P.Crossword'] = (function () {
+H5PUpgrades['H5P.CrosswordCFRD'] = (function () {
   return {
     0: {
       /**

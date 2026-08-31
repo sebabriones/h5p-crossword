@@ -1,7 +1,7 @@
 {
-  "name": "h5p-crossword",
-  "version": "0.6.7",
-  "description": "Example H5P Content Type for getting started",
+  "name": "h5p-crossword-cfrd",
+  "version": "1.0.0",
+  "description": "Crossword CFRD content type for H5P",
   "private": true,
   "scripts": {
     "lint": "eslint './src/**/*.js'",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/otacke/h5p-crossword.git"
+    "url": "git+https://github.com/sebabriones/h5p-crossword.git"
   },
   "keywords": [
     "h5p",
     "library",
     "crossword"
   ],
-  "author": "Language Training Center GmbH, Oliver Tacke",
+  "author": "sbriones (CFRD-UDEC)",
   "license": "MIT",
   "type": "module",
   "devDependencies": {
