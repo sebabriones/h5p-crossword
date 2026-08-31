@@ -111,6 +111,12 @@ export default class QuestionTypeContract {
 
     this.content.reset({ keepCorrectAnswers: params.keepCorrectAnswers });
     this.content.enable();
+
+    // Nuevo intento: sin delete, setActivityStarted es no-op.
+    if (this.isRoot() && typeof this.setActivityStarted === 'function') {
+      delete this.activityStartTime;
+      this.setActivityStarted();
+    }
   }
 
   /**
