@@ -12,6 +12,9 @@ import '@styles/h5p-crossword.scss';
 /** @constant {number} DOM_REGISTER_DELAY_MS Delay before resizing after DOM registered. */
 const DOM_REGISTER_DELAY_MS = 100;
 
+/** @constant {number} LAYOUT_SETTLE_MAX_FRAMES Frames to wait for the layout to settle. */
+const LAYOUT_SETTLE_MAX_FRAMES = 60;
+
 /** @constant {string} DEFAULT_DESCRIPTION Default description. */
 export const DEFAULT_DESCRIPTION = 'Crossword';
 
@@ -236,11 +239,52 @@ export default class Crossword extends H5P.QuestionCFRD {
     // El navegador no entrega las medidas definitivas al momento del evento.
     ['enterFullScreen', 'exitFullScreen'].forEach((event) => {
       this.on(event, () => {
-        window.requestAnimationFrame(() => {
-          this.trigger('resize');
-        });
+        this.resizeWhenLayoutSettles(event === 'enterFullScreen');
       });
     });
+  }
+
+  /**
+   * Resize once the transition to or from fullscreen has finished.
+   *
+   * Un solo fotograma deja medidas del modo anterior escritas en línea, y como
+   * después no llega otro resize la actividad se queda con ese tamaño.
+   * @param {boolean} expectFullscreen Whether fullscreen should be active when settled.
+   */
+  resizeWhenLayoutSettles(expectFullscreen) {
+    const dom = this.content?.getDOM?.();
+    if (!dom) {
+      return;
+    }
+
+    if (this.layoutSettleFrame) {
+      window.cancelAnimationFrame(this.layoutSettleFrame);
+    }
+
+    let frames = 0;
+    let lastWidth = null;
+    let lastHeight = null;
+
+    const measure = () => {
+      const rect = dom.getBoundingClientRect();
+      const isFullscreen = !!dom.closest('.h5p-fullscreen, .h5p-semi-fullscreen');
+      const settled = rect.width === lastWidth && rect.height === lastHeight &&
+        isFullscreen === expectFullscreen;
+
+      frames++;
+      lastWidth = rect.width;
+      lastHeight = rect.height;
+
+      if (!settled && frames < LAYOUT_SETTLE_MAX_FRAMES) {
+        this.layoutSettleFrame = window.requestAnimationFrame(measure);
+        return;
+      }
+
+      this.layoutSettleFrame = null;
+      this.trigger('resize');
+    };
+
+    this.layoutSettleFrame = window.requestAnimationFrame(measure);
   }
 
   /**
