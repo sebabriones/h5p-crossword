@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Aufgabenbeschreibung",
-      "description": "Beschreibe deine Aufgabe hier."
+      "label": "Medium",
+      "fields": [
+        {
+          "label": "Typ",
+          "description": "Medium, das wahlweise oberhalb der Aufgabe angezeigt wird."
+        },
+        {
+          "label": "Bild-Zoom deaktivieren"
+        }
+      ]
     },
     {
       "label": "Wörter",

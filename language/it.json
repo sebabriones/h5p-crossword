@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Descrizione del compito",
-      "description": "Descrivi qui il tuo compito."
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optional media to display above the question."
+        },
+        {
+          "label": "Disable image zooming"
+        }
+      ]
     },
     {
       "label": "parole",

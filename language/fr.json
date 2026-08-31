@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Consigne",
-      "description": "Décrivez votre tâche ici."
+      "label": "Média",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Média facultatif pour afficher au-dessus de la question."
+        },
+        {
+          "label": "Bloquer le zoom d’image"
+        }
+      ]
     },
     {
       "label": "mots",

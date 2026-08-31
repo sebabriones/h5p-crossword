@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Oppgavebeskrivelse",
-      "description": "Beskriv oppgaven din her."
+      "label": "Medieelement",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Valgfritt medieelement. Elementet vil bli plassert over spørsmålet."
+        },
+        {
+          "label": "Deaktiver zoomingfunksjon."
+        }
+      ]
     },
     {
       "label": "ord",

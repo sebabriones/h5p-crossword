@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Lanaren deskribapena",
-      "description": "Deskribatu ezazu hemen zure lana."
+      "label": "Multimedia",
+      "fields": [
+        {
+          "label": "Mota",
+          "description": "Galderaren gainean bistaratzeko aukerako multimedia."
+        },
+        {
+          "label": "Desgaitu irudien zooma"
+        }
+      ]
     },
     {
       "label": "hitz",

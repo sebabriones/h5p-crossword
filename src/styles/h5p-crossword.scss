@@ -5,6 +5,15 @@
  * Las clases y la tipografía las asigna CrosswordContent.updateLayoutState().
  */
 .h5p-crossword {
+  /*
+   * La pestaña de instrucciones flota sobre el borde superior de la actividad,
+   * así que el tablero necesita despejarlo. La reserva encoge junto con el resto
+   * del layout para no comerse el espacio en anchos pequeños.
+   */
+  &:has(.h5p-instructions-tab-root) .h5p-question-content {
+    padding-top: var(--h5p-crossword-instructions-clearance, 2.75rem);
+  }
+
   .h5p-crossword-content.h5p-crossword-layout-narrow {
     flex-direction: column;
 

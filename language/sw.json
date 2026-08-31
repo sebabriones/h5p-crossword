@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Maelezo ya kazi",
-      "description": "Elezea kazi yako hapa."
+      "label": "Vyombo vya habari",
+      "fields": [
+        {
+          "label": "Aina",
+          "description": "Vyombo vya habari vya hiari vya kuonyesha juu ya swali."
+        },
+        {
+          "label": "Zima ukuzaji wa picha"
+        }
+      ]
     },
     {
       "label": "maneno",

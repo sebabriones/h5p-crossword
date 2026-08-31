@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "과제설명",
-      "description": "과제를 이곳에 설명하세요."
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optional media to display above the question."
+        },
+        {
+          "label": "Disable image zooming"
+        }
+      ]
     },
     {
       "label": "단어",

@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Taakomschrijving",
-      "description": "Beschrijf hier je taak."
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optionele media, die boven de vraag wordt getoond."
+        },
+        {
+          "label": "Beeld zoomen uitschakelen"
+        }
+      ]
     },
     {
       "label": "woorden",

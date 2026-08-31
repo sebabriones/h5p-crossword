@@ -27,6 +27,15 @@ const CLUES_FONT_SIZE_MIN_PX = 11;
 /** @constant {number} CLUES_FONT_SIZE_MAX_PX Upper bound for the clue font size. */
 const CLUES_FONT_SIZE_MAX_PX = 18;
 
+/** @constant {number} INSTRUCTIONS_CLEARANCE_REM Room the instructions tab needs on top. */
+const INSTRUCTIONS_CLEARANCE_REM = 2.75;
+
+/** @constant {number} INSTRUCTIONS_BASE_WIDTH_PX Reference width used by H5P.Instructions. */
+const INSTRUCTIONS_BASE_WIDTH_PX = 900;
+
+/** @constant {number} INSTRUCTIONS_MIN_SCALE Lower bound used by H5P.Instructions. */
+const INSTRUCTIONS_MIN_SCALE = 0.35;
+
 /** Class representing the content */
 export default class CrosswordContent {
   /**
@@ -319,6 +328,28 @@ export default class CrosswordContent {
     );
     this.content.style.setProperty(
       '--h5p-crossword-clues-font-size', `${cluesFontSizePx}px`
+    );
+
+    this.updateInstructionsClearance(width);
+  }
+
+  /**
+   * Reserve room for the instructions tab, following the scale H5P.Instructions uses.
+   * @param {number} width Current content width in pixels.
+   */
+  updateInstructionsClearance(width) {
+    const root = this.content.closest('.h5p-crossword');
+    if (!root) {
+      return;
+    }
+
+    const scale = Math.max(
+      INSTRUCTIONS_MIN_SCALE, Math.min(1, width / INSTRUCTIONS_BASE_WIDTH_PX)
+    );
+
+    root.style.setProperty(
+      '--h5p-crossword-instructions-clearance',
+      `${INSTRUCTIONS_CLEARANCE_REM * scale}rem`
     );
   }
 

@@ -3,6 +3,10 @@ import CrosswordContent from '@scripts/components/h5p-crossword-content.js';
 import Util from '@services/util.js';
 import QuestionTypeContract from '@mixins/question-type-contract.js';
 import XAPI from '@mixins/xapi.js';
+import {
+  scheduleInstructionsAttach,
+  refreshInstructionsScale
+} from '@services/instructions.js';
 import '@styles/h5p-crossword.scss';
 
 /** @constant {number} DOM_REGISTER_DELAY_MS Delay before resizing after DOM registered. */
@@ -32,6 +36,16 @@ export default class Crossword extends H5P.QuestionCFRD {
     this.params = params;
     this.contentId = contentId;
     this.extras = extras;
+
+    // Contenido anterior a las instrucciones CFRD: el enunciado pasa a ser el texto
+    // de las instrucciones para no perderlo al retirar taskDescription.
+    if (this.params.taskDescription && !this.params.instructions) {
+      this.params.instructions = {
+        enabled: true,
+        text: this.params.taskDescription,
+        displayMode: 'both'
+      };
+    }
 
     /*
      * this.params.behaviour.enableSolutionsButton and this.params.behaviour.enableRetry
@@ -172,6 +186,14 @@ export default class Crossword extends H5P.QuestionCFRD {
         }
       }
     );
+
+    // QuestionCFRD asigna attach sobre la instancia, así que se envuelve aquí.
+    const originalAttach = this.attach;
+    this.attach = ($container) => {
+      this.$container = $container;
+      originalAttach.call(this, $container);
+      scheduleInstructionsAttach(this, $container);
+    };
   }
 
   /**
@@ -179,13 +201,6 @@ export default class Crossword extends H5P.QuestionCFRD {
    */
   registerDomElements() {
     this.setViewState('task');
-
-    // Register task introduction text
-    if (this.params.taskDescription && this.params.taskDescription !== '') {
-      this.introduction = document.createElement('div');
-      this.introduction.innerHTML = this.params.taskDescription;
-      this.setIntroduction(this.introduction);
-    }
 
     // Register content with H5P.QuestionCFRD
     this.setContent(this.content.getDOM());
@@ -215,6 +230,7 @@ export default class Crossword extends H5P.QuestionCFRD {
 
     this.on('resize', () => {
       this.content.resize();
+      refreshInstructionsScale(this);
     });
   }
 

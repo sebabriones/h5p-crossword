@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Descripción del trabajo",
-      "description": "Describa aquí su trabajo."
+      "label": "Medios",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Medios opcionales mostrados encima de la pregunta."
+        },
+        {
+          "label": "Deshabilitar acercamiento de imagen"
+        }
+      ]
     },
     {
       "label": "palabras",

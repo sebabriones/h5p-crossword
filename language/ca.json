@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Descripció de la tasca",
-      "description": "Descriu la tasca."
+      "label": "Recurs gràfic",
+      "fields": [
+        {
+          "label": "Tipus",
+          "description": "Recurs gràfic opcional per mostrar a sobre de la pregunta."
+        },
+        {
+          "label": "Desactiva el zoom"
+        }
+      ]
     },
     {
       "label": "paraules",

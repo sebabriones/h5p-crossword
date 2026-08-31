@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Descrición da tarefa",
-      "description": "Describe a túa tarefa aquí."
+      "label": "Medios",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Medios adicionais amosados enriba da pregunta."
+        },
+        {
+          "label": "Desactivar zoom da imaxe"
+        }
+      ]
     },
     {
       "label": "palabras",

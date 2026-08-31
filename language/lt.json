@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Užduoties aprašymas",
-      "description": "Čia aprašykite savo užduotį."
+      "fields": [
+        {
+          "label": "Tipas",
+          "description": "Pasirenkama medija, rodoma virš klausimo."
+        },
+        {
+          "label": "Išjungti paveikslėlio mastelio keitimą"
+        }
+      ],
+      "label": "Medija"
     },
     {
       "label": "žodžiai",

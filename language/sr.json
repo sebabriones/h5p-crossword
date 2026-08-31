@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "Опис задатка",
-      "description": "Овде опишите свој задатак."
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Тип",
+          "description": "Optional media to display above the question."
+        },
+        {
+          "label": "Онемогући увеличавање слике"
+        }
+      ]
     },
     {
       "label": "речи",
