@@ -4,7 +4,7 @@ import CrosswordTable from '@components/h5p-crossword-table.js';
 import CrosswordSolutionWord from '@components/h5p-crossword-solution-word.js';
 import Util from '@services/util.js';
 import CrosswordGenerator from '@services/h5p-crossword-generator.js';
-import { applyThemeAppearance } from '@services/appearance.js';
+import { applyThemeAppearance, getCluesFontScale } from '@services/appearance.js';
 import './h5p-crossword-content.scss';
 
 /** @constant {number} MIN_WORDS_FOR_CROSSWORD Minimum number of words for crossword. */
@@ -329,7 +329,7 @@ export default class CrosswordContent {
     const cluesFontSizePx = Math.min(
       CLUES_FONT_SIZE_MAX_PX,
       Math.max(CLUES_FONT_SIZE_MIN_PX, width * CLUES_FONT_SIZE_RATIO)
-    );
+    ) * getCluesFontScale(this.params.theme);
     this.content.style.setProperty(
       '--h5p-crossword-clues-font-size', `${cluesFontSizePx}px`
     );
@@ -639,5 +639,13 @@ export default class CrosswordContent {
    */
   overrideCSS(theme = {}) {
     applyThemeAppearance(this.content, theme);
+
+    // Sin configuración propia se respeta la barra de desplazamiento del navegador.
+    const clues = this.content.querySelector('.h5p-crossword-input-container');
+    if (clues) {
+      clues.classList.toggle(
+        'h5p-crossword-custom-scrollbar', !!(theme.scrollbar)
+      );
+    }
   }
 }

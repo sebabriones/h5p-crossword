@@ -62,16 +62,50 @@ export const applyVariables = (element, variables = {}) => {
 };
 
 /**
+ * Resolve the background of a CFRD surface group.
+ * @param {object} [group] Group holding the background settings.
+ * @returns {string} CSS value, empty when not configured.
+ */
+const resolveBackground = (group = {}) => {
+  if (group.useGradientBackground) {
+    return buildLinearGradient(group.gradientBackground);
+  }
+
+  return group.backgroundColor || '';
+};
+
+/**
  * Apply the theme colors of the activity.
  * @param {HTMLElement} element Target element.
  * @param {object} [theme] Theme settings.
  */
 export const applyThemeAppearance = (element, theme = {}) => {
-  const variables = {};
+  const clues = theme.cluesText || {};
+  const scrollbar = theme.scrollbar || {};
+  const variables = {
+    'activity-bg': resolveBackground(theme.activityArea),
+    'clue-color': clues.clueColor,
+    'clue-title-color': clues.titleColor,
+    'scrollbar-width': (scrollbar.width > 0) ? `${scrollbar.width}px` : '',
+    'scrollbar-track': (scrollbar.showTrack === false) ? 'transparent' : scrollbar.track,
+    'scrollbar-thumb': scrollbar.thumb,
+    'scrollbar-thumb-hover': scrollbar.thumbHover
+  };
 
   Object.keys(THEME_VARIABLES).forEach((key) => {
     variables[THEME_VARIABLES[key]] = theme[key];
   });
 
   applyVariables(element, variables);
+};
+
+/**
+ * Multiplier the author set for the automatic clue font size.
+ * @param {object} [theme] Theme settings.
+ * @returns {number} Scale, 1 when not configured.
+ */
+export const getCluesFontScale = (theme = {}) => {
+  const scale = theme.cluesText && theme.cluesText.fontScale;
+
+  return (typeof scale === 'number' && scale > 0) ? scale : 1;
 };

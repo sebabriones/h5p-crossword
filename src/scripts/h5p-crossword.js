@@ -234,6 +234,13 @@ export default class Crossword extends H5P.QuestionCFRD {
       this.addButtons();
     }
 
+    if (
+      this.params.theme.actionButtons &&
+      typeof this.setActionButtonAppearance === 'function'
+    ) {
+      this.setActionButtonAppearance(this.params.theme.actionButtons);
+    }
+
     this.on('resize', () => {
       this.content.resize();
       refreshInstructionsScale(this);

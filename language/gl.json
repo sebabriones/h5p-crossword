@@ -179,6 +179,127 @@
         {
           "label": "Cor da id da cela (resaltada)",
           "description": "Escolle a cor da id dunha definición dentro dunha cela resaltada nunha táboa."
+        },
+        {
+          "label": "Activity area",
+          "description": "Background behind the grid and the clue list. It does not change the grid background.",
+          "fields": [
+            {
+              "label": "Use gradient background"
+            },
+            {
+              "label": "Activity background color"
+            },
+            {
+              "label": "Gradient background",
+              "fields": [
+                {
+                  "label": "Gradient angle",
+                  "description": "Direction in degrees (0 = upward, 180 = downward)."
+                },
+                {
+                  "label": "Gradient start color"
+                },
+                {
+                  "label": "Gradient end color"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Clue list text",
+          "description": "Typography of the clue list next to the grid.",
+          "fields": [
+            {
+              "label": "Clue text color"
+            },
+            {
+              "label": "Group title color",
+              "description": "Color of the \"Across\" and \"Down\" headings."
+            },
+            {
+              "label": "Clue text scale",
+              "description": "Multiplies the automatic font size. 1 keeps the current size."
+            }
+          ]
+        },
+        {
+          "label": "Action buttons (Check, Retry and Show solution)",
+          "description": "Shared style for Check, Try again and Show solution buttons. Border colors apply only when border is enabled.",
+          "fields": [
+            {
+              "label": "Use gradient background"
+            },
+            {
+              "label": "Button background color"
+            },
+            {
+              "label": "Gradient background",
+              "fields": [
+                {
+                  "label": "Gradient angle",
+                  "description": "Direction in degrees (0 = upward, 180 = downward)."
+                },
+                {
+                  "label": "Gradient start color"
+                },
+                {
+                  "label": "Gradient end color"
+                }
+              ]
+            },
+            {
+              "label": "Button text color"
+            },
+            {
+              "label": "Button hover background color"
+            },
+            {
+              "label": "Button hover text color"
+            },
+            {
+              "label": "Use button border"
+            },
+            {
+              "label": "Border settings",
+              "fields": [
+                {
+                  "label": "Button border color"
+                },
+                {
+                  "label": "Button hover border color"
+                }
+              ]
+            },
+            {
+              "label": "Button border radius",
+              "description": "Default is 2em (Joubel UI). Lower values are sharper; higher values are more rounded."
+            }
+          ]
+        },
+        {
+          "label": "Scrollbar",
+          "description": "Colors for the scrollbar of the clue list.",
+          "fields": [
+            {
+              "label": "Scrollbar width",
+              "description": "Width in pixels."
+            },
+            {
+              "label": "Show scrollbar track",
+              "description": "When enabled, the track behind the scrollbar thumb is visible and its color can be configured."
+            },
+            {
+              "label": "Scrollbar track color"
+            },
+            {
+              "label": "Scrollbar thumb color"
+            },
+            {
+              "label": "Scrollbar thumb hover color"
+            }
+          ]
         }
       ]
     },

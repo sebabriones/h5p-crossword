@@ -14,7 +14,10 @@
     .h5p-crossword-input-fields-group {
       margin-top: 1em;
 
+      color: var(--cw-clue-color, inherit);
+
       .h5p-crossword-input-fields-group-title {
+        color: var(--cw-clue-title-color, inherit);
         font-weight: bold;
       }
 
@@ -95,6 +98,29 @@
           width: calc(100% - 8px); /* 8px = padding + border-width, TODO: Set in JS */
         }
       }
+    }
+  }
+
+  /* Solo cuando el autor configura la barra: sin la clase manda el estilo del navegador. */
+  &.h5p-crossword-custom-scrollbar {
+    scrollbar-color: var(--cw-scrollbar-thumb, #b0b0b0) var(--cw-scrollbar-track, #e8e8e8);
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: var(--cw-scrollbar-width, 8px);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--cw-scrollbar-track, #e8e8e8);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--cw-scrollbar-thumb, #b0b0b0);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--cw-scrollbar-thumb-hover, #888888);
     }
   }
 
