@@ -17,7 +17,7 @@ export const VIEW_STATES = { task: 0, results: 1, solutions: 2 };
 /**
  * Class for H5P Crossword.
  */
-export default class Crossword extends H5P.Question {
+export default class Crossword extends H5P.QuestionCFRD {
   /**
    * @class
    * @param {object} params Parameters passed by the editor.
@@ -129,7 +129,7 @@ export default class Crossword extends H5P.Question {
       this.params.l10n[word] = Util.stripHTML(Util.htmlDecode(this.params.l10n[word]));
     }
 
-    // H5P.Question will add a . after yourResult for readspeaker
+    // H5P.QuestionCFRD will add a . after yourResult for readspeaker
     this.params.a11y.yourResult = this.params.a11y.yourResult.replace(/\.$/, '');
 
     // this.previousState now holds the saved content state of the previous session
@@ -175,7 +175,7 @@ export default class Crossword extends H5P.Question {
   }
 
   /**
-   * Register the DOM elements with H5P.Question
+   * Register the DOM elements with H5P.QuestionCFRD
    */
   registerDomElements() {
     this.setViewState('task');
@@ -187,7 +187,7 @@ export default class Crossword extends H5P.Question {
       this.setIntroduction(this.introduction);
     }
 
-    // Register content with H5P.Question
+    // Register content with H5P.QuestionCFRD
     this.setContent(this.content.getDOM());
 
     // Previous state might have been a filled table
@@ -219,7 +219,7 @@ export default class Crossword extends H5P.Question {
   }
 
   /**
-   * Add all the buttons that shall be passed to H5P.Question.
+   * Add all the buttons that shall be passed to H5P.QuestionCFRD.
    */
   addButtons() {
     // Check answer button
@@ -271,10 +271,10 @@ export default class Crossword extends H5P.Question {
     const score = this.getScore();
     const maxScore = this.getMaxScore();
 
-    const textScore = H5P.Question.determineOverallFeedback(
+    const textScore = H5P.QuestionCFRD.determineOverallFeedback(
       this.params.overallFeedback, score / maxScore);
 
-    // H5P.Question expects ':num' and ':total'
+    // H5P.QuestionCFRD expects ':num' and ':total'
     const ariaMessage = this.params.a11y.yourResult
       .replace('@score', ':num')
       .replace('@total', ':total');
@@ -296,7 +296,7 @@ export default class Crossword extends H5P.Question {
   }
 
   /**
-   * Let H5P.Question read some text.
+   * Let H5P.QuestionCFRD read some text.
    * @param {string} text Text to read.
    */
   handleRead(text) {

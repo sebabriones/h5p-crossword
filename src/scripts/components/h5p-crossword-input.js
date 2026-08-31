@@ -492,7 +492,7 @@ export default class CrosswordInput {
    */
   checkAnswerWords(params) {
     // ScorePoints
-    this.scorePoints = this.scorePoints || new H5P.Question.ScorePoints();
+    this.scorePoints = this.scorePoints || new H5P.QuestionCFRD.ScorePoints();
 
     this.inputFields.forEach((field) => {
       field.solution.show();
@@ -536,7 +536,7 @@ export default class CrosswordInput {
    */
   checkAnswer(params) {
     // ScorePoints
-    this.scorePoints = this.scorePoints || new H5P.Question.ScorePoints();
+    this.scorePoints = this.scorePoints || new H5P.QuestionCFRD.ScorePoints();
 
     // Keep track of score for crossection characters, don't show score twice
     const scorePointsAwarded = [];
