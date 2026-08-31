@@ -1,6 +1,6 @@
 @use '@styles/main';
 .h5p-crossword-cell {
-  background-color: white;
+  background-color: var(--cw-cell-bg, white);
   margin: 0;
   outline: none;
   padding: 0;
@@ -27,9 +27,9 @@
   }
 
   .h5p-crossword-cell-solution-word-marker {
-    background-color: white;
+    background-color: var(--cw-cell-bg, white);
     bottom: 0;
-    color: #606060;
+    color: var(--cw-clue-id-color, #606060);
     font-size: 0.5em;
     line-height: 0.5em;
     padding: 0.4em 0.3em 0.4em 0.4em;
@@ -70,7 +70,7 @@
     .h5p-crossword-cell-canvas {
       background-color: transparent;
       border: 0;
-      color: #000000;
+      color: var(--cw-cell-color, #000000);
       font-size: 1.2em;
       margin: 0;
       padding: 0;
@@ -79,8 +79,8 @@
     }
 
     .h5p-crossword-cell-clue-id-marker {
-      background-color: white;
-      color: #606060;
+      background-color: var(--cw-cell-bg, white);
+      color: var(--cw-clue-id-color, #606060);
       font-size: 0.5em;
       left: 0;
       line-height: 0.5em;
@@ -94,7 +94,7 @@
   &.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: #3e8de8;
+      background: var(--cw-cell-highlight-bg, #3e8de8);
     }
   }
 
@@ -141,7 +141,7 @@
   }
 
   &:not(.h5p-crossword-solution-correct):not(.h5p-crossword-solution-wrong):not(.h5p-crossword-solution-neutral).h5p-crossword-highlight-normal {
-    background-color: #3e8de8;
+    background-color: var(--cw-cell-highlight-bg, #3e8de8);
   }
 
   &.h5p-crossword-solution-correct.h5p-crossword-highlight-normal {
@@ -170,7 +170,7 @@
   &.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      color: #e0e0e0;
+      color: var(--cw-clue-id-highlight-color, #e0e0e0);
     }
   }
 
@@ -187,7 +187,7 @@
   }
 
   &.h5p-crossword-highlight-normal .h5p-crossword-cell-canvas {
-    color: white;
+    color: var(--cw-cell-highlight-color, white);
   }
 
   &.h5p-crossword-solution-wrong {

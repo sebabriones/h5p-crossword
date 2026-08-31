@@ -4,6 +4,7 @@ import CrosswordTable from '@components/h5p-crossword-table.js';
 import CrosswordSolutionWord from '@components/h5p-crossword-solution-word.js';
 import Util from '@services/util.js';
 import CrosswordGenerator from '@services/h5p-crossword-generator.js';
+import { applyThemeAppearance } from '@services/appearance.js';
 import './h5p-crossword-content.scss';
 
 /** @constant {number} MIN_WORDS_FOR_CROSSWORD Minimum number of words for crossword. */
@@ -633,61 +634,10 @@ export default class CrosswordContent {
   }
 
   /**
-   * Override CSS with custom colors.
+   * Apply the theme colors as custom properties scoped to this activity.
    * @param {object} theme Theme settings.
    */
   overrideCSS(theme = {}) {
-    // Grid override
-    if (theme.gridColor) {
-      // eslint-disable-next-line max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-grid th, .h5p-crossword .h5p-crossword-grid td,.h5p-crossword .h5p-crossword-grid{border-color:${theme.gridColor}};`);
-    }
-
-    // Normal cell overrides
-    if (theme.cellBackgroundColor) {
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell{background-color:${theme.cellBackgroundColor}};`);
-      // eslint-disable-next-line max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell-clue-id-marker{background-color:${theme.cellBackgroundColor}};`);
-    }
-
-    if (theme.clueIdColor) {
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell-clue-id-marker{color:${theme.clueIdColor}};`);
-    }
-
-    if (theme.cellColor) {
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell-canvas{color:${theme.cellColor}};`);
-    }
-
-    // Highlighted cell overrides
-    if (theme.cellBackgroundColorHighlight) {
-      // eslint-disable-next-line max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell:not(.h5p-crossword-solution-correct):not(.h5p-crossword-solution-wrong):not(.h5p-crossword-solution-neutral).h5p-crossword-highlight-normal{background-color:${theme.cellBackgroundColorHighlight}};`);
-      // eslint-disable-next-line max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-clue-id-marker, .h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-solution-word-marker{background-color:${theme.cellBackgroundColorHighlight}}`);
-      // eslint-disable-next-line max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-input-fields-group-wrapper-clue.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id{background-color:${theme.cellBackgroundColorHighlight}}`);
-    }
-
-    if (theme.clueIdColorHighlight) {
-      // eslint-disable-next-line max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-clue-id-marker, .h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-solution-word-marker{color:${theme.clueIdColorHighlight}}`);
-    }
-
-    if (theme.cellColorHighlight) {
-      // eslint-disable-next-line max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-canvas{color:${theme.cellColorHighlight}};`);
-      // eslint-disable-next-line max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-input-fields-group-wrapper-clue.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id{color:${theme.cellColorHighlight}}`);
-    }
-  }
-
-  /**
-   * Add CSS style.
-   * @param {string} css CSS style.
-   */
-  addStyle(css) {
-    const style = document.createElement('style');
-    style.appendChild(document.createTextNode(css));
-    document.querySelector('head').appendChild(style);
+    applyThemeAppearance(this.content, theme);
   }
 }

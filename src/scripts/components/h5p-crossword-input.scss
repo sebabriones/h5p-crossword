@@ -82,8 +82,8 @@
           }
 
           &.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id {
-            background-color: #3e8de8;
-            color: white;
+            background-color: var(--cw-cell-highlight-bg, #3e8de8);
+            color: var(--cw-cell-highlight-color, white);
             font-weight: bold;
           }
         }

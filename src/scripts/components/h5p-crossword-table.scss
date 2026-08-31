@@ -1,5 +1,5 @@
 .h5p-crossword-grid {
-  border: 0.05em solid #000000;
+  border: 0.05em solid var(--cw-grid-border-color, #000000);
   border-spacing: 0;
   width: 100%;
   margin-left: auto;
@@ -19,7 +19,7 @@
 
   th,
   td {
-    border: 0.05em solid #000000;
+    border: 0.05em solid var(--cw-grid-border-color, #000000);
   }
 
   thead,
