@@ -82,10 +82,30 @@ const resolveBackground = (group = {}) => {
 export const applyThemeAppearance = (element, theme = {}) => {
   const clues = theme.cluesText || {};
   const scrollbar = theme.scrollbar || {};
+  const inputs = theme.clueInputs || {};
+  const correct = theme.correctColors || {};
+  const wrong = theme.wrongColors || {};
+  const neutral = theme.neutralColors || {};
+  const solutionWord = theme.solutionWord || {};
+  const overlay = theme.extraClueOverlay || {};
   const variables = {
     'activity-bg': resolveBackground(theme.activityArea),
     'clue-color': clues.clueColor,
     'clue-title-color': clues.titleColor,
+    'clue-input-bg': inputs.backgroundColor,
+    'clue-input-color': inputs.textColor,
+    'clue-input-border-color': inputs.borderColor,
+    'correct-bg': correct.background,
+    'correct-color': correct.text,
+    'wrong-bg': wrong.background,
+    'wrong-color': wrong.text,
+    'neutral-bg': neutral.background,
+    'neutral-color': neutral.text,
+    'solution-word-border': solutionWord.borderColor,
+    'solution-marker-color': solutionWord.markerColor,
+    'overlay-bg': overlay.backgroundColor,
+    'overlay-color': overlay.textColor,
+    'overlay-close-color': overlay.closeButtonColor,
     'scrollbar-width': (scrollbar.width > 0) ? `${scrollbar.width}px` : '',
     'scrollbar-track': (scrollbar.showTrack === false) ? 'transparent' : scrollbar.track,
     'scrollbar-thumb': scrollbar.thumb,

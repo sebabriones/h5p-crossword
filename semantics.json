@@ -1641,6 +1641,223 @@
         ]
       },
       {
+        "name": "clueInputs",
+        "type": "group",
+        "label": "Clue answer fields",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Text fields where the answers are typed next to each clue.",
+        "fields": [
+          {
+            "name": "backgroundColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Field background color",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "textColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Field text color",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "borderColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Field border color",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "correctColors",
+        "type": "group",
+        "label": "Correct answer colors",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Used in the grid cells and in the clue list once the answer is checked.",
+        "fields": [
+          {
+            "name": "background",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Background color",
+            "default": "#9dd8bb",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "text",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Text color",
+            "default": "#255c41",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "wrongColors",
+        "type": "group",
+        "label": "Wrong answer colors",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Used in the grid cells and in the clue list once the answer is checked.",
+        "fields": [
+          {
+            "name": "background",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Background color",
+            "default": "#f7d0d0",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "text",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Text color",
+            "default": "#b71c1c",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "neutralColors",
+        "type": "group",
+        "label": "Missing answer colors",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Used for cells and characters that were left empty.",
+        "fields": [
+          {
+            "name": "background",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Background color",
+            "default": "#f7e3cf",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "text",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Text color",
+            "default": "#b5691c",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "solutionWord",
+        "type": "group",
+        "label": "Solution word",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Strip of cells that spells the solution word below the grid.",
+        "fields": [
+          {
+            "name": "borderColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Strip border color",
+            "default": "#000000",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "markerColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Marker circle color",
+            "description": "Circle that marks the cells of the grid taking part in the solution word.",
+            "default": "#bbbbbb",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "extraClueOverlay",
+        "type": "group",
+        "label": "Extra clue window",
+        "importance": "low",
+        "optional": true,
+        "expanded": false,
+        "description": "Window that opens with the extra clue of a word.",
+        "fields": [
+          {
+            "name": "backgroundColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Window background color",
+            "default": "#ffffff",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "textColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Window text color",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          },
+          {
+            "name": "closeButtonColor",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Close button color",
+            "default": "#bd3e3e",
+            "optional": true,
+            "spectrum": {
+              "showInput": true
+            }
+          }
+        ]
+      },
+      {
         "name": "scrollbar",
         "type": "group",
         "label": "Scrollbar",

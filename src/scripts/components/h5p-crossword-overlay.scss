@@ -16,7 +16,7 @@
   z-index: 10;
 
   .h5p-crossword-overlay-button-close {
-    background: #fff;
+    background: var(--cw-overlay-bg, #fff);
     position: absolute;
     top: -1.1em;
     right: -1.1em;
@@ -25,13 +25,13 @@
     border: none;
     padding: 3px;
     line-height: 1;
-    color: #bd3e3e;
+    color: var(--cw-overlay-close-color, #bd3e3e);
     z-index: 3;
 
     &:after {
       font-family: 'H5PFontAwesome4';
       content: '\f00d';
-      border: 1px solid #bd3e3e;
+      border: 1px solid var(--cw-overlay-close-color, #bd3e3e);
       text-align: center;
       border-radius: 50%;
       width: 1.5em;
@@ -43,7 +43,8 @@
 
   .h5p-crossword-overlay-content {
     align-items: center;
-    background-color: #fff;
+    background-color: var(--cw-overlay-bg, #fff);
+    color: var(--cw-overlay-color, inherit);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

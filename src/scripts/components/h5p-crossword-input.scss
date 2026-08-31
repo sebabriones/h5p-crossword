@@ -101,6 +101,13 @@
     }
   }
 
+  /* Sin la clase los campos conservan el estilo nativo del navegador. */
+  &.h5p-crossword-custom-inputs .h5p-crossword-input-fields-group-input {
+    background-color: var(--cw-clue-input-bg, #ffffff);
+    border-color: var(--cw-clue-input-border-color, #767676);
+    color: var(--cw-clue-input-color, #000000);
+  }
+
   /* Solo cuando el autor configura la barra: sin la clase manda el estilo del navegador. */
   &.h5p-crossword-custom-scrollbar {
     scrollbar-color: var(--cw-scrollbar-thumb, #b0b0b0) var(--cw-scrollbar-track, #e8e8e8);

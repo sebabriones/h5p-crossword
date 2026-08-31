@@ -281,6 +281,85 @@
           ]
         },
         {
+          "label": "Campos de respuesta de las pistas",
+          "description": "Campos de texto donde se escriben las respuestas junto a cada pista.",
+          "fields": [
+            {
+              "label": "Color de fondo del campo"
+            },
+            {
+              "label": "Color del texto del campo"
+            },
+            {
+              "label": "Color del borde del campo"
+            }
+          ]
+        },
+        {
+          "label": "Colores de respuesta correcta",
+          "description": "Se usan en las celdas de la rejilla y en la lista de pistas al comprobar.",
+          "fields": [
+            {
+              "label": "Color de fondo"
+            },
+            {
+              "label": "Color del texto"
+            }
+          ]
+        },
+        {
+          "label": "Colores de respuesta incorrecta",
+          "description": "Se usan en las celdas de la rejilla y en la lista de pistas al comprobar.",
+          "fields": [
+            {
+              "label": "Color de fondo"
+            },
+            {
+              "label": "Color del texto"
+            }
+          ]
+        },
+        {
+          "label": "Colores de respuesta faltante",
+          "description": "Se usan en las celdas y los caracteres que quedaron sin completar.",
+          "fields": [
+            {
+              "label": "Color de fondo"
+            },
+            {
+              "label": "Color del texto"
+            }
+          ]
+        },
+        {
+          "label": "Palabra de solución",
+          "description": "Franja de celdas que forma la palabra de solución bajo la rejilla.",
+          "fields": [
+            {
+              "label": "Color del borde de la franja"
+            },
+            {
+              "label": "Color del círculo marcador",
+              "description": "Círculo que marca las celdas de la rejilla que forman parte de la palabra de solución."
+            }
+          ]
+        },
+        {
+          "label": "Ventana de pista adicional",
+          "description": "Ventana que se abre con la pista adicional de una palabra.",
+          "fields": [
+            {
+              "label": "Color de fondo de la ventana"
+            },
+            {
+              "label": "Color del texto de la ventana"
+            },
+            {
+              "label": "Color del botón de cerrar"
+            }
+          ]
+        },
+        {
           "label": "Barra de desplazamiento",
           "description": "Colores de las barras de desplazamiento de la lista de párrafos y del panel de contexto.",
           "fields": [

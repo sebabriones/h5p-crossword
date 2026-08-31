@@ -279,6 +279,85 @@
           ]
         },
         {
+          "label": "Clue answer fields",
+          "description": "Text fields where the answers are typed next to each clue.",
+          "fields": [
+            {
+              "label": "Field background color"
+            },
+            {
+              "label": "Field text color"
+            },
+            {
+              "label": "Field border color"
+            }
+          ]
+        },
+        {
+          "label": "Correct answer colors",
+          "description": "Used in the grid cells and in the clue list once the answer is checked.",
+          "fields": [
+            {
+              "label": "Background color"
+            },
+            {
+              "label": "Text color"
+            }
+          ]
+        },
+        {
+          "label": "Wrong answer colors",
+          "description": "Used in the grid cells and in the clue list once the answer is checked.",
+          "fields": [
+            {
+              "label": "Background color"
+            },
+            {
+              "label": "Text color"
+            }
+          ]
+        },
+        {
+          "label": "Missing answer colors",
+          "description": "Used for cells and characters that were left empty.",
+          "fields": [
+            {
+              "label": "Background color"
+            },
+            {
+              "label": "Text color"
+            }
+          ]
+        },
+        {
+          "label": "Solution word",
+          "description": "Strip of cells that spells the solution word below the grid.",
+          "fields": [
+            {
+              "label": "Strip border color"
+            },
+            {
+              "label": "Marker circle color",
+              "description": "Circle that marks the cells of the grid taking part in the solution word."
+            }
+          ]
+        },
+        {
+          "label": "Extra clue window",
+          "description": "Window that opens with the extra clue of a word.",
+          "fields": [
+            {
+              "label": "Window background color"
+            },
+            {
+              "label": "Window text color"
+            },
+            {
+              "label": "Close button color"
+            }
+          ]
+        },
+        {
           "label": "Scrollbar",
           "description": "Colors for the scrollbar of the clue list.",
           "fields": [

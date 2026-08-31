@@ -640,11 +640,14 @@ export default class CrosswordContent {
   overrideCSS(theme = {}) {
     applyThemeAppearance(this.content, theme);
 
-    // Sin configuración propia se respeta la barra de desplazamiento del navegador.
+    // Sin configuración propia se respetan la barra y los campos nativos del navegador.
     const clues = this.content.querySelector('.h5p-crossword-input-container');
     if (clues) {
       clues.classList.toggle(
         'h5p-crossword-custom-scrollbar', !!(theme.scrollbar)
+      );
+      clues.classList.toggle(
+        'h5p-crossword-custom-inputs', !!(theme.clueInputs)
       );
     }
   }

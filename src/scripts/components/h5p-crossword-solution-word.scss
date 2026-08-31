@@ -11,11 +11,11 @@
     margin-top: 0.5em;
 
     .h5p-crossword-cell {
-      border: 0.1em solid #000000;
+      border: 0.1em solid var(--cw-solution-word-border, #000000);
       border-right: 0;
 
       &:last-child {
-        border-right: 0.1em solid #000000;
+        border-right: 0.1em solid var(--cw-solution-word-border, #000000);
       }
     }
   }
