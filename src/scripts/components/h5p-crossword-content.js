@@ -36,6 +36,9 @@ const INSTRUCTIONS_BASE_WIDTH_PX = 900;
 /** @constant {number} INSTRUCTIONS_MIN_SCALE Lower bound used by H5P.Instructions. */
 const INSTRUCTIONS_MIN_SCALE = 0.35;
 
+/** @constant {number} MIN_GRID_HEIGHT_PX Below this the height reading is not trustworthy. */
+const MIN_GRID_HEIGHT_PX = 120;
+
 /** Class representing the content */
 export default class CrosswordContent {
   /**
@@ -353,13 +356,36 @@ export default class CrosswordContent {
     );
   }
 
+  /**
+   * Height the grid may use before it starts covering the score bar and buttons.
+   * @returns {number} Available height in pixels, or 0 when the host does not cap it.
+   */
+  getAvailableGridHeight() {
+    const host = this.content.parentElement;
+
+    // Fuera de pantalla completa la altura la define el propio contenido, así que
+    // no hay techo que respetar y medirlo daría un valor engañoso.
+    if (!host || !this.content.closest('.h5p-fullscreen, .h5p-semi-fullscreen')) {
+      return 0;
+    }
+
+    const available = host.clientHeight -
+      (this.content.getBoundingClientRect().top - host.getBoundingClientRect().top);
+
+    // Una medición tomada antes de que el navegador asiente el layout dejaría la
+    // rejilla diminuta; en ese caso es preferible dimensionar solo por ancho.
+    return (available >= MIN_GRID_HEIGHT_PX) ? available : 0;
+  }
+
   resize() {
     this.updateLayoutState();
 
     if (!this.table) {
       return;
     }
-    const tableRect = this.table.resize();
+    const tableRect = this.table.resize({
+      maxHeight: this.getAvailableGridHeight()
+    });
     this.inputarea.resize({ height: tableRect.height });
 
     if (this.solutionWord) {

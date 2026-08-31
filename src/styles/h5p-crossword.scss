@@ -4,6 +4,33 @@
  * que la ventana, y las media queries conmutaban a la variante móvil sin motivo.
  * Las clases y la tipografía las asigna CrosswordContent.updateLayoutState().
  */
+/*
+ * En pantalla completa el alto deja de crecer con el contenido, así que la
+ * actividad se reparte en columna: el tablero toma el espacio sobrante y el pie
+ * de evaluación (puntaje y botones) conserva el suyo en lugar de quedar tapado.
+ */
+.h5p-fullscreen,
+.h5p-semi-fullscreen {
+  .h5p-crossword {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .h5p-crossword .h5p-question-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  .h5p-crossword .h5p-question-buttons,
+  .h5p-crossword .h5p-question-scorebar,
+  .h5p-crossword .h5p-question-feedback {
+    flex: 0 0 auto;
+  }
+}
+
 .h5p-crossword {
   /*
    * La pestaña de instrucciones flota sobre el borde superior de la actividad,

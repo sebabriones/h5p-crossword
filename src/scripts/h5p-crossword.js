@@ -232,6 +232,15 @@ export default class Crossword extends H5P.QuestionCFRD {
       this.content.resize();
       refreshInstructionsScale(this);
     });
+
+    // El navegador no entrega las medidas definitivas al momento del evento.
+    ['enterFullScreen', 'exitFullScreen'].forEach((event) => {
+      this.on(event, () => {
+        window.requestAnimationFrame(() => {
+          this.trigger('resize');
+        });
+      });
+    });
   }
 
   /**

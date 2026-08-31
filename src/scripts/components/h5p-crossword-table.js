@@ -6,6 +6,9 @@ import { XAPI_PLACEHOLDER  } from '@mixins/xapi.js';
 /** @constant {number} CELL_FONT_SIZE_DIVIDER Divisor found by testing */
 export const CELL_FONT_SIZE_DIVIDER = 2;
 
+/** @constant {number} MAX_CELL_SIZE_PX Cap so cells stay in proportion on large screens. */
+const MAX_CELL_SIZE_PX = 64;
+
 /** Class representing the content */
 export default class CrosswordTable {
   /**
@@ -661,13 +664,36 @@ export default class CrosswordTable {
 
   /**
    * Resize.
+   * @param {object} [params] Parameters.
+   * @param {number} [params.maxHeight] Height the grid must not exceed, in pixels.
    * @returns {object} BoundingClientRect. Geometry of table.
    */
-  resize() {
-    // Didn't work well by just using CSS
-    const cellWidth = this.content.clientWidth / this.params.dimensions.columns;
+  resize(params = {}) {
+    // Medir la propia rejilla realimentaría el max-width de la pasada anterior:
+    // una sola lectura en cero la dejaría colapsada para siempre.
+    const availableWidth = this.content.parentElement ?
+      this.content.parentElement.clientWidth :
+      this.content.clientWidth;
 
-    this.content.style.fontSize = `${cellWidth / CELL_FONT_SIZE_DIVIDER}px`;
+    if (availableWidth <= 0) {
+      return this.content.getBoundingClientRect(); // Aún sin layout; ya habrá otro resize.
+    }
+
+    // Didn't work well by just using CSS
+    let cellSize = availableWidth / this.params.dimensions.columns;
+
+    // Sin límite por alto la rejilla crece hasta tapar la barra de puntaje y los
+    // botones; el tope evita además celdas desproporcionadas en pantallas grandes.
+    if (params.maxHeight > 0) {
+      cellSize = Math.min(cellSize, params.maxHeight / this.params.dimensions.rows);
+    }
+
+    cellSize = Math.min(cellSize, MAX_CELL_SIZE_PX);
+
+    // Las celdas son cuadradas a partir del ancho de la rejilla, así que el límite
+    // se aplica sobre el ancho; el font-size solo escala el contenido de la celda.
+    this.content.style.maxWidth = `${cellSize * this.params.dimensions.columns}px`;
+    this.content.style.fontSize = `${cellSize / CELL_FONT_SIZE_DIVIDER}px`;
 
     return this.content.getBoundingClientRect();
   }
