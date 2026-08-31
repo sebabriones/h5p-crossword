@@ -375,7 +375,7 @@
     },
     {
       "label": "Palabra de solución global",
-      "description": "Opcionalmente, puedes incluir una palabra de solución global que pueda derivarse de caracteres particulares en la rejilla. Solamente será visible si todos sus caracteres se pueden encontrar en el crucigrama. Por favor, ten en cuenta que aun no hay soporte de accesibilidad para esta característica."
+      "description": "Opcionalmente, puedes incluir una palabra de solución global que pueda derivarse de caracteres particulares en la rejilla. Solo será visible si todos sus caracteres se encuentran en el crucigrama. Ten en cuenta que esta funcionalidad aún no cuenta con soporte de accesibilidad."
     },
     {
       "label": "Retroalimentación Global",
@@ -505,7 +505,7 @@
         },
         {
           "label": "No se puede crear el crucigrama",
-          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor inténtalo nuevamente con menos palabras, o con palabras que tengan más caracteres en común."
+          "default": "No se pudo generar un crucigrama con las palabras dadas. Inténtalo nuevamente con menos palabras o con palabras que tengan más caracteres en común."
         },
         {
           "label": "No se puede crear el crucigrama (muy pocas palabras)",
@@ -514,7 +514,7 @@
         {
           "label": "Palabras problemáticas",
           "description": "Lista palabras que causaron problemas al generar el rompecabezas. @words es una variable que será sustituída por las palabras problemáticas actuales.",
-          "default": "Algunas palabras no pudieron ser colocadas. Si está usando palabras fijadas, por favor asegúrese de que su posición no impida que otras palabras sean colocadas. Las palabras con la misma alineación podrían no estar colocadas tocándose ambas. Palabras problemáticas: @words"
+          "default": "Algunas palabras no pudieron colocarse. Si usas palabras fijadas, revisa que su posición no impida colocar las demás. Las palabras con la misma orientación no pueden quedar una junto a otra. Palabras con problemas: @words"
         },
         {
           "label": "Pista extra",
