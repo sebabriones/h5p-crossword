@@ -1058,6 +1058,30 @@
     "expanded": true,
     "fields": [
       {
+        "name": "popupBackgroundColor",
+        "type": "text",
+        "widget": "colorSelector",
+        "label": "Popup background color",
+        "default": "#ffffff",
+        "importance": "low",
+        "optional": true,
+        "spectrum": {
+          "showInput": true
+        }
+      },
+      {
+        "name": "feedbackTextColor",
+        "type": "text",
+        "widget": "colorSelector",
+        "label": "Feedback text color",
+        "default": "#333333",
+        "importance": "low",
+        "optional": true,
+        "spectrum": {
+          "showInput": true
+        }
+      },
+      {
         "name": "overallFeedback",
         "type": "list",
         "widgets": [
@@ -1102,6 +1126,81 @@
               "importance": "low",
               "placeholder": "Fill in the feedback",
               "optional": true
+            },
+            {
+              "name": "appearance",
+              "type": "group",
+              "label": "Appearance settings",
+              "importance": "low",
+              "expanded": false,
+              "optional": true,
+              "fields": [
+                {
+                  "name": "feedbackLeadText",
+                  "type": "text",
+                  "label": "Highlighted lead text",
+                  "importance": "low",
+                  "placeholder": "e.g. Correct! or Incorrect",
+                  "optional": true
+                },
+                {
+                  "name": "feedbackLeadBold",
+                  "type": "boolean",
+                  "label": "Bold lead text",
+                  "importance": "low",
+                  "default": true
+                },
+                {
+                  "name": "feedbackTextAlign",
+                  "type": "select",
+                  "label": "Text alignment",
+                  "description": "Only used when no feedback image is set. With an image, text alignment follows image position (left/right: left aligned, above: centered).",
+                  "importance": "low",
+                  "default": "left",
+                  "options": [
+                    {
+                      "value": "left",
+                      "label": "Left"
+                    },
+                    {
+                      "value": "center",
+                      "label": "Center"
+                    },
+                    {
+                      "value": "right",
+                      "label": "Right"
+                    }
+                  ]
+                },
+                {
+                  "name": "feedbackImage",
+                  "type": "image",
+                  "label": "Feedback image",
+                  "importance": "low",
+                  "optional": true
+                },
+                {
+                  "name": "feedbackImagePosition",
+                  "type": "select",
+                  "label": "Image position",
+                  "importance": "low",
+                  "default": "left",
+                  "options": [
+                    {
+                      "value": "above",
+                      "label": "Above text"
+                    },
+                    {
+                      "value": "left",
+                      "label": "Left of text"
+                    },
+                    {
+                      "value": "right",
+                      "label": "Right of text"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -1370,6 +1469,22 @@
         "label": "Text for \"Show solution\" button",
         "importance": "low",
         "default": "Show solution"
+      },
+      {
+        "name": "feedbackPopupCloseLabel",
+        "type": "text",
+        "label": "Feedback popup close button label",
+        "importance": "low",
+        "default": "Close",
+        "optional": true
+      },
+      {
+        "name": "showFeedbackButtonLabel",
+        "type": "text",
+        "label": "Show feedback button label",
+        "importance": "low",
+        "default": "Show feedback",
+        "optional": true
       },
       {
         "name": "couldNotGenerateCrossword",

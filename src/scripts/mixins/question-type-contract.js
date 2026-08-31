@@ -105,6 +105,8 @@ export default class QuestionTypeContract {
 
     this.setViewState('task');
 
+    this.hideButton('show-feedback');
+
     this.trigger('resize');
 
     this.removeFeedback();

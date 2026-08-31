@@ -76,6 +76,8 @@ export default class Crossword extends H5P.QuestionCFRD {
         across: 'across',
         down: 'down',
         checkAnswer: 'Check answer',
+        feedbackPopupCloseLabel: 'Close',
+        showFeedbackButtonLabel: 'Show feedback',
         // eslint-disable-next-line max-len
         couldNotGenerateCrossword: 'Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common.',
         couldNotGenerateCrosswordTooFewWords: 'Could not generate a crossword. You need at least two words.',
@@ -318,6 +320,13 @@ export default class Crossword extends H5P.QuestionCFRD {
     }, this.initialButtons.retry, {
       'aria-label': this.params.a11y.retry
     }, {});
+
+    // Reabre la ventana de retroalimentación una vez que se cerró.
+    this.addButton('show-feedback', this.params.l10n.showFeedbackButtonLabel, () => {
+      this.showFeedbackPopup();
+      this.hideButton('show-feedback');
+    }, false, {}, {});
+    this.hideButton('show-feedback');
   }
 
   /**
@@ -341,19 +350,42 @@ export default class Crossword extends H5P.QuestionCFRD {
     const score = this.getScore();
     const maxScore = this.getMaxScore();
 
-    const textScore = H5P.QuestionCFRD.determineOverallFeedback(
-      this.params.overallFeedback, score / maxScore);
+    const resolved = H5P.QuestionCFRD.resolveOverallFeedback(
+      this.params.overallFeedback,
+      maxScore > 0 ? score / maxScore : 0,
+      this.contentId,
+      score,
+      maxScore
+    );
 
     // H5P.QuestionCFRD expects ':num' and ':total'
     const ariaMessage = this.params.a11y.yourResult
       .replace('@score', ':num')
       .replace('@total', ':total');
 
+    let popupSettings;
+    if (resolved && resolved.html && resolved.html.trim().length > 0) {
+      popupSettings = {
+        showAsPopup: true,
+        closeText: this.params.l10n.feedbackPopupCloseLabel || 'Close',
+        alwaysShowClose: true,
+        dismissible: true,
+        popupBackgroundColor: resolved.popupBackgroundColor,
+        plainText: resolved.plainText,
+        onClose: () => {
+          this.showButton('show-feedback');
+        }
+      };
+      this.hideButton('show-feedback');
+    }
+
     this.setFeedback(
-      textScore,
+      resolved ? resolved.html : '',
       score,
       maxScore,
-      ariaMessage
+      ariaMessage,
+      false,
+      popupSettings
     );
 
     if (this.params.behaviour.enableSolutionsButton) {

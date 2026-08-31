@@ -427,6 +427,12 @@
       "label": "საერთო გამოხმაურება",
       "fields": [
         {
+          "label": "Popup background color"
+        },
+        {
+          "label": "Feedback text color"
+        },
+        {
           "widgets": [
             {
               "label": "ნაგულისხმევი"
@@ -444,6 +450,49 @@
               {
                 "label": "ქულების დიაპაზონისთვის შეტყობინების დაყენება",
                 "placeholder": "დაწერეთ შეტყობინება"
+              },
+              {
+                "label": "Appearance settings",
+                "fields": [
+                  {
+                    "label": "Highlighted lead text"
+                  },
+                  {
+                    "label": "Bold lead text"
+                  },
+                  {
+                    "label": "Text alignment",
+                    "description": "Only used when no feedback image is set. With an image, text alignment follows image position (left/right: left aligned, above: centered).",
+                    "options": [
+                      {
+                        "label": "Left"
+                      },
+                      {
+                        "label": "Center"
+                      },
+                      {
+                        "label": "Right"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Feedback image"
+                  },
+                  {
+                    "label": "Image position",
+                    "options": [
+                      {
+                        "label": "Above text"
+                      },
+                      {
+                        "label": "Left of text"
+                      },
+                      {
+                        "label": "Right of text"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -552,6 +601,12 @@
         {
           "label": "ტექსტი \\\"ამოხსნის ჩვენება\\\" ღილაკისთვის",
           "default": "ამოხსნის ჩვენება"
+        },
+        {
+          "label": "Feedback popup close button label"
+        },
+        {
+          "label": "Show feedback button label"
         },
         {
           "label": "კროსვორდის შექმნა შეუძლებელია",

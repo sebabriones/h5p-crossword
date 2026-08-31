@@ -69,6 +69,12 @@
       "label": "Feedback Geral",
       "fields": [
         {
+          "label": "Popup background color"
+        },
+        {
+          "label": "Feedback text color"
+        },
+        {
           "widgets": [
             {
               "label": "Padrão"
@@ -86,6 +92,49 @@
               {
                 "label": "Feedback para a faixa de pontuação definida",
                 "placeholder": "Preencha o feedback"
+              },
+              {
+                "label": "Appearance settings",
+                "fields": [
+                  {
+                    "label": "Highlighted lead text"
+                  },
+                  {
+                    "label": "Bold lead text"
+                  },
+                  {
+                    "label": "Text alignment",
+                    "description": "Only used when no feedback image is set. With an image, text alignment follows image position (left/right: left aligned, above: centered).",
+                    "options": [
+                      {
+                        "label": "Left"
+                      },
+                      {
+                        "label": "Center"
+                      },
+                      {
+                        "label": "Right"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Feedback image"
+                  },
+                  {
+                    "label": "Image position",
+                    "options": [
+                      {
+                        "label": "Above text"
+                      },
+                      {
+                        "label": "Left of text"
+                      },
+                      {
+                        "label": "Right of text"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -194,6 +243,12 @@
         {
           "label": "Texto para o botão \"Mostrar solução\"",
           "default": "Mostrar solução"
+        },
+        {
+          "label": "Feedback popup close button label"
+        },
+        {
+          "label": "Show feedback button label"
         },
         {
           "label": "Não foi possível criar as palavras cruzadas",

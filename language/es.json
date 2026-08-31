@@ -381,6 +381,14 @@
       "label": "Retroalimentación Global",
       "fields": [
         {
+          "label": "Color de fondo de zona de retroalimentación",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Color de texto de la zona de retroalimentación",
+          "default": "#333333"
+        },
+        {
           "widgets": [
             {
               "label": "Predeterminado"
@@ -398,6 +406,49 @@
               {
                 "label": "Realimentación para rango de puntuación definido",
                 "placeholder": "Escribe tu retroalimentación"
+              },
+              {
+                "label": "Ajustes de apariencia",
+                "fields": [
+                  {
+                    "label": "Texto destacado inicial"
+                  },
+                  {
+                    "label": "Texto destacado en negrita"
+                  },
+                  {
+                    "label": "Alineación del texto",
+                    "description": "Solo se usa cuando no hay imagen de retroalimentación. Con imagen, la alineación sigue la posición de la imagen (izquierda/derecha: alineado a la izquierda; arriba: centrado).",
+                    "options": [
+                      {
+                        "label": "Izquierda"
+                      },
+                      {
+                        "label": "Centro"
+                      },
+                      {
+                        "label": "Derecha"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Imagen de retroalimentación"
+                  },
+                  {
+                    "label": "Posición de la imagen",
+                    "options": [
+                      {
+                        "label": "Sobre el texto"
+                      },
+                      {
+                        "label": "A la izquierda del texto"
+                      },
+                      {
+                        "label": "A la derecha del texto"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -506,6 +557,12 @@
         {
           "label": "Texto para botón \"Mostrar solución\"",
           "default": "Mostrar solución"
+        },
+        {
+          "label": "Texto del botón para cerrar la retroalimentación"
+        },
+        {
+          "label": "Texto del botón para volver a ver la retroalimentación"
         },
         {
           "label": "No se puede crear el crucigrama",
