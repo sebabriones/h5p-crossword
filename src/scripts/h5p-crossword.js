@@ -64,7 +64,7 @@ export default class Crossword extends H5P.QuestionCFRD {
         backgroundColor: '#173354'
       },
       behaviour: {
-        enableSolutionsButton: true,
+        enableSolutionsButton: false,
         enableRetry: true,
         enableInstantFeedback: false,
         autoCheckWhenAllCorrect: false,

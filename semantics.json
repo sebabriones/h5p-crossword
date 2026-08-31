@@ -1298,7 +1298,7 @@
         "label": "Enable \"Solution\"",
         "type": "boolean",
         "importance": "low",
-        "default": true,
+        "default": false,
         "optional": true
       },
       {
