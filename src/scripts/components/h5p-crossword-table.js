@@ -1112,7 +1112,7 @@ export default class CrosswordTable {
           }
         }
 
-        return `<p>${clue}</ br>${placeholders.join(' ')}</p>`;
+        return `<p>${clue}<br />${placeholders.join(' ')}</p>`;
       })
       .join('');
   }

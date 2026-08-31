@@ -58,10 +58,17 @@ export default class XAPI {
    * @returns {string} Description.
    */
   getXAPIDescription() {
+    // El enunciado ahora vive en las instrucciones CFRD; taskDescription solo
+    // sobrevive en contenido antiguo migrado.
+    const text = this.params.instructions?.enabled ?
+      this.params.instructions.text :
+      this.params.taskDescription;
+
     // The below replaceAll makes sure we don't get any unwanted XAPI_PLACEHOLDERs in the description
-    const introduction = this.params.taskDescription
+    const introduction = (text ?? '')
       .replaceAll(/_{10,}/gi, '_________') || DEFAULT_DESCRIPTION;
     const fields = this.content.getXAPIDescription();
+
     return `${introduction}${fields}`;
   }
 }
