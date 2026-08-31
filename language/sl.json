@@ -145,6 +145,10 @@
           "label": "Sprotno preverjaj odgovore"
         },
         {
+          "label": "Submit automatically when everything is correct",
+          "description": "If this option is enabled, filling the grid correctly will submit the answer without pressing the check button."
+        },
+        {
           "label": "Točkuj gesla",
           "description": "Omogočena možnost pomeni, da se točkujejo gesla kot celota. V nasprotnem primeru se točkuje vsak znak posebej."
         },

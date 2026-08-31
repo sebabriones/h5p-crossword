@@ -503,6 +503,10 @@
           "label": "მყისიერი შეფასების დაყენება"
         },
         {
+          "label": "Submit automatically when everything is correct",
+          "description": "If this option is enabled, filling the grid correctly will submit the answer without pressing the check button."
+        },
+        {
           "label": "სიტყვების შეფასება",
           "description": "თუ ეს ფუნქცია აქტიურია, თითოეული სიტყვა დაითვლება შეფასებისთვის. წინააღმდეგ შემთხვევაში, დაითვლება სწორი სიმბოლოების რაოდენობა."
         },

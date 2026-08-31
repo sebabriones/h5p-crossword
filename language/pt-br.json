@@ -145,6 +145,10 @@
           "label": "Permitir feedback instantâneo"
         },
         {
+          "label": "Submit automatically when everything is correct",
+          "description": "If this option is enabled, filling the grid correctly will submit the answer without pressing the check button."
+        },
+        {
           "label": "Palavras de pontuação",
           "description": "Se esta opção for ativada, as palavras serão contadas para determinar a pontuação. Caso contrário, os caracteres corretos serão contados."
         },

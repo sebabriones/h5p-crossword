@@ -67,6 +67,7 @@ export default class Crossword extends H5P.QuestionCFRD {
         enableSolutionsButton: true,
         enableRetry: true,
         enableInstantFeedback: false,
+        autoCheckWhenAllCorrect: false,
         scoreWords: true,
         applyPenalties: false,
         keepCorrectAnswers: false,
@@ -376,7 +377,12 @@ export default class Crossword extends H5P.QuestionCFRD {
    * Handle content is filled.
    */
   handleContentFilled() {
-    if (this.getMaxScore() > 0 && this.getScore() === this.getMaxScore()) {
+    // Sin entrega automática el intento se cierra solo al acertar todo, sin que
+    // la persona llegue a pulsar comprobar.
+    if (
+      this.params.behaviour.autoCheckWhenAllCorrect &&
+      this.getMaxScore() > 0 && this.getScore() === this.getMaxScore()
+    ) {
       this.checkAnswer();
       this.trigger(this.getXAPIAnswerEvent());
     }

@@ -1260,6 +1260,15 @@
         "default": false
       },
       {
+        "name": "autoCheckWhenAllCorrect",
+        "label": "Submit automatically when everything is correct",
+        "description": "If this option is enabled, filling the grid correctly will submit the answer without pressing the check button.",
+        "type": "boolean",
+        "importance": "low",
+        "default": false,
+        "optional": true
+      },
+      {
         "name": "scoreWords",
         "label": "Score words",
         "description": "If this option is enabled, words will be counted in order to determine the score. Otherwise, correct characters will be counted.",

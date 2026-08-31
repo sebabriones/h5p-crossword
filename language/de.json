@@ -145,6 +145,10 @@
           "label": "Sofort-Rückmeldungen einschalten"
         },
         {
+          "label": "Submit automatically when everything is correct",
+          "description": "If this option is enabled, filling the grid correctly will submit the answer without pressing the check button."
+        },
+        {
           "label": "Wörter zählen",
           "description": "Wenn diese Einstellung gewählt ist, werden Wörter für die Bewertung gezählt. Andernfalls werden Zeichen gezählt."
         },

@@ -145,6 +145,10 @@
           "label": "Habilitar retroalimentación instantánea"
         },
         {
+          "label": "Entregar automáticamente cuando todo esté correcto",
+          "description": "Si esta opción está activada, completar la rejilla correctamente entrega la respuesta sin pulsar el botón de comprobar."
+        },
+        {
           "label": "Dar puntaje a palabras",
           "description": "Si esta opción es habilitada, las palabras serán contadas para determinar el puntaje. En caso contrario, los caracteres correctos serán contados."
         },

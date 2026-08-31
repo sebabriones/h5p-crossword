@@ -145,6 +145,10 @@
           "label": "Washa maoni ya papo hapo"
         },
         {
+          "label": "Submit automatically when everything is correct",
+          "description": "If this option is enabled, filling the grid correctly will submit the answer without pressing the check button."
+        },
+        {
           "label": "Maneno ya alama",
           "description": "Chaguo hili likiwashwa, maneno yatahesabiwa ili kubainisha alama. Vinginevyo, herufi sahihi zitahesabiwa."
         },

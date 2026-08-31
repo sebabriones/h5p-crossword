@@ -145,6 +145,10 @@
           "label": "Gaitu berehalako feedbacka"
         },
         {
+          "label": "Submit automatically when everything is correct",
+          "description": "If this option is enabled, filling the grid correctly will submit the answer without pressing the check button."
+        },
+        {
           "label": "Puntuatu hitzak",
           "description": "Aukera hau gaituz gero, puntuazioa kalkulatzeko hitzak zenbatuko dira. Bestela, zuzen dauden karaktereak zenbatuko dira."
         },

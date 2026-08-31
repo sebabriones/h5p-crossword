@@ -145,6 +145,10 @@
           "label": "Activa els comentaris instantanis"
         },
         {
+          "label": "Submit automatically when everything is correct",
+          "description": "If this option is enabled, filling the grid correctly will submit the answer without pressing the check button."
+        },
+        {
           "label": "Puntua paraules",
           "description": "Si l’opció està activada, es compten les paraules per determinar la puntuació. En cas contrari, es compten els caràcters correctes."
         },
