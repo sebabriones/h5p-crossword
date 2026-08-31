@@ -1761,6 +1761,107 @@
             "spectrum": {
               "showInput": true
             }
+          },
+          {
+            "name": "useCustomBorder",
+            "type": "boolean",
+            "label": "Set the border of the fields",
+            "description": "It also removes the focus ring the browser draws while typing. While it is off, the fields keep the border of the browser.",
+            "default": false
+          },
+          {
+            "name": "borderSettings",
+            "type": "group",
+            "label": "Border",
+            "importance": "low",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "useCustomBorder",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "borderStyle",
+                "type": "select",
+                "label": "Border style",
+                "default": "solid",
+                "options": [
+                  {
+                    "value": "none",
+                    "label": "No border"
+                  },
+                  {
+                    "value": "solid",
+                    "label": "Solid"
+                  },
+                  {
+                    "value": "dashed",
+                    "label": "Dashed"
+                  },
+                  {
+                    "value": "dotted",
+                    "label": "Dotted"
+                  }
+                ]
+              },
+              {
+                "name": "borderWidth",
+                "type": "number",
+                "label": "Border thickness",
+                "default": 2,
+                "min": 0,
+                "max": 12,
+                "step": 1,
+                "unit": "px"
+              },
+              {
+                "name": "borderRadius",
+                "type": "number",
+                "label": "Corner radius",
+                "default": 0,
+                "min": 0,
+                "max": 24,
+                "step": 1,
+                "unit": "px"
+              },
+              {
+                "name": "showFocusBorder",
+                "type": "boolean",
+                "label": "Use a different border while typing",
+                "description": "While it is off, the field keeps the same border it has at rest.",
+                "default": false
+              },
+              {
+                "name": "focusBorderColor",
+                "type": "text",
+                "label": "Border color while typing",
+                "optional": true,
+                "widget": "showWhen",
+                "showWhen": {
+                  "widget": "colorSelector",
+                  "rules": [
+                    {
+                      "field": "showFocusBorder",
+                      "equals": true
+                    }
+                  ]
+                },
+                "spectrum": {
+                  "showInput": true
+                }
+              }
+            ]
+          },
+          {
+            "name": "hideFields",
+            "type": "boolean",
+            "label": "Hide the answer fields",
+            "description": "The crossword is then solved on the grid. The fields stay reachable with the keyboard and the screen reader.",
+            "default": false
           }
         ]
       },

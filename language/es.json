@@ -642,6 +642,49 @@
             },
             {
               "label": "Color del borde del campo"
+            },
+            {
+              "label": "Definir el borde de los campos",
+              "description": "También retira el anillo de foco que dibuja el navegador al escribir. Mientras está desactivado, los campos conservan el borde del navegador."
+            },
+            {
+              "label": "Borde",
+              "fields": [
+                {
+                  "label": "Estilo del borde",
+                  "options": [
+                    {
+                      "label": "Sin borde"
+                    },
+                    {
+                      "label": "Sólido"
+                    },
+                    {
+                      "label": "Discontinuo"
+                    },
+                    {
+                      "label": "Punteado"
+                    }
+                  ]
+                },
+                {
+                  "label": "Grosor del borde"
+                },
+                {
+                  "label": "Radio de las esquinas"
+                },
+                {
+                  "label": "Usar un borde distinto al escribir",
+                  "description": "Mientras está desactivado, el campo conserva el mismo borde que tiene en reposo."
+                },
+                {
+                  "label": "Color del borde al escribir"
+                }
+              ]
+            },
+            {
+              "label": "Ocultar los campos de respuesta",
+              "description": "El crucigrama se resuelve entonces sobre la rejilla. Los campos siguen alcanzables con el teclado y el lector de pantalla."
             }
           ]
         },

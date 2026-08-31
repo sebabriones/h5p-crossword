@@ -108,6 +108,37 @@
     color: var(--cw-clue-input-color, #000000);
   }
 
+  &.h5p-crossword-custom-input-border .h5p-crossword-input-fields-group-input {
+    border-radius: var(--cw-clue-input-border-radius, 0);
+    border-style: var(--cw-clue-input-border-style, solid);
+    border-width: var(--cw-clue-input-border-width, 2px);
+
+    /* El anillo nativo ignora el borde configurado y desencaja al escribir. */
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.h5p-crossword-custom-input-focus .h5p-crossword-input-fields-group-input:focus {
+    border-color: var(--cw-clue-input-focus-border-color, #3e8de8);
+  }
+
+  /*
+   * Los campos siguen siendo la vía alternativa por teclado y lector de
+   * pantalla, así que se retiran de la vista sin sacarlos del foco.
+   */
+  &.h5p-crossword-hidden-inputs .h5p-crossword-input-fields-group-input {
+    border: none;
+    clip-path: inset(50%);
+    height: 1px;
+    margin-top: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
   /* Solo cuando el autor configura la barra: sin la clase manda el estilo del navegador. */
   &.h5p-crossword-custom-scrollbar {
     scrollbar-color: var(--cw-scrollbar-thumb, #b0b0b0) var(--cw-scrollbar-track, #e8e8e8);

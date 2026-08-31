@@ -88,6 +88,19 @@ const resolveBorderWidth = (width) => {
 };
 
 /**
+ * Turn a numeric setting into a pixel value.
+ * @param {number} [value] Length in pixels.
+ * @returns {string} CSS value, empty when not configured.
+ */
+const resolvePixels = (value) => {
+  if (typeof value !== 'number' || value < 0) {
+    return '';
+  }
+
+  return `${value}px`;
+};
+
+/**
  * Build the glow around the focused cell.
  * @param {object} theme Theme settings.
  * @returns {string} CSS value, empty when the default should be kept.
@@ -113,6 +126,7 @@ export const applyThemeAppearance = (element, theme = {}) => {
   const clues = theme.cluesText || {};
   const scrollbar = theme.scrollbar || {};
   const inputs = theme.clueInputs || {};
+  const inputBorder = (inputs.useCustomBorder && inputs.borderSettings) || {};
   const correct = theme.correctColors || {};
   const wrong = theme.wrongColors || {};
   const neutral = theme.neutralColors || {};
@@ -130,6 +144,10 @@ export const applyThemeAppearance = (element, theme = {}) => {
     'clue-input-bg': inputs.backgroundColor,
     'clue-input-color': inputs.textColor,
     'clue-input-border-color': inputs.borderColor,
+    'clue-input-border-style': inputBorder.borderStyle,
+    'clue-input-border-width': resolvePixels(inputBorder.borderWidth),
+    'clue-input-border-radius': resolvePixels(inputBorder.borderRadius),
+    'clue-input-focus-border-color': inputBorder.focusBorderColor,
     'correct-bg': correct.background,
     'correct-color': correct.text,
     'wrong-bg': wrong.background,

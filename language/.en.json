@@ -686,6 +686,49 @@
             },
             {
               "label": "Field border color"
+            },
+            {
+              "label": "Set the border of the fields",
+              "description": "It also removes the focus ring the browser draws while typing. While it is off, the fields keep the border of the browser."
+            },
+            {
+              "label": "Border",
+              "fields": [
+                {
+                  "label": "Border style",
+                  "options": [
+                    {
+                      "label": "No border"
+                    },
+                    {
+                      "label": "Solid"
+                    },
+                    {
+                      "label": "Dashed"
+                    },
+                    {
+                      "label": "Dotted"
+                    }
+                  ]
+                },
+                {
+                  "label": "Border thickness"
+                },
+                {
+                  "label": "Corner radius"
+                },
+                {
+                  "label": "Use a different border while typing",
+                  "description": "While it is off, the field keeps the same border it has at rest."
+                },
+                {
+                  "label": "Border color while typing"
+                }
+              ]
+            },
+            {
+              "label": "Hide the answer fields",
+              "description": "The crossword is then solved on the grid. The fields stay reachable with the keyboard and the screen reader."
             }
           ]
         },

@@ -649,6 +649,23 @@ export default class CrosswordContent {
       clues.classList.toggle(
         'h5p-crossword-custom-inputs', !!(theme.clueInputs)
       );
+      clues.classList.toggle(
+        'h5p-crossword-custom-input-border',
+        !!(theme.clueInputs && theme.clueInputs.useCustomBorder)
+      );
+      clues.classList.toggle(
+        'h5p-crossword-custom-input-focus',
+        !!(
+          theme.clueInputs &&
+          theme.clueInputs.useCustomBorder &&
+          theme.clueInputs.borderSettings &&
+          theme.clueInputs.borderSettings.showFocusBorder
+        )
+      );
+      clues.classList.toggle(
+        'h5p-crossword-hidden-inputs',
+        !!(theme.clueInputs && theme.clueInputs.hideFields)
+      );
     }
   }
 }
