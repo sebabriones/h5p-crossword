@@ -3,7 +3,7 @@
   "description": "Crucigrama con pistas horizontales y verticales, palabra de solución y retroalimentación por palabra.",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 29,
+  "patchVersion": 30,
   "runnable": 1,
   "author": "sbriones (CFRD-UDEC)",
   "license": "MIT",

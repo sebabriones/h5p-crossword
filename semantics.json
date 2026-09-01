@@ -1122,6 +1122,7 @@
             {
               "name": "feedback",
               "type": "text",
+              "maxLength": 2048,
               "label": "Feedback for defined score range",
               "importance": "low",
               "placeholder": "Fill in the feedback",
@@ -1138,6 +1139,7 @@
                 {
                   "name": "feedbackLeadText",
                   "type": "text",
+                  "maxLength": 2048,
                   "label": "Highlighted lead text",
                   "importance": "low",
                   "placeholder": "e.g. Correct! or Incorrect",
