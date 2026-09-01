@@ -9,6 +9,9 @@ export const CELL_FONT_SIZE_DIVIDER = 2;
 /** @constant {number} MAX_CELL_SIZE_PX Cap so cells stay in proportion on large screens. */
 const MAX_CELL_SIZE_PX = 64;
 
+/** @constant {number} MAX_CELL_SIZE_FULLSCREEN_PX Looser cap in fullscreen. */
+const MAX_CELL_SIZE_FULLSCREEN_PX = 96;
+
 /** Class representing the content */
 export default class CrosswordTable {
   /**
@@ -688,7 +691,10 @@ export default class CrosswordTable {
       cellSize = Math.min(cellSize, params.maxHeight / this.params.dimensions.rows);
     }
 
-    cellSize = Math.min(cellSize, MAX_CELL_SIZE_PX);
+    cellSize = Math.min(
+      cellSize,
+      params.isFullscreen ? MAX_CELL_SIZE_FULLSCREEN_PX : MAX_CELL_SIZE_PX
+    );
 
     // Las celdas son cuadradas a partir del ancho de la rejilla, así que el límite
     // se aplica sobre el ancho; el font-size solo escala el contenido de la celda.

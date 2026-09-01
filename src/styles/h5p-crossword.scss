@@ -75,9 +75,36 @@
   }
 
   .h5p-crossword .h5p-cw-play-area {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-height: 0;
-    overflow: auto;
+    overflow: hidden;
+  }
+
+  .h5p-crossword .h5p-cw-play-area .h5p-question-content {
+    height: 100%;
+  }
+
+  .h5p-crossword-content {
+    flex: 1 1 0;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .h5p-crossword-content.h5p-crossword-layout-wide {
+    align-items: stretch;
+
+    .h5p-crossword-table-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      min-height: 0;
+    }
+
+    .h5p-crossword-input-container {
+      height: 100%;
+      align-self: stretch;
+    }
   }
 
   .h5p-crossword .h5p-question-buttons,

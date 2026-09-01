@@ -33,6 +33,8 @@ export function wirePlayArea(instance, options) {
     instance._cwLastScaleKey = null;
     instance._cwLastHeightPx = null;
     instance._cwLastWidth = null;
+    instance._cwLastCenterHorizontal = null;
+    instance._cwLastFullscreen = null;
   };
 
   const applyPlayAreaScale = () => {
@@ -56,7 +58,9 @@ export function wirePlayArea(instance, options) {
     if (
       instance._cwLastScaleKey === scaleKey &&
       instance._cwLastHeightPx === layout.heightPx &&
-      instance._cwLastWidth === layout.width
+      instance._cwLastWidth === layout.width &&
+      instance._cwLastCenterHorizontal === layout.centerHorizontal &&
+      instance._cwLastFullscreen === layout.isFullscreen
     ) {
       return;
     }
@@ -64,24 +68,64 @@ export function wirePlayArea(instance, options) {
     instance._cwLastScaleKey = scaleKey;
     instance._cwLastHeightPx = layout.heightPx;
     instance._cwLastWidth = layout.width;
+    instance._cwLastCenterHorizontal = layout.centerHorizontal;
+    instance._cwLastFullscreen = layout.isFullscreen;
 
     if (instance.$container && instance.$container.length) {
-      instance.$container.css({
-        width: layout.widthPx,
-        maxWidth: '100%',
-        height: layout.heightPx,
-        maxHeight: 'none',
-      });
+      if (layout.isFullscreen) {
+        instance.$container.css({
+          width: '100%',
+          maxWidth: '100%',
+          height: '100%',
+          maxHeight: 'none',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: layout.centerHorizontal ? 'center' : 'stretch',
+          justifyContent: 'flex-start',
+        });
+      }
+      else {
+        instance.$container.css({
+          width: layout.widthPx,
+          maxWidth: '100%',
+          height: layout.heightPx,
+          maxHeight: 'none',
+          display: '',
+          flexDirection: '',
+          alignItems: '',
+          justifyContent: '',
+        });
+      }
     }
 
-    instance.$playArea.css({
-      width: '100%',
-      maxWidth: '100%',
-      height: '',
-      maxHeight: 'none',
-      fontSize: fontSize,
-      '--cw-scale': scaleKey,
-    });
+    if (layout.isFullscreen) {
+      instance.$playArea.css({
+        width: layout.centerHorizontal ? layout.widthPx : '100%',
+        maxWidth: '100%',
+        height: '',
+        flex: '1 1 0',
+        minHeight: 0,
+        maxHeight: 'none',
+        marginLeft: layout.centerHorizontal ? 'auto' : '',
+        marginRight: layout.centerHorizontal ? 'auto' : '',
+        fontSize: fontSize,
+        '--cw-scale': scaleKey,
+      });
+    }
+    else {
+      instance.$playArea.css({
+        width: '100%',
+        maxWidth: '100%',
+        height: '',
+        flex: '',
+        minHeight: '',
+        maxHeight: 'none',
+        marginLeft: '',
+        marginRight: '',
+        fontSize: fontSize,
+        '--cw-scale': scaleKey,
+      });
+    }
 
     instance.$playArea.addClass('h5p-cw-layout-ready');
 
@@ -152,8 +196,28 @@ export function wirePlayArea(instance, options) {
 
   instance.on('exitFullScreen', () => {
     clearPlayAreaScaleCache();
+    if (instance.$container && instance.$container.length) {
+      instance.$container.css({
+        width: '',
+        height: '',
+        maxWidth: '',
+        maxHeight: '',
+        display: '',
+        flexDirection: '',
+        alignItems: '',
+        justifyContent: '',
+      });
+    }
     if (instance.$playArea && instance.$playArea.length) {
-      instance.$playArea.css('maxHeight', 'none');
+      instance.$playArea.css({
+        maxHeight: 'none',
+        width: '',
+        height: '',
+        flex: '',
+        minHeight: '',
+        marginLeft: '',
+        marginRight: '',
+      });
       instance.$playArea.parent().css('maxHeight', 'none');
     }
     instance.trigger('resize');

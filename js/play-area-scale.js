@@ -3,8 +3,9 @@ var H5P = H5P || {};
 H5P.CrosswordCFRD = H5P.CrosswordCFRD || {};
 
 /**
- * Play area 16:9 — Course Presentation style: explicit height in px, fluid width,
- * proportional fontSize. Height cap applies only in fullscreen.
+ * Play area 16:9 — Course Presentation style.
+ * Normal / LTI: width-driven integer height (stable iframe).
+ * Fullscreen: largest 16:9 that fits the real viewport.
  */
 H5P.CrosswordCFRD.PlayArea = (function () {
   var BASE_WIDTH = 640;
@@ -37,13 +38,6 @@ H5P.CrosswordCFRD.PlayArea = (function () {
     return BASE_FONT_SIZE * getScale(width, height);
   }
 
-  /**
-   * Explicit 16:9 height in px (avoids CSS aspect-ratio scrollHeight drift in LTI).
-   *
-   * @param {number} width
-   * @param {number} [maxHeightPx]
-   * @returns {number}
-   */
   function getExplicitHeight(width, maxHeightPx) {
     if (!width || width <= 0) {
       return BASE_HEIGHT;
@@ -56,6 +50,51 @@ H5P.CrosswordCFRD.PlayArea = (function () {
     }
 
     return Math.round(height);
+  }
+
+  function hasFullscreenClass(node) {
+    return !!(node && node.classList &&
+      (node.classList.contains('h5p-fullscreen') ||
+        node.classList.contains('h5p-semi-fullscreen')));
+  }
+
+  function isFullscreenContext(playAreaElement) {
+    if (typeof H5P !== 'undefined' && H5P.isFullscreen) {
+      return true;
+    }
+
+    if (document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement) {
+      return true;
+    }
+
+    var root = document.documentElement;
+    var body = document.body;
+    if (hasFullscreenClass(root) || hasFullscreenClass(body)) {
+      return true;
+    }
+
+    var node = playAreaElement;
+    while (node) {
+      if (hasFullscreenClass(node)) {
+        return true;
+      }
+      node = node.parentElement;
+    }
+
+    var frame = window.frameElement;
+    if (frame) {
+      var host = frame.parentElement;
+      while (host) {
+        if (hasFullscreenClass(host)) {
+          return true;
+        }
+        host = host.parentElement;
+      }
+    }
+
+    return false;
   }
 
   function getMeasureWidth(playAreaElement) {
@@ -94,62 +133,87 @@ H5P.CrosswordCFRD.PlayArea = (function () {
   }
 
   function getMeasureViewportHeight(playAreaElement) {
+    var viewHeight = window.innerHeight || document.documentElement.clientHeight || 0;
     var frame = window.frameElement;
     var frameHeight = 0;
-    var viewHeight = window.innerHeight || document.documentElement.clientHeight || 0;
 
     if (frame) {
       frame.getBoundingClientRect();
       frameHeight = frame.clientHeight;
     }
 
+    if (isFullscreenContext(playAreaElement)) {
+      return Math.max(viewHeight, frameHeight);
+    }
+
     if (frameHeight > 0 && viewHeight > 0) {
       return Math.min(frameHeight, viewHeight);
     }
 
-    if (frameHeight > 0) {
-      return frameHeight;
-    }
-
-    return viewHeight;
+    return frameHeight || viewHeight;
   }
 
-  function isFullscreenContext(playAreaElement) {
-    if (document.fullscreenElement ||
-        document.webkitFullscreenElement ||
-        document.msFullscreenElement) {
-      return true;
-    }
-
-    var root = document.documentElement;
-    var body = document.body;
-    if ((root && (root.classList.contains('h5p-fullscreen') || root.classList.contains('h5p-semi-fullscreen'))) ||
-        (body && (body.classList.contains('h5p-fullscreen') || body.classList.contains('h5p-semi-fullscreen')))) {
-      return true;
-    }
-
-    var node = playAreaElement;
-    while (node) {
-      if (node.classList &&
-          (node.classList.contains('h5p-fullscreen') || node.classList.contains('h5p-semi-fullscreen'))) {
-        return true;
-      }
-      node = node.parentElement;
-    }
-
+  /**
+   * Viewport size for H5P fullscreen (iframe may still report the old height).
+   */
+  function getFullscreenViewportSize(playAreaElement) {
+    var width = window.innerWidth || 0;
+    var height = window.innerHeight || 0;
+    var fsEl = document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.msFullscreenElement;
+    var host;
     var frame = window.frameElement;
+    var parent;
+
+    if (fsEl && fsEl.clientWidth && fsEl.clientHeight) {
+      width = Math.max(width, fsEl.clientWidth);
+      height = Math.max(height, fsEl.clientHeight);
+    }
+
+    host = document.querySelector(
+      '.h5p-content.h5p-fullscreen, .h5p-container.h5p-fullscreen, ' +
+      '.h5p-content.h5p-semi-fullscreen, .h5p-container.h5p-semi-fullscreen'
+    );
+    if (host && host.clientWidth && host.clientHeight) {
+      width = Math.max(width, host.clientWidth);
+      height = Math.max(height, host.clientHeight);
+    }
+
     if (frame) {
-      var host = frame.parentElement;
-      while (host) {
-        if (host.classList &&
-            (host.classList.contains('h5p-fullscreen') || host.classList.contains('h5p-semi-fullscreen'))) {
-          return true;
+      parent = frame.parentElement;
+      while (parent) {
+        if (hasFullscreenClass(parent)) {
+          if (parent.clientWidth) {
+            width = Math.max(width, parent.clientWidth);
+          }
+          if (parent.clientHeight) {
+            height = Math.max(height, parent.clientHeight);
+          }
+          break;
         }
-        host = host.parentElement;
+        parent = parent.parentElement;
+      }
+
+      if (frame.clientWidth) {
+        width = Math.max(width, frame.clientWidth);
+      }
+      if (frame.clientHeight) {
+        height = Math.max(height, frame.clientHeight);
       }
     }
 
-    return false;
+    if (playAreaElement) {
+      var measured = getMeasureWidth(playAreaElement);
+      if (measured > width) {
+        width = measured;
+      }
+    }
+
+    return {
+      width: width || BASE_WIDTH,
+      height: height || getExplicitHeight(width || BASE_WIDTH, 0)
+    };
   }
 
   function getPlayAreaMaxHeight(playAreaElement, width) {
@@ -170,41 +234,71 @@ H5P.CrosswordCFRD.PlayArea = (function () {
     return viewportHeight;
   }
 
+  function fitAspectRatioInViewport(viewportWidth, viewportHeight) {
+    if (!viewportWidth || viewportWidth <= 0) {
+      viewportWidth = BASE_WIDTH;
+    }
+
+    if (!viewportHeight || viewportHeight <= 0) {
+      return {
+        width: Math.round(viewportWidth),
+        height: getExplicitHeight(viewportWidth, 0)
+      };
+    }
+
+    if (viewportWidth / viewportHeight > ASPECT_RATIO) {
+      return {
+        width: Math.round(viewportHeight * ASPECT_RATIO),
+        height: Math.round(viewportHeight)
+      };
+    }
+
+    return {
+      width: Math.round(viewportWidth),
+      height: Math.round(viewportWidth / ASPECT_RATIO)
+    };
+  }
+
   /**
-   * CP-style layout dimensions for the 16:9 root element.
-   *
    * @param {HTMLElement} rootElement
-   * @returns {{width: number, height: number, scale: number, fontSize: number, maxHeightPx: number, heightPx: string, widthPx: string}}
+   * @returns {{width: number, height: number, scale: number, fontSize: number, maxHeightPx: number, heightPx: string, widthPx: string, centerHorizontal: boolean, isFullscreen: boolean}}
    */
   function getLayoutDimensions(rootElement) {
-    var width = getMeasureWidth(rootElement);
+    var availableWidth = getMeasureWidth(rootElement);
     var layoutWidth;
+    var height;
+    var viewport;
+    var fullscreen = isFullscreenContext(rootElement);
+    var centerHorizontal = false;
 
-    if (!width || width <= 0) {
-      width = BASE_WIDTH;
+    if (!availableWidth || availableWidth <= 0) {
+      availableWidth = BASE_WIDTH;
     }
 
-    var maxHeightPx = getPlayAreaMaxHeight(rootElement, width);
-    layoutWidth = width;
-
-    if (maxHeightPx > 0 && layoutWidth / maxHeightPx > ASPECT_RATIO) {
-      layoutWidth = maxHeightPx * ASPECT_RATIO;
+    if (fullscreen) {
+      viewport = getFullscreenViewportSize(rootElement);
+      var fitted = fitAspectRatioInViewport(viewport.width, viewport.height);
+      layoutWidth = fitted.width;
+      height = fitted.height;
+      centerHorizontal = layoutWidth < viewport.width - 1;
+    }
+    else {
+      layoutWidth = availableWidth;
+      height = getExplicitHeight(layoutWidth, 0);
     }
 
-    var height = getExplicitHeight(layoutWidth, maxHeightPx);
-    var heightForScale = maxHeightPx > 0 ? maxHeightPx : 0;
-    var scale = getScale(layoutWidth, heightForScale);
+    var scale = getScale(layoutWidth, height);
 
     return {
       width: layoutWidth,
       height: height,
       scale: scale,
-      fontSize: getScaledFontSize(layoutWidth, heightForScale),
-      maxHeightPx: maxHeightPx,
+      fontSize: getScaledFontSize(layoutWidth, height),
+      maxHeightPx: fullscreen && viewport ? viewport.height : 0,
       heightPx: height + 'px',
-      widthPx: (maxHeightPx > 0 && layoutWidth < width) ?
-        (Math.round(layoutWidth) + 'px') :
-        '100%'
+      widthPx: centerHorizontal ? (Math.round(layoutWidth) + 'px') : '100%',
+      centerHorizontal: centerHorizontal,
+      isFullscreen: fullscreen
     };
   }
 
@@ -223,6 +317,8 @@ H5P.CrosswordCFRD.PlayArea = (function () {
     getMeasureViewportHeight: getMeasureViewportHeight,
     isFullscreenContext: isFullscreenContext,
     getPlayAreaMaxHeight: getPlayAreaMaxHeight,
+    fitAspectRatioInViewport: fitAspectRatioInViewport,
+    getFullscreenViewportSize: getFullscreenViewportSize,
     getLayoutDimensions: getLayoutDimensions
   };
 })();

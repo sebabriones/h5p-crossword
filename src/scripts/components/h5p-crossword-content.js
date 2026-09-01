@@ -417,16 +417,35 @@ export default class CrosswordContent {
     return (available >= MIN_GRID_HEIGHT_PX) ? available : 0;
   }
 
+  /**
+   * Whether the activity is in H5P fullscreen mode.
+   * @returns {boolean}
+   */
+  isFullscreenLayout() {
+    return !!this.content.closest('.h5p-fullscreen, .h5p-semi-fullscreen');
+  }
+
   resize() {
     this.updateLayoutState();
 
     if (!this.table) {
       return;
     }
+
+    const availableHeight = this.getAvailableGridHeight();
     const tableRect = this.table.resize({
-      maxHeight: this.getAvailableGridHeight()
+      maxHeight: availableHeight,
+      isFullscreen: this.isFullscreenLayout()
     });
-    this.inputarea.resize({ height: tableRect.height });
+    const cluesHeight = (
+      this.isFullscreenLayout() &&
+      !this.isNarrowLayout &&
+      availableHeight > 0
+    ) ?
+      availableHeight :
+      tableRect.height;
+
+    this.inputarea.resize({ height: cluesHeight });
 
     if (this.solutionWord) {
       this.solutionWord.resize();
