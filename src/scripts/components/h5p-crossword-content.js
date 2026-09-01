@@ -16,6 +16,13 @@ const MAXIMUM_TRIES = 20;
 /** @constant {number} CLUES_COLUMN_MIN_WIDTH_PX Width below which clues stack under the grid. */
 const CLUES_COLUMN_MIN_WIDTH_PX = 400;
 
+/**
+ * @constant {number} CLUES_COLUMN_RESTORE_WIDTH_PX Width needed to go back to two columns.
+ * El margen respecto del umbral evita que la disposición oscile mientras el
+ * ancho pasa por el límite, por ejemplo al salir de pantalla completa.
+ */
+const CLUES_COLUMN_RESTORE_WIDTH_PX = 440;
+
 /** @constant {number} CLUES_ROW_MIN_WIDTH_PX Width needed to put both clue groups side by side. */
 const CLUES_ROW_MIN_WIDTH_PX = 1280;
 
@@ -27,15 +34,6 @@ const CLUES_FONT_SIZE_MIN_PX = 11;
 
 /** @constant {number} CLUES_FONT_SIZE_MAX_PX Upper bound for the clue font size. */
 const CLUES_FONT_SIZE_MAX_PX = 18;
-
-/** @constant {number} INSTRUCTIONS_CLEARANCE_REM Room the instructions tab needs on top. */
-const INSTRUCTIONS_CLEARANCE_REM = 2.75;
-
-/** @constant {number} INSTRUCTIONS_BASE_WIDTH_PX Reference width used by H5P.Instructions. */
-const INSTRUCTIONS_BASE_WIDTH_PX = 900;
-
-/** @constant {number} INSTRUCTIONS_MIN_SCALE Lower bound used by H5P.Instructions. */
-const INSTRUCTIONS_MIN_SCALE = 0.35;
 
 /** @constant {number} MIN_GRID_HEIGHT_PX Below this the height reading is not trustworthy. */
 const MIN_GRID_HEIGHT_PX = 120;
@@ -68,7 +66,7 @@ export default class CrosswordContent {
     // panel embebido), así que el layout se observa directamente sobre la caja.
     if (typeof ResizeObserver !== 'undefined') {
       this.resizeObserver = new ResizeObserver(() => {
-        this.updateLayoutState();
+        this.scheduleResize();
       });
       this.resizeObserver.observe(this.content);
     }
@@ -311,12 +309,17 @@ export default class CrosswordContent {
    * Pick the layout variant that fits the space the content actually got.
    */
   updateLayoutState() {
-    const width = this.content.getBoundingClientRect().width;
+    const width = this.getAvailableWidth();
     if (width === 0) {
       return; // Not displayed yet; a later resize will settle this.
     }
 
-    const isNarrow = width < CLUES_COLUMN_MIN_WIDTH_PX;
+    const isNarrow = width < (
+      this.isNarrowLayout ?
+        CLUES_COLUMN_RESTORE_WIDTH_PX :
+        CLUES_COLUMN_MIN_WIDTH_PX
+    );
+    this.isNarrowLayout = isNarrow;
 
     this.content.classList.toggle('h5p-crossword-layout-narrow', isNarrow);
     this.content.classList.toggle('h5p-crossword-layout-wide', !isNarrow);
@@ -333,39 +336,77 @@ export default class CrosswordContent {
     this.content.style.setProperty(
       '--h5p-crossword-clues-font-size', `${cluesFontSizePx}px`
     );
-
-    this.updateInstructionsClearance(width);
   }
 
   /**
-   * Reserve room for the instructions tab, following the scale H5P.Instructions uses.
-   * @param {number} width Current content width in pixels.
+   * Width the activity may use.
+   *
+   * Con play area 16:9 se mide el ancho interior del área de juego; sin ella,
+   * el padre inmediato evita realimentar la decisión de layout.
+   * @returns {number} Available width in pixels, 0 while not displayed.
    */
-  updateInstructionsClearance(width) {
-    const root = this.content.closest('.h5p-crossword');
-    if (!root) {
+  getAvailableWidth() {
+    const playArea = this.content.closest('.h5p-cw-play-area');
+    const host = playArea || this.content.parentElement;
+
+    return (host && host.clientWidth) ||
+      this.content.getBoundingClientRect().width;
+  }
+
+  /**
+   * Recompute the layout on the next frame.
+   *
+   * El observador se dispara durante la transición de pantalla completa, y
+   * recalcular en cada aviso mantiene la rejilla a la par del contenedor en
+   * lugar de dejarla con la medida del modo anterior hasta el final.
+   */
+  scheduleResize() {
+    if (this.resizeScheduled) {
       return;
     }
 
-    const scale = Math.max(
-      INSTRUCTIONS_MIN_SCALE, Math.min(1, width / INSTRUCTIONS_BASE_WIDTH_PX)
-    );
+    this.resizeScheduled = true;
 
-    root.style.setProperty(
-      '--h5p-crossword-instructions-clearance',
-      `${INSTRUCTIONS_CLEARANCE_REM * scale}rem`
-    );
+    window.requestAnimationFrame(() => {
+      this.resizeScheduled = false;
+
+      // Dimensionar la rejilla altera la caja observada, así que se descartan
+      // los avisos que no traen medidas nuevas.
+      const measurements =
+        `${this.getAvailableWidth()}x${this.getAvailableGridHeight()}`;
+      if (measurements === this.lastMeasurements) {
+        return;
+      }
+
+      this.lastMeasurements = measurements;
+      this.resize();
+    });
   }
 
   /**
-   * Height the grid may use before it starts covering the score bar and buttons.
+   * Height the grid may use inside the play area.
    * @returns {number} Available height in pixels, or 0 when the host does not cap it.
    */
   getAvailableGridHeight() {
+    const playArea = this.content.closest('.h5p-cw-play-area');
+    const questionContent = this.content.closest('.h5p-question-content');
+
+    if (playArea && questionContent) {
+      const available = questionContent.clientHeight;
+
+      return (available >= MIN_GRID_HEIGHT_PX) ? available : 0;
+    }
+
+    return this.getFullscreenAvailableGridHeight();
+  }
+
+  /**
+   * Fallback when the play area is not mounted (embebido o arranque temprano).
+   * @returns {number} Available height in pixels, or 0 when the host does not cap it.
+   */
+  getFullscreenAvailableGridHeight() {
     const host = this.content.parentElement;
 
-    // Fuera de pantalla completa la altura la define el propio contenido, así que
-    // no hay techo que respetar y medirlo daría un valor engañoso.
     if (!host || !this.content.closest('.h5p-fullscreen, .h5p-semi-fullscreen')) {
       return 0;
     }
@@ -373,8 +414,6 @@ export default class CrosswordContent {
     const available = host.clientHeight -
       (this.content.getBoundingClientRect().top - host.getBoundingClientRect().top);
 
-    // Una medición tomada antes de que el navegador asiente el layout dejaría la
-    // rejilla diminuta; en ese caso es preferible dimensionar solo por ancho.
     return (available >= MIN_GRID_HEIGHT_PX) ? available : 0;
   }
 

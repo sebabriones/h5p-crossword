@@ -4,6 +4,62 @@
  * que la ventana, y las media queries conmutaban a la variante móvil sin motivo.
  * Las clases y la tipografía las asigna CrosswordContent.updateLayoutState().
  */
+.h5p-crossword {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.h5p-container.h5p-crossword {
+  overflow: hidden;
+}
+
+.h5p-crossword .h5p-cw-play-area {
+  --cw-scale: 1;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0.5em;
+  padding-top: 0.75em;
+}
+
+/* Semilla 16:9 antes de que el JavaScript fije el alto explícito. */
+.h5p-crossword .h5p-cw-play-area:not(.h5p-cw-layout-ready) {
+  aspect-ratio: 16 / 9;
+}
+
+.h5p-crossword .h5p-cw-play-area .h5p-question-content {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: 1em;
+}
+
+/* La pestaña se monta en el contenedor padre, no dentro del play area. */
+.h5p-crossword .h5p-cw-play-area:has(.h5p-instructions-tab-root),
+.h5p-crossword:has(.h5p-instructions-tab-root) .h5p-cw-play-area,
+.h5p-container:has(.h5p-instructions-tab-root) .h5p-cw-play-area {
+  padding-top: max(calc(2.75rem * var(--cw-scale, 1)), 2.5rem);
+}
+
+.h5p-crossword > .h5p-question-buttons,
+.h5p-crossword > .h5p-question-scorebar,
+.h5p-crossword > .h5p-question-feedback:not(.h5p-question-popup) {
+  flex: 0 0 auto;
+}
+
 /*
  * En pantalla completa el alto deja de crecer con el contenido, así que la
  * actividad se reparte en columna: el tablero toma el espacio sobrante y el pie
@@ -18,7 +74,7 @@
     box-sizing: border-box;
   }
 
-  .h5p-crossword .h5p-question-content {
+  .h5p-crossword .h5p-cw-play-area {
     flex: 1 1 auto;
     min-height: 0;
     overflow: auto;
@@ -32,15 +88,6 @@
 }
 
 .h5p-crossword {
-  /*
-   * La pestaña de instrucciones flota sobre el borde superior de la actividad,
-   * así que el tablero necesita despejarlo. La reserva encoge junto con el resto
-   * del layout para no comerse el espacio en anchos pequeños.
-   */
-  &:has(.h5p-instructions-tab-root) .h5p-question-content {
-    padding-top: var(--h5p-crossword-instructions-clearance, 2.75rem);
-  }
-
   .h5p-crossword-content.h5p-crossword-layout-narrow {
     flex-direction: column;
 
@@ -80,10 +127,15 @@
     .h5p-crossword-table-wrapper {
       margin-right: 1em;
       width: 50%;
+      flex: 0 0 50%;
+      min-height: 0;
     }
 
     .h5p-crossword-input-container {
       font-size: var(--h5p-crossword-clues-font-size, 1em);
+      flex: 1 1 0;
+      min-height: 0;
+      width: 50%;
 
       .h5p-crossword-input-fields-group:first-child {
         margin-top: 0;

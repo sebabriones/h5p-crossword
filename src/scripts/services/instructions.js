@@ -92,12 +92,15 @@ export function scheduleInstructionsAttach(instance, $container) {
  */
 export function refreshInstructionsScale(instance) {
   const instructions = getInstructionsOptions(instance);
+  const $target = (instance.$playArea && instance.$playArea.length) ?
+    instance.$playArea :
+    instance.$container;
 
-  if (!instructions || !instance.$container || !instance.$container.length) {
+  if (!instructions || !$target || !$target.length) {
     return;
   }
 
   if (H5P.Instructions && typeof H5P.Instructions.updateScale === 'function') {
-    H5P.Instructions.updateScale(instance.$container, instructions);
+    H5P.Instructions.updateScale($target, instructions);
   }
 }

@@ -3,7 +3,7 @@
   "description": "Crucigrama con pistas horizontales y verticales, palabra de solución y retroalimentación por palabra.",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 23,
+  "patchVersion": 27,
   "runnable": 1,
   "author": "sbriones (CFRD-UDEC)",
   "license": "MIT",
@@ -16,6 +16,9 @@
     "iframe"
   ],
   "preloadedJs": [
+    {
+      "path": "js/play-area-scale.js"
+    },
     {
       "path": "dist/h5p-crossword-cfrd.js"
     }

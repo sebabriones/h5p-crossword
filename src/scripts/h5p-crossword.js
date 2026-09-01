@@ -3,11 +3,8 @@ import CrosswordContent from '@scripts/components/h5p-crossword-content.js';
 import Util from '@services/util.js';
 import QuestionTypeContract from '@mixins/question-type-contract.js';
 import XAPI from '@mixins/xapi.js';
-import {
-  scheduleInstructionsAttach,
-  refreshInstructionsScale
-} from '@services/instructions.js';
 import { applyActivityBackground } from '@services/appearance.js';
+import { wirePlayArea } from '@services/play-area.js';
 import '@styles/h5p-crossword.scss';
 
 /**
@@ -222,14 +219,12 @@ export default class Crossword extends H5P.QuestionCFRD {
       }
     );
 
-    // QuestionCFRD asigna attach sobre la instancia, así que se envuelve aquí.
-    const originalAttach = this.attach;
-    this.attach = ($container) => {
-      this.$container = $container;
-      originalAttach.call(this, $container);
-      applyActivityBackground($container.get(0), this.params.theme);
-      scheduleInstructionsAttach(this, $container);
-    };
+    wirePlayArea(this, {
+      originalAttach: this.attach,
+      onAttach: ($container) => {
+        applyActivityBackground($container.get(0), this.params.theme);
+      },
+    });
   }
 
   /**
@@ -299,11 +294,6 @@ export default class Crossword extends H5P.QuestionCFRD {
       this.setActionButtonAppearance(this.params.theme.actionButtons);
     }
 
-    this.on('resize', () => {
-      this.content.resize();
-      refreshInstructionsScale(this);
-    });
-
     // El navegador no entrega las medidas definitivas al momento del evento.
     ['enterFullScreen', 'exitFullScreen'].forEach((event) => {
       this.on(event, () => {
@@ -343,13 +333,16 @@ export default class Crossword extends H5P.QuestionCFRD {
       lastWidth = rect.width;
       lastHeight = rect.height;
 
+      // Ajustar en cada fotograma deja que la actividad acompañe la transición,
+      // en vez de conservar la medida anterior hasta que el layout se asiente.
+      this.trigger('resize');
+
       if (!settled && frames < LAYOUT_SETTLE_MAX_FRAMES) {
         this.layoutSettleFrame = window.requestAnimationFrame(measure);
         return;
       }
 
       this.layoutSettleFrame = null;
-      this.trigger('resize');
     };
 
     this.layoutSettleFrame = window.requestAnimationFrame(measure);
