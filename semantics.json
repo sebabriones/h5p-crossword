@@ -1151,6 +1151,18 @@
                   "default": true
                 },
                 {
+                  "name": "feedbackLeadTextColor",
+                  "type": "text",
+                  "widget": "colorSelector",
+                  "label": "Highlighted lead text color",
+                  "default": "#1a73d9",
+                  "importance": "low",
+                  "optional": true,
+                  "spectrum": {
+                    "showInput": true
+                  }
+                },
+                {
                   "name": "feedbackTextAlign",
                   "type": "select",
                   "label": "Text alignment",

@@ -105,6 +105,10 @@
                     "label": "Texto destacado en negrita"
                   },
                   {
+                    "label": "Color del texto destacado",
+                    "default": "#1a73d9"
+                  },
+                  {
                     "label": "Alineación del texto",
                     "description": "Solo se usa cuando no hay imagen de retroalimentación. Con imagen, la alineación sigue la posición de la imagen (izquierda/derecha: alineado a la izquierda; arriba: centrado).",
                     "options": [

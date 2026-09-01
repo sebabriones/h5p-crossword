@@ -461,6 +461,10 @@
                     "label": "Bold lead text"
                   },
                   {
+                    "label": "Highlighted lead text color",
+                    "default": "#1a73d9"
+                  },
+                  {
                     "label": "Text alignment",
                     "description": "Only used when no feedback image is set. With an image, text alignment follows image position (left/right: left aligned, above: centered).",
                     "options": [
