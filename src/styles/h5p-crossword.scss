@@ -61,6 +61,93 @@
 }
 
 /*
+ * Pie de evaluación en fila: scorebar + botones lado a lado.
+ * QuestionCFRD usa float/inline-block; con flex column en la raíz eso se apila.
+ * Márgenes alineados con Mark the Words / Sort Paragraphs CFRD.
+ */
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) {
+  display: grid;
+  grid-template-columns: 13em minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: stretch;
+  column-gap: 0.5em;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-cw-play-area {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+}
+
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-feedback:not(.h5p-question-popup),
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-hidden-read {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  height: 0;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-scorebar.h5p-question-visible,
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-scorebar.h5p-question-visible.full-width {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+  float: none;
+  display: block;
+  width: 13em;
+  max-width: calc(100% - 2em);
+  min-width: 0;
+  margin: 0 0 1em 1em;
+  font-size: 1em;
+}
+
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-buttons.h5p-question-visible,
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-buttons.has-scorebar,
+.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-buttons.has-scorebar.wrap {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  justify-self: stretch;
+  float: none;
+  clear: both;
+  box-sizing: border-box;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.25em;
+  width: 100% !important;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0 0 1em 0;
+  padding-left: 0.5em;
+  padding-right: 1em;
+}
+
+.h5p-crossword > .h5p-question-buttons .h5p-joubelui-button:not(.h5p-question-button-hidden) {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.h5p-no-frame > .h5p-question.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-scorebar.h5p-question-visible,
+.h5p-no-frame > .h5p-question.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-scorebar.h5p-question-visible.full-width {
+  margin: 0 0 1em 1em !important;
+}
+
+.h5p-no-frame > .h5p-question.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-buttons.h5p-question-visible,
+.h5p-no-frame > .h5p-question.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-buttons.has-scorebar,
+.h5p-no-frame > .h5p-question.h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) > .h5p-question-buttons.has-scorebar.wrap {
+  margin: 0 0 1em 0 !important;
+  padding-right: 1em;
+}
+
+/*
  * En pantalla completa el alto deja de crecer con el contenido, así que la
  * actividad se reparte en columna: el tablero toma el espacio sobrante y el pie
  * de evaluación (puntaje y botones) conserva el suyo en lugar de quedar tapado.
@@ -72,6 +159,10 @@
     flex-direction: column;
     height: 100%;
     box-sizing: border-box;
+  }
+
+  .h5p-crossword:has(> .h5p-question-scorebar.h5p-question-visible) {
+    display: grid;
   }
 
   .h5p-crossword .h5p-cw-play-area {

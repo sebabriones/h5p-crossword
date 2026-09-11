@@ -88,3 +88,12 @@
     display: none;
   }
 }
+
+.h5p-crossword-hide-solution-char-icons {
+  .h5p-crossword-input-fields-group-solution-char-wrapper {
+    &.h5p-crossword-solution-correct::after,
+    &.h5p-crossword-solution-wrong::after {
+      content: none;
+    }
+  }
+}

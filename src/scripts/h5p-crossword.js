@@ -95,6 +95,8 @@ export default class Crossword extends H5P.QuestionCFRD {
         autoCheckWhenAllCorrect: false,
         scoreWords: true,
         applyPenalties: false,
+        showScorePoints: true,
+        showSolutionCharIcons: true,
         keepCorrectAnswers: false,
       },
       l10n: {
@@ -188,6 +190,8 @@ export default class Crossword extends H5P.QuestionCFRD {
       {
         scoreWords: this.params.behaviour.scoreWords,
         applyPenalties: this.params.behaviour.applyPenalties,
+        showScorePoints: this.params.behaviour.showScorePoints,
+        showSolutionCharIcons: this.params.behaviour.showSolutionCharIcons,
         theme: this.params.theme,
         contentId: this.contentId,
         instantFeedback: this.params.behaviour.enableInstantFeedback,

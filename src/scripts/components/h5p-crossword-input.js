@@ -491,8 +491,9 @@ export default class CrosswordInput {
    * @param {object} params Parameters.
    */
   checkAnswerWords(params) {
-    // ScorePoints
-    this.scorePoints = this.scorePoints || new H5P.QuestionCFRD.ScorePoints();
+    if (this.params.showScorePoints) {
+      this.scorePoints = this.scorePoints || new H5P.QuestionCFRD.ScorePoints();
+    }
 
     this.inputFields.forEach((field) => {
       field.solution.show();
@@ -501,24 +502,34 @@ export default class CrosswordInput {
         .filter((param) => param.clueId === field.clueId && param.orientation === field.orientation)
         .shift();
 
-      let scoreExplanation, result;
+      let scoreExplanation;
+      const result = matchingResult.feedback || 'neutral';
       const ariaLabels = [];
       ariaLabels.push(matchingResult.answer);
 
       if (matchingResult.score === -1) {
-        scoreExplanation = this.scorePoints.getElement(false);
-        result = 'wrong';
+        if (this.params.showScorePoints) {
+          scoreExplanation = this.scorePoints.getElement(false);
+        }
         ariaLabels.push(this.params.a11y.wrong);
-        ariaLabels.push(`-1 ${this.params.a11y.point}`);
+        if (this.params.showScorePoints) {
+          ariaLabels.push(`-1 ${this.params.a11y.point}`);
+        }
       }
       else if (matchingResult.score === 1) {
-        scoreExplanation = this.scorePoints.getElement(true);
-        result = 'correct';
+        if (this.params.showScorePoints) {
+          scoreExplanation = this.scorePoints.getElement(true);
+        }
         ariaLabels.push(this.params.a11y.correct);
-        ariaLabels.push(`1 ${this.params.a11y.point}`);
+        if (this.params.showScorePoints) {
+          ariaLabels.push(`1 ${this.params.a11y.point}`);
+        }
       }
-      else {
-        result = 'neutral';
+      else if (result === 'wrong') {
+        ariaLabels.push(this.params.a11y.wrong);
+      }
+      else if (result === 'correct') {
+        ariaLabels.push(this.params.a11y.correct);
       }
 
       field.solution.setChars([{
@@ -535,8 +546,9 @@ export default class CrosswordInput {
    * @param {object[]} params Parameters.
    */
   checkAnswer(params) {
-    // ScorePoints
-    this.scorePoints = this.scorePoints || new H5P.QuestionCFRD.ScorePoints();
+    if (this.params.showScorePoints) {
+      this.scorePoints = this.scorePoints || new H5P.QuestionCFRD.ScorePoints();
+    }
 
     // Keep track of score for crossection characters, don't show score twice
     const scorePointsAwarded = [];
@@ -576,18 +588,16 @@ export default class CrosswordInput {
         }
         else if (cellInfo.answer === cellInfo.solution) {
           result = 'correct';
-          if (!cellAlreadyScored) {
+          if (this.params.showScorePoints && !cellAlreadyScored) {
             scoreExplanation = this.scorePoints.getElement(true);
           }
         }
-        else if (this.params.applyPenalties) {
+        else {
+          // Incorrect filled answers use the wrong style even without score penalties.
           result = 'wrong';
-          if (!cellAlreadyScored) {
+          if (this.params.showScorePoints && this.params.applyPenalties && !cellAlreadyScored) {
             scoreExplanation = this.scorePoints.getElement(false);
           }
-        }
-        else {
-          result = 'neutral';
         }
 
         const ariaLabels = [];
@@ -601,11 +611,15 @@ export default class CrosswordInput {
 
         if (result === 'correct') {
           ariaLabels.push(this.params.a11y.correct);
-          ariaLabels.push(`1 ${this.params.a11y.point}`);
+          if (this.params.showScorePoints) {
+            ariaLabels.push(`1 ${this.params.a11y.point}`);
+          }
         }
         else if (result === 'wrong') {
           ariaLabels.push(this.params.a11y.wrong);
-          ariaLabels.push(`-1 ${this.params.a11y.point}`);
+          if (this.params.showScorePoints) {
+            ariaLabels.push(`-1 ${this.params.a11y.point}`);
+          }
         }
 
         listItemParams.push({

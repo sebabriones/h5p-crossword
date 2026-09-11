@@ -2178,6 +2178,22 @@
         "optional": true
       },
       {
+        "name": "showScorePoints",
+        "type": "boolean",
+        "label": "Show score points",
+        "description": "Show +1 / -1 icons next to each scored answer when checking. The -1 icon only appears if Apply penalties is enabled.",
+        "importance": "low",
+        "default": true
+      },
+      {
+        "name": "showSolutionCharIcons",
+        "type": "boolean",
+        "label": "Show check and cross icons",
+        "description": "Show a check or cross next to each answer in the clue list after checking. Incorrect answers show a cross even when Apply penalties is off.",
+        "importance": "low",
+        "default": true
+      },
+      {
         "name": "enableRetry",
         "label": "Enable \"Retry\"",
         "type": "boolean",

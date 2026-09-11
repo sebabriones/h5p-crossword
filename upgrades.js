@@ -2,7 +2,8 @@ var H5PUpgrades = H5PUpgrades || {};
 
 H5PUpgrades['H5P.CrosswordCFRD'] = (function () {
   return {
-    0: {
+    1: {
+      0: {
       /**
        * Asynchronous content upgrade hook.
        *
@@ -64,6 +65,7 @@ H5PUpgrades['H5P.CrosswordCFRD'] = (function () {
         }
 
         finished(null, parameters, extras);
+      }
       }
     }
   };

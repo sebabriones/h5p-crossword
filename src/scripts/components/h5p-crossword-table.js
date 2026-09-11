@@ -587,6 +587,50 @@ export default class CrosswordTable {
   }
 
   /**
+   * Visual feedback for a word after checking (independent from score penalties).
+   * @param {number} clueId Clue id of word.
+   * @param {string} orientation Requested orientation.
+   * @returns {'correct'|'wrong'|'neutral'} Feedback state for the clue list.
+   */
+  getWordFeedbackState(clueId, orientation = 'across') {
+    const wordInformation = this.getWordInformation(clueId, orientation);
+    let hasWrong = false;
+    let hasEmpty = false;
+    let expected = 0;
+
+    wordInformation.forEach((info) => {
+      if (!info.solution || info.solution === ' ' || info.solution === Util.CHARACTER_PLACEHOLDER) {
+        return;
+      }
+
+      expected += 1;
+      const answer = (info.answer || '').trim();
+      if (!answer || answer === Util.CHARACTER_PLACEHOLDER) {
+        hasEmpty = true;
+        return;
+      }
+
+      if (answer !== info.solution) {
+        hasWrong = true;
+      }
+    });
+
+    if (expected === 0) {
+      return 'neutral';
+    }
+
+    if (hasWrong) {
+      return 'wrong';
+    }
+
+    if (hasEmpty) {
+      return 'neutral';
+    }
+
+    return 'correct';
+  }
+
+  /**
    * Set current orientation. Will correct orientation if not possible for position.
    * @param {string} orientation Requested orientation.
    * @param {object} [position] Position.
@@ -836,7 +880,8 @@ export default class CrosswordTable {
         clueId: word.clueId,
         orientation: word.orientation,
         answer: word.answer,
-        score: this.getWordScore(word.clueId, word.orientation)
+        score: this.getWordScore(word.clueId, word.orientation),
+        feedback: this.getWordFeedbackState(word.clueId, word.orientation)
       };
     });
 

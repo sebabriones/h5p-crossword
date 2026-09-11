@@ -484,12 +484,8 @@ export default class CrosswordCell {
       return 'undefined';
     }
     else {
-      if (this.params.applyPenalties) {
-        return 'wrong';
-      }
-      else {
-        return 'neutral';
-      }
+      // Incorrect filled answers use the wrong style even without score penalties.
+      return 'wrong';
     }
   }
 

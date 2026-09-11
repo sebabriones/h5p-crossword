@@ -219,6 +219,8 @@ export default class CrosswordContent {
         contentId: this.contentId,
         overlayContainer: this.content,
         applyPenalties: this.params.applyPenalties,
+        showScorePoints: this.params.showScorePoints,
+        showSolutionCharIcons: this.params.showSolutionCharIcons,
         l10n: {
           across: this.params.l10n.across,
           down: this.params.l10n.down,
@@ -697,6 +699,11 @@ export default class CrosswordContent {
    */
   overrideCSS(theme = {}) {
     applyThemeAppearance(this.content, theme);
+
+    this.content.classList.toggle(
+      'h5p-crossword-hide-solution-char-icons',
+      this.params.showSolutionCharIcons === false
+    );
 
     // Sin configuración propia se respetan la barra y los campos nativos del navegador.
     const clues = this.content.querySelector('.h5p-crossword-input-container');
