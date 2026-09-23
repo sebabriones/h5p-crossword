@@ -35,6 +35,7 @@ export function getInstructionsOptions(instance) {
     displayMode: instructions.displayMode || 'both',
     introButtonLabel: instructions.introButtonLabel || 'Start',
     tabButtonLabel: instructions.tabButtonLabel || 'Instructions',
+    tabButtonLabelOpen: instructions.tabButtonLabelOpen,
     animation: H5P.jQuery.extend(true, {}, instructions.animation || {}),
     appearance: H5P.jQuery.extend(true, {}, instructions.appearance || {}),
     startCollapsed: instructions.startCollapsed === undefined ?

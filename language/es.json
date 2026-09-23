@@ -28,8 +28,14 @@
           "default": "Comenzar"
         },
         {
-          "label": "Texto del botón de la pestaña",
+          "label": "Texto del botón de la pestaña (cerrada)",
+          "description": "Se muestra cuando la pestaña de instrucciones está contraída.",
           "default": "Instrucciones"
+        },
+        {
+          "label": "Texto del botón de la pestaña (abierta)",
+          "description": "Se muestra cuando la pestaña de instrucciones está expandida. Si está vacío, reutiliza el texto de pestaña cerrada.",
+          "default": "Ocultar"
         },
         {
           "label": "Mostrar la pestaña contraída al cargar"

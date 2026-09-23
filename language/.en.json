@@ -28,8 +28,14 @@
           "default": "Start"
         },
         {
-          "label": "Tab button label",
+          "label": "Tab button label (closed)",
+          "description": "Shown when the instructions tab is collapsed.",
           "default": "Instructions"
+        },
+        {
+          "label": "Tab button label (open)",
+          "description": "Shown when the instructions tab is expanded. If empty, reuses the closed label.",
+          "default": "Hide"
         },
         {
           "label": "Collapse tab on load"
