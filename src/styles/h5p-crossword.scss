@@ -33,6 +33,17 @@
   padding-top: 0.75em;
 }
 
+/* Popup is hoisted to play-area (not content) so it centers on the visible frame. */
+.h5p-crossword .h5p-cw-play-area > .h5p-question-feedback.h5p-question-popup {
+  width: min(90%, 100%);
+  max-width: calc(100% - 2em);
+  z-index: 20;
+}
+
+.h5p-crossword .h5p-cw-play-area > .h5p-question-feedback-tail {
+  z-index: 19;
+}
+
 /* Semilla 16:9 antes de que el JavaScript fije el alto explícito. */
 .h5p-crossword .h5p-cw-play-area:not(.h5p-cw-layout-ready) {
   aspect-ratio: 16 / 9;

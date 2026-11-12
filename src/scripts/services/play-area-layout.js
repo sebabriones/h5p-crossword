@@ -30,7 +30,57 @@ export function setupPlayAreaLayout($container) {
 }
 
 /**
+ * Whether setFeedback will show overall feedback as a popup in the play area.
+ *
+ * @param {string} content Feedback markup.
+ * @param {object} [popupSettings] Popup settings.
+ * @returns {boolean}
+ */
+export function usesFeedbackPopup(content, popupSettings) {
+  return popupSettings != null &&
+    popupSettings.showAsPopup === true &&
+    content !== undefined &&
+    String(content).trim().length > 0;
+}
+
+/**
+ * QuestionCFRD appends the feedback popup inside .h5p-question-content.
+ * Move popup + tail to .h5p-cw-play-area so centering uses the play area.
+ * Must run before Question's deferred positionFeedbackPopup.
+ *
+ * @param {object} instance Crossword instance.
+ */
+export function hoistFeedbackPopupToPlayArea(instance) {
+  const $playArea = instance && instance.$playArea;
+  let $popup;
+  let $tail;
+
+  if (!$playArea || !$playArea.length) {
+    return;
+  }
+
+  $popup = $playArea.find('.h5p-question-feedback.h5p-question-popup').first();
+  if (!$popup.length) {
+    return;
+  }
+
+  $tail = $popup.siblings('.h5p-question-feedback-tail');
+  if (!$tail.length) {
+    $tail = $playArea.find('.h5p-question-feedback-tail').first();
+  }
+
+  if (!$popup.parent().is($playArea)) {
+    $popup.appendTo($playArea);
+  }
+
+  if ($tail.length && !$tail.parent().is($playArea)) {
+    $tail.appendTo($playArea);
+  }
+}
+
+/**
  * Move inline scorebar/feedback out of the play area.
+ * Popup feedback stays in the play area (direct child after hoist).
  *
  * @param {H5P.jQuery} $container Root container.
  */

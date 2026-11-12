@@ -1,7 +1,9 @@
 import {
   setupPlayAreaLayout,
   scheduleDeferredResize,
-  scheduleInlineEvaluationLayout
+  scheduleInlineEvaluationLayout,
+  usesFeedbackPopup,
+  hoistFeedbackPopupToPlayArea
 } from '@services/play-area-layout.js';
 import {
   scheduleInstructionsAttach,
@@ -149,10 +151,11 @@ export function wirePlayArea(instance, options) {
   if (typeof originalSetFeedback === 'function') {
     instance.setFeedback = function (content, score, maxScore, scoreBarLabel, helpText, popupSettings) {
       const result = originalSetFeedback.apply(instance, arguments);
-      const isPopup = popupSettings != null &&
-        popupSettings.showAsPopup === true &&
-        content !== undefined &&
-        String(content).trim().length > 0;
+      const isPopup = usesFeedbackPopup(content, popupSettings);
+
+      if (isPopup) {
+        hoistFeedbackPopupToPlayArea(instance);
+      }
 
       if (instance.$container && instance.$container.length) {
         scheduleInlineEvaluationLayout(instance.$container, instance, {
@@ -160,6 +163,15 @@ export function wirePlayArea(instance, options) {
         });
       }
 
+      return result;
+    };
+  }
+
+  const originalShowFeedbackPopup = instance.showFeedbackPopup;
+  if (typeof originalShowFeedbackPopup === 'function') {
+    instance.showFeedbackPopup = function () {
+      const result = originalShowFeedbackPopup.apply(instance, arguments);
+      hoistFeedbackPopupToPlayArea(instance);
       return result;
     };
   }
