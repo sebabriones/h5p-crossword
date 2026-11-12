@@ -1091,6 +1091,32 @@
         }
       },
       {
+        "name": "feedbackBodyFontSize",
+        "type": "number",
+        "label": "Feedback body font size",
+        "description": "Font size of the main feedback text in the popup (relative to the content font).",
+        "importance": "low",
+        "default": 1,
+        "min": 0.5,
+        "max": 3,
+        "decimals": 2,
+        "unit": "em",
+        "optional": true
+      },
+      {
+        "name": "feedbackCloseIconSize",
+        "type": "number",
+        "label": "Feedback close icon size",
+        "description": "Size of the close (X) icon on the feedback popup.",
+        "importance": "low",
+        "default": 1.2,
+        "min": 0.5,
+        "max": 3,
+        "decimals": 2,
+        "unit": "em",
+        "optional": true
+      },
+      {
         "name": "overallFeedback",
         "type": "list",
         "widgets": [
@@ -1172,6 +1198,19 @@
                   "spectrum": {
                     "showInput": true
                   }
+                },
+                {
+                  "name": "feedbackLeadFontSize",
+                  "type": "number",
+                  "label": "Highlighted lead font size",
+                  "description": "Font size of the highlighted lead text (relative to the content font).",
+                  "importance": "low",
+                  "default": 1,
+                  "min": 0.5,
+                  "max": 3,
+                  "decimals": 2,
+                  "unit": "em",
+                  "optional": true
                 },
                 {
                   "name": "feedbackTextAlign",

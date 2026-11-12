@@ -85,6 +85,13 @@ export default class Crossword extends H5P.QuestionCFRD {
     // Make sure all variables are set
     this.params = Util.extend({
       solutionWord: '',
+      overallFeedback: {
+        popupBackgroundColor: '#ffffff',
+        feedbackTextColor: '#333333',
+        feedbackBodyFontSize: 1,
+        feedbackCloseIconSize: 1.2,
+        overallFeedback: []
+      },
       theme: {
         backgroundColor: '#173354'
       },
@@ -138,6 +145,30 @@ export default class Crossword extends H5P.QuestionCFRD {
         yourResult: 'You got @score out of @total points'
       }
     }, this.params);
+
+    if (Array.isArray(this.params.overallFeedback)) {
+      this.params.overallFeedback = {
+        popupBackgroundColor: '#ffffff',
+        feedbackTextColor: '#333333',
+        feedbackBodyFontSize: 1,
+        feedbackCloseIconSize: 1.2,
+        overallFeedback: this.params.overallFeedback
+      };
+    }
+    else if (this.params.overallFeedback && typeof this.params.overallFeedback === 'object') {
+      if (!this.params.overallFeedback.popupBackgroundColor) {
+        this.params.overallFeedback.popupBackgroundColor = '#ffffff';
+      }
+      if (!this.params.overallFeedback.feedbackTextColor) {
+        this.params.overallFeedback.feedbackTextColor = '#333333';
+      }
+      if (this.params.overallFeedback.feedbackBodyFontSize == null) {
+        this.params.overallFeedback.feedbackBodyFontSize = 1;
+      }
+      if (this.params.overallFeedback.feedbackCloseIconSize == null) {
+        this.params.overallFeedback.feedbackCloseIconSize = 1.2;
+      }
+    }
 
     // Ensure to consider enableRetry for keepCorrectAnswers
     this.params.keepCorrectAnswers =
@@ -433,6 +464,9 @@ export default class Crossword extends H5P.QuestionCFRD {
         alwaysShowClose: true,
         dismissible: true,
         popupBackgroundColor: resolved.popupBackgroundColor,
+        feedbackBodyFontSize: resolved.feedbackBodyFontSize,
+        feedbackLeadFontSize: resolved.feedbackLeadFontSize,
+        feedbackCloseIconSize: resolved.feedbackCloseIconSize,
         plainText: resolved.plainText,
         onClose: () => {
           this.showButton('show-feedback');

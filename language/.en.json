@@ -439,6 +439,16 @@
           "label": "Feedback text color"
         },
         {
+          "label": "Feedback body font size",
+          "description": "Font size of the main feedback text in the popup (relative to the content font).",
+          "default": 1
+        },
+        {
+          "label": "Feedback close icon size",
+          "description": "Size of the close (X) icon on the feedback popup.",
+          "default": 1.2
+        },
+        {
           "widgets": [
             {
               "label": "Default"
@@ -469,6 +479,11 @@
                   {
                     "label": "Highlighted lead text color",
                     "default": "#1a73d9"
+                  },
+                  {
+                    "label": "Highlighted lead font size",
+                    "description": "Font size of the highlighted lead text (relative to the content font).",
+                    "default": 1
                   },
                   {
                     "label": "Text alignment",
